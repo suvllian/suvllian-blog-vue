@@ -12,7 +12,7 @@
 export default {
 	data(){
 		return{
-			vistorNumber: Number
+			vistorNumber: 100
 		}
 	},
 	methods:{
@@ -28,7 +28,7 @@ export default {
 		}
 	},
 	created(){
-		this.getVisitCount();
+		//this.getVisitCount();
 	}
 }
 </script>

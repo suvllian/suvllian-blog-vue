@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
 import App from './App'
-import routes from './routes'
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
@@ -11,8 +10,7 @@ Vue.use(VueRouter);
 
 
 import Camera from './components/camera/index.vue';
-import Main from './components/Home/index.vue';
-import Not from './components/404/index.vue';
+import Book from './components/Book/Index.vue';
 
 const router = new VueRouter({
   mode: 'history',
@@ -20,7 +18,8 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: Camera },
     { path: '/camera', component: Camera },
-    { path: '/*', component: Not },
+    { path: '/book', component: Book },
+    { path: '/*', component: Camera },
   ]
 })
 

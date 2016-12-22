@@ -28,7 +28,7 @@ export default{
 			liItems:[
 				{title:"首页",src:'/'},
 				{title:"人在旅途",src:'/camera'},
-				{title:"读书",src:'/html'},
+				{title:"读书",src:'/book'},
 			]
 		}
 	},

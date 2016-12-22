@@ -2,15 +2,15 @@
 	<section>
 		<div class="box" v-for="(single,key) in data">
 			<div class="box-content">
-				<img :class="{active:single.isActive}" v-bind:src="'http://suvllian.com/V/images/travel/'+single.tImage+'.jpg'" v-on:click="enlargeImage(key)" alt="">
+				<img :class="{active:single.isActive}" v-bind:src="'http://suvllian.com/V/images/travel/'+single.iImage+'.jpg'" v-on:click="enlargeImage(key)" alt="">
 				<div class="introduction" :class="{float:single.isActive}">
-					<h3>{{single.tTopic}}:</h3>
-					<p :class="{border:single.isActive}">{{single.tContent}}</p>
+					<h3>{{single.iTopic}}:</h3>
+					<p :class="{border:single.isActive}">{{single.iContent}}</p>
 				</div>
 			</div>
 			<div class="box-common">
-				<span>热度({{single.tLike}})</span>
-				<span @click="dealVote(key,single.tId)">
+				<span>热度({{single.iLike}})</span>
+				<span @click="dealVote(key,single.iId)">
 					<img  v-if="single.isVote" src="./../../assets/after.png">
 					<img  v-else src="./../../assets/before.png">
 				</span>
@@ -27,7 +27,7 @@ export default{
 			data:[],
 			pageCounter:1,
 			bottomTitle:"查看更多",
-			apiPath:"http://192.168.1.106/bapi/"
+			apiPath:"http://127.0.0.1/bapi/"
 		}
 	},
 
@@ -39,10 +39,10 @@ export default{
 		dealVote:function(index,id){
 			this.data[index].isVote = !this.data[index].isVote;
 			if(this.data[index].isVote){
-				this.data[index].tLike++;
+				this.data[index].iLike++;
 				this.changeVote(id,"add");
 			}else{
-				this.data[index].tLike--;
+				this.data[index].iLike--;
 				this.changeVote(id,"sub");
 			}
 		},
