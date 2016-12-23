@@ -2,15 +2,15 @@
 	<section>
 		<div class="box" v-for="(single,key) in data">
 			<div class="box-content">
-				<img :class="{active:single.isActive}" v-bind:src="'http://suvllian.com/V/images/travel/'+single.iImage+'.jpg'" v-on:click="enlargeImage(key)" alt="">
-				<div class="introduction" :class="{float:single.isActive}">
-					<h3>{{single.iTopic}}:</h3>
-					<p :class="{border:single.isActive}">{{single.iContent}}</p>
+				<img :class="{imgClicked:single.isActive}" class="content-img" v-bind:src="'http://suvllian.com/V/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(key)">
+				<div class="introduction" :class="{introClicked:single.isActive}">
+					<h3 class="introduction-h3">{{single.iTopic}}:</h3>
+					<p class="introduction-p" :class="{borderClicked:single.isActive}">{{single.iContent}}</p>
 				</div>
 			</div>
 			<div class="box-common">
-				<span>热度({{single.iLike}})</span>
-				<span @click="dealVote(key,single.iId)">
+				<span class="common-span">热度({{single.iLike}})</span>
+				<span class="common-span" @click="dealVote(key,single.iId)">
 					<img  v-if="single.isVote" src="./../../assets/after.png">
 					<img  v-else src="./../../assets/before.png">
 				</span>
@@ -27,7 +27,7 @@ export default{
 			data:[],
 			pageCounter:1,
 			bottomTitle:"查看更多",
-			apiPath:"http://127.0.0.1/bapi/"
+			apiPath:"http://www.suvllian.com/C/bapi/"
 		}
 	},
 
@@ -120,9 +120,35 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
+	
+	// 设置宽高及最大宽度
+	@mixin widthHeightMaxWidth($width:auto,$height:auto,$maxWidth:100%){
+		width:$width;
+		height:$height;
+		max-width:$maxWidth;
+	}
+
+	// 响应式布局
+	@mixin respond-to($breakpoint) {
+	    @if $breakpoint == "small" {
+	        @media (max-width: 510px) {
+	            @content;
+	        }
+	    }
+	    @else if $breakpoint == "medium" {
+	        @media (max-width: 800px) {
+	        	@content;
+	    	}
+	  	} 
+	    @else if $breakpoint == "large" {
+	    	@media (max-width: 1200px) {
+	    		@content;
+	    	}
+	    }
+	}
+
 	section{
-		height: auto;
-		width: 100%;
+		@include widthHeightMaxWidth(100%,auto);
 		padding:2em 0;
 		position:relative;
 
@@ -133,7 +159,6 @@ export default{
 			cursor: pointer;
 			transition: 1s all ease;
 			outline: none;
-			-webkit-tap-highlight-color:rgba(0,0,0,0) ;
 
 			&:hover{
 				color: #333;
@@ -142,52 +167,68 @@ export default{
 	}
 
 	.box{
-		background-color: #fff;
-		width: auto;
-		max-width: 48em;
-		height:auto;
+		@include widthHeightMaxWidth(auto,auto,48em);
+		background-color: #fff;	
+		padding-bottom:1em;
 		margin: 1em auto;
-		padding:1em;
 		border: 1px solid #eee;
-		box-shadow:1px 1px 5px #aaa;
-		border-radius:5px;
+		border-radius:2px;
 		outline: none;
 
-
-		img{
-			height: auto;
-			max-width:40%; 
-			cursor: pointer;
-			padding-left: 4%;
-			box-sizing:border-box;
-			outline: none;
-		}
-
-		.introduction{
-			max-width: 60%;
-			min-width: 60%;
-			color: #333;
-			float: left;
-
-			h3{
-				font-weight: 400;
-				text-decoration: underline;
-				font-size: 1.125em;
-				margin-bottom: 0.875em;
+		.box-content{
+			.content-img{
+				@include widthHeightMaxWidth(auto,auto,40%); 
+				padding:1em;
+				cursor: pointer;
+				outline: none;
 			}
 
-			p{
-				line-height: 1.5em;
+			.introduction{
+				max-width: 60%;
+				min-width: 60%;
+				padding:1em;
+				padding-bottom:0;
+				float: left;
+				color: #333;
+
+				.introduction-h3{
+					margin-bottom: 0.875em;
+					font-weight: 400;
+					text-decoration: underline;
+					font-size: 1.125em;
+				}
+
+				.introduction-p{
+					line-height: 1.5em;
+				}
+			}
+
+			// 点击图片后的样式
+			.imgClicked{
+				@include widthHeightMaxWidth(100%,auto,100%);
+				padding-bottom:0;
+			}
+
+			.introClicked{
+				float: none;
+				max-width: 100%;
+			}
+
+			.borderClicked{
+				border-left:3px solid #dfdfdf;
+				padding-left:1em;
 			}
 		}
 
 		.box-common{
-			height: 3em;
+			height: 2em;
 			width: 100%;
-			padding-top:0.5em;
+			padding:0 1em;
+			margin-top:0.5em;
 			clear: left;
+			border-top:1px dotted #ddd;
 
-			span{
+			.common-span{
 				margin-left: 1em;
 				color: #aaa;
 				font-size: 0.875em;
@@ -199,6 +240,7 @@ export default{
 
 				&:nth-child(2){
 					img{
+						width: 20px;
 						max-height: 1.6em;
 						padding-left:0;
 						cursor: pointer;
@@ -207,75 +249,57 @@ export default{
 				}
 			}
 		}
-
-		// JS设置样式
-		.active{
-			width: 100%;
-			max-width: 100%;
-			padding-left:0;
-			padding-bottom:0.5em;
-		}
-
-		.float{
-			float: none;
-			max-width: 100%;
-		}
-
-		.border{
-			border-left:4px solid #dfdfdf;
-			padding-left:1em;
-		}
+		
 	}
 
-	// 响应式布局
 
-	@media screen and (max-width:800px){
+	@include respond-to(medium){
 		.box{
 			max-width: 96%;
 			margin: 1em 2%;
 		}
 	}
 
-	@media screen and (max-width:510px){
+	@include respond-to(small){
 		body{
 			min-width: 368px;
 		}
 
 		.box{
-			max-width: 96%;
-			margin: 1em 2%;
+			max-width: 100%;
+			margin: 1em 0;
 			min-width: 300px;
+			border:0px;
 
-			.introduction{
-				float: none;
-				max-width: 100%;
+			
 
-				p{
-					border-left:4px solid #dfdfdf;
-					padding-left:1em;
-				}
-			}
-		}
-		.box-content{
-			img{
-				width: 100%;
-				max-width: 100%;
-				padding-left:0;
-				padding-bottom:0.5em;
-				outline: none;
-				-webkit-tap-highlight-color:rgba(0,0,0,0) ;
-			}
-		}
-
-
-		.box-common{
-			span{
-				&:first-child{
-					padding-left:0%; 
+			.box-content{
+				.content-img{
+					@include widthHeightMaxWidth(100%,auto,100%);
+					padding:0;
+					margin: 0;
+					outline: none;
 				}
 
-				outline: none;
-				-webkit-tap-highlight-color:rgba(0,0,0,0) ;
+				.introduction{
+					float: none;
+					max-width: 100%;
+
+					.introduction-p{
+						border-left:3px solid #dfdfdf;
+						padding-left:1em;
+					}
+				}
+			}
+
+			.box-common{
+				.common-span{
+					&:first-child{
+						padding-left:0%; 
+					}
+
+					outline: none;
+				}
 			}
 		}
 	}

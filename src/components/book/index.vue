@@ -11,11 +11,11 @@
 						<div class="book-img">
 							<img :src="item.iImage" :alt="item.iName">
 						</div>
-						<span>小说</span>
+						<span>{{item.cClass}}</span>
 						<div class="book-quote">
-							<h3>{{item.iNmae}}</h3>
+							<h3 class="quote-h3">{{item.iName}}</h3>
 							<div>
-								<p>{{item.iContent}}</p>	
+								<p class="quote-p">{{item.iContent}}</p>	
 							</div>
 						</div>
 					</div>
@@ -28,7 +28,7 @@
 							</span>	
 						</div>
 						<div class="common-right">
-							<span>2016-11-10</span>
+							<span>{{new Date(parseInt(item.iDate) * 1000).toLocaleString().slice(0,10)}}</span>
 						</div>
 					</div>
 				</a>
@@ -44,7 +44,7 @@ export default {
 			isVote:false,
 			data:[],
 			bottomTitle:"查看更多",
-			apiPath:"http://127.0.0.1/bapi/"
+			apiPath:"http://www.suvllian.com/C/bapi/"
 		}
 	},
 	methods:{
@@ -83,6 +83,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+	// 响应式布局
+	@mixin respond-to($breakpoint) {
+	    @if $breakpoint == "small" {
+	        @media (max-width: 568px) {
+	            @content;
+	        }
+	    }
+	    @else if $breakpoint == "medium" {
+	        @media (max-width: 980px) {
+	        	@content;
+	    	}
+	  	} 
+	    @else if $breakpoint == "large" {
+	    	@media (max-width: 1200px) {
+	    		@content;
+	    	}
+	    }
+	}
+
+	%span{
+		color: #aaa;
+		font-size: 1em;
+	}
+
 	.container{
 		background-color: #f7f1ed;
 	}
@@ -90,18 +115,15 @@ export default {
 	article{
 		height: auto;
 		width: 950px;
-		margin: 0 auto;
+		margin:0.1em auto;
 		padding:2em 0;
 		position:relative;
-		background-color: #f7f1ed;
 
 		section{
 			width: 450px;
-			overflow: hidden;
 			display: inline-block;
 			margin: 25px 0;
 			box-shadow:5px 5px 5px 5px #eee;
-			background-color: #f7f1ed;
 
 			&:nth-child(odd){
 				margin-right: 50px;
@@ -115,10 +137,17 @@ export default {
 						transform: scale3d(1.2,1.2,1.2);
 					}
 				}
+
+				.book-img{
+					img{
+						transform: rotate(360deg);
+					}
+				}
 			}
 
 			.bg-img{
 				height: 200px;
+				overflow: hidden;
 				box-shadow:1px 1px 5px #aaa;
 
 				img{
@@ -134,32 +163,47 @@ export default {
 				background-color: #fff;
 				position:relative;
 
+
 				.book-img{
 					position:absolute;
-					bottom:25px;
+					bottom:30px;
 					left:25px;
 					height: 140px;
 
 					img{
 						max-height: 140px;
+						box-shadow:1px 5px 5px  #aaa;
+						transition: 1s all ease;
 					}
 				}
 
 				span{
-				    background: #e76648 none repeat scroll 0 0;
-				    color: #fff;
-				    font-size: 16px;
-				    line-height: 22px;
-				    padding: 3px 8px;
-				    position: absolute;
-				    right: -1px;
+					padding: 3px 8px;
+					position: absolute;
+					right: -8px;
 				    top: -13px;
+				    font-size: 16px;
+				    line-height: 22px; 
+				    background-color: #e76648;
+				    color: #fff;
+			        border-color: #47456d;
+    				box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    				border-radius:4px 0 0 4px;
+
+
+				    &:after {
+						content: "";
+						position:absolute;
+						top:28px;
+						border-left:0.5em solid #9B8651;
+						border-bottom:0.5em solid #f7f1ed;
+					}
 				}
 
 				.book-quote{
 					height: auto;
 
-					 h3{
+					.quote-h3{
 					 	color: #494949;
 					    font-size: 20px;
 					    font-weight: 500;
@@ -168,7 +212,7 @@ export default {
 					    padding: 20px 0 5px;
 					 }
 
-					 p{
+					.quote-p{
 					    color: #9b9b9b;
 					    display: -webkit-box;
 					    font-size: 15px;
@@ -178,6 +222,7 @@ export default {
 					    overflow: hidden;
 					    text-overflow: ellipsis;
 					    width: 274px;
+					    padding:1px;
 					 }
 				}
 			}
@@ -195,8 +240,7 @@ export default {
 
 					span{
 						margin-left: 1em;
-						color: #aaa;
-						font-size: 0.875em;
+						@extend %span;
 
 						&:first-child{
 							margin-left: 0;
@@ -208,18 +252,19 @@ export default {
 								padding-left:0;
 								cursor: pointer;
 								outline: none;
+								max-height:1em;
 							}
 						}
 					}
 				}
 
 				.common-right{
-					width: 50%;
+					width: 35%;
 					display:inline-block;
 					float: right;
 
-
 					span{
+						@extend %span;
 						float: right;
 					}
 				}
@@ -228,12 +273,12 @@ export default {
 		}
 	}
 
-	@media screen and (max-width:980px){
+	@include respond-to(medium){
 		article{
-			width: 500px;
+			width: 475px;
 
 			section{
-				width: 500px;
+				width: 475px;
 
 				&:nth-child(odd){
 					margin-right: 0px;
@@ -242,23 +287,36 @@ export default {
 		}
 	}
 
-	@media screen and (max-width:568px){
+	@include respond-to(small){
 		article{
 			width: 100%;
 			padding:2em 1em;
 
 			section{
 				width: 100%;
-				border-radius: 3px;
+
+				&:hover{
+					opacity: 1;
+
+					.bg-img{
+						img{
+							transform: scale3d(1,1,1);
+						}
+					}
+
+					.book-img{
+						img{
+							transform: rotate(0);
+						}
+					}
+				}
 
 				.content{
 					.book-quote{
-						div{
-							height: auto;
-						}
 
-						p{
+						.quote-p{
 							width: 50%;
+							height: auto;
 						}
 					}
 				}

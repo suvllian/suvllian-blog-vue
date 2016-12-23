@@ -26,7 +26,7 @@ export default{
 				src:"http://suvllian.com"
 			},
 			liItems:[
-				{title:"首页",src:'/'},
+				// {title:"首页",src:'/'},
 				{title:"人在旅途",src:'/camera'},
 				{title:"读书",src:'/book'},
 			]
@@ -168,10 +168,10 @@ export default{
 
 	@media screen and (max-width:800px){
 		nav{
-			width: 136px;
+			// width: 136px;
 			margin-left: -24px;
 			overflow: hidden;
-			display: none;
+			// display: none;
 		}
 	}
 </style>

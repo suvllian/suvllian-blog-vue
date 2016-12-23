@@ -10,16 +10,16 @@ Vue.use(VueRouter);
 
 
 import Camera from './components/camera/index.vue';
-import Book from './components/Book/Index.vue';
+import Book from './components/Book/index.vue';
 
 const router = new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [
-    { path: '/', component: Camera },
+    { path: '/', component: Book },
     { path: '/camera', component: Camera },
     { path: '/book', component: Book },
-    { path: '/*', component: Camera },
+    { path: '/*', component: Book },
   ]
 })
 
