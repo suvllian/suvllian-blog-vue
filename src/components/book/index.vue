@@ -1,5 +1,7 @@
 <template>
 	<div class="container">
+		<slider></slider>
+
 		<article>
 			<section v-for="item in data">
 				<a href="" >
@@ -38,7 +40,13 @@
 </template>
 
 <script>
+import Slider from './../common/Slider.vue'
+
 export default {
+	components: {
+    	Slider
+	},
+
 	data(){
 		return{
 			isVote:false,
@@ -74,6 +82,10 @@ export default {
 
 		dealVote:function(){
 			this.isVote = !this.isVote;
+		},
+
+		aclick:function(){
+			alert(1);
 		}
 	},
 	created(){
@@ -110,12 +122,13 @@ export default {
 
 	.container{
 		background-color: #f7f1ed;
+		padding-top:2em;
 	}
 
 	article{
 		height: auto;
 		width: 950px;
-		margin:0.1em auto;
+		margin:0.1em auto 0em;
 		padding:2em 0;
 		position:relative;
 
@@ -166,7 +179,7 @@ export default {
 
 				.book-img{
 					position:absolute;
-					bottom:30px;
+					bottom:36px;
 					left:25px;
 					height: 140px;
 
@@ -201,7 +214,8 @@ export default {
 				}
 
 				.book-quote{
-					height: auto;
+					height: 100px;
+					overflow: hidden;
 
 					.quote-h3{
 					 	color: #494949;
@@ -290,10 +304,11 @@ export default {
 	@include respond-to(small){
 		article{
 			width: 100%;
-			padding:2em 1em;
+			padding:2em 16px;
+			min-width: 330px;
 
 			section{
-				width: 100%;
+				width: 100%;		
 
 				&:hover{
 					opacity: 1;

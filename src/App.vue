@@ -18,3 +18,21 @@ export default {
 }
 </script>
 
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+		text-decoration: none;
+        box-sizing: border-box;
+	}	
+	body{
+		background: #f9f9f9 none repeat scroll 0 0;
+		color: #89867e;
+		font-size: 16px;
+	    font-family: "Lato",Calibri,Arial,sans-serif;
+	    cursor: url("https://www.anotherhome.net/wp-content/themes/Amativeness/images/cursor.ico"), auto;
+	}
+	li{
+		list-style: none;
+	}
+</style>
