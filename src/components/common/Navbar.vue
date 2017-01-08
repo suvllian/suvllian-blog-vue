@@ -21,7 +21,7 @@
 			</div>
 		</div>
 
-		<nav :class="{small:true,show:isSmall}">
+		<nav :class="{navBar:true,show:isSmall}">
 			<ul>
 				<li v-for="item in liItems" >
 					<router-link v-bind:to="item.src">{{item.title}}</router-link>
@@ -32,7 +32,6 @@
 </template>
 
 <script>
-
 export default{
 	data(){
 		return{
@@ -42,7 +41,8 @@ export default{
 			},
 			liItems:[
 				{title:"首页",src:'/',isActive:true},
-				{title:"人在旅途",src:'/camera',isActive:false},
+				{title:"图集",src:'/camera',isActive:false},
+				// {title:"音乐",src:'/article',isActive:false},
 				{title:"读书",src:'/book',isActive:false},
 			],
 			isSmall:false
@@ -64,15 +64,18 @@ export default{
 	},
 
 	created(){
+		// 窗口大小改变时，隐藏下拉导航。
 		window.onresize = function(){
-			this.isSmall = false;
+			var navBar = document.getElementsByClassName("navBar")[0];
+			navBar.className = "navBar";
 		}
+
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-	$height:6rem;
+	$height:5.2rem;
 	// 导航个数
 	$liNumber:3;
 
@@ -93,6 +96,7 @@ export default{
 		height: $height;
 		padding:0px 15px;
 		margin: 0 auto;
+		transition: 1s all ease;
 	}
 
 	.header-nav{
@@ -103,23 +107,51 @@ export default{
 
 	.logo {
 		color: rgba(0, 0, 0, 0.7);
-	    font-weight: 400;
-	    margin: 0 0 1.875rem;
+	    margin: 0.6rem 0 1.475rem;
+	    padding-top: 15px;
 	    float: left;
 	    font-size: 22px;
-	    font-weight: 700;
-	    margin-top: 1rem;
-	    padding-top: 15px;
+	    font-weight: 700; 
 	    text-transform: uppercase;
+	   
+
+	    &:hover,&:focus{
+	    	a{
+	    		color: rgba(0, 0,0 , 0.9);
+
+	    		&::before,&::after{
+				    width: 100%;
+			    }
+	    	}   	
+	    }
+
+	    $logoColor:#00adb5;
+	    %border{
+	    	background: $logoColor none repeat scroll 0 0;
+		    content: "";
+		    height: 2px;
+		    position: absolute;
+		    transition: all 0.2s ease 0s;
+		    width: 0px;
+	    }
 
 	    a {
-		    border: 2px solid #00adb5;
+		    border-left: 2px solid $logoColor;
+		    border-right: 2px solid $logoColor;
 		    color: rgba(21, 31, 44, 0.8);
 		    padding: 0 7px;
-		    position: relative;
+		    position: relative; 
 
-		    &:hover,&:focus{
-		    	color: rgba(0, 0,0 , 0.9);
+    		&::before{
+		    	@extend %border;
+			    top: 0;
+			    left: 0;   
+		    }
+
+		    &::after{
+		    	@extend %border;
+			    bottom:0;
+			    right: 0;
 		    }
 		}
 	}
@@ -143,22 +175,23 @@ export default{
 			    padding-top: 0.25rem;
 				position: relative;
 				list-style: none;
-				transition: 1s all ease;
+				transition: 0.6s all ease;
 				cursor: pointer;
 				outline: none;
 
 				a{
 					display: block;
 					height: 100%;
-					position: relative;
-				    color: rgba(0, 0, 0, 0.8);
-				    font-size: 0.875rem;
-				    font-weight: 400;
-				    padding: 2.125rem 1.3rem;
+					position: relative;   
+				    padding: 1.725rem 1.3rem;
 				    text-decoration: none;
 				    text-transform: uppercase;
-					transition: 0.5s all ease;
 					outline: none;
+					font-size: 15px;
+				    font-weight: 400;
+					font-family: "Lato","PingFang SC","Microsoft YaHei",sans-serif;
+					color: #555;
+					transition: 0.5s all ease;
 				}
 
 				&:hover{
@@ -187,12 +220,12 @@ export default{
 	// 响应式小屏幕导航
 	#more{
 		margin-top: -5px;
+		display: none;
 	}
 
-	.small{
+	.navBar{
 		width:100%;
 		height: 0;
-		margin-bottom: 50px;
 		background-color:#fff;
 		position:relative;
 		border-top:2px solid #eee;
@@ -206,10 +239,11 @@ export default{
 			li{
 				width: 100%;
 				height: 52px;
-				padding:16px 0px;
+				padding:0;
 				transition: 1s all ease;
 				background-color:#fff;
 				border-bottom:2px dotted #eee;
+				overflow: hidden;
 
 				&:hover{
 					transform: translateX(10px);
@@ -220,8 +254,11 @@ export default{
 				}
 
 				a{
-					display: inline;
+					display: inline-block;
 					font-size: 20px;
+					height: 100%;
+					width: 100%;
+					padding:12px 0 0 1.25em;
 				}
 			}
 		}
@@ -229,6 +266,7 @@ export default{
 
 	.show{
 		height:52px*$liNumber+2px;
+		margin-bottom: 50px;
 	}
 
 	// 响应式布局
@@ -245,8 +283,20 @@ export default{
 	}
 
 	@media screen and (max-width:840px){
+		#more{
+			display: block;
+		}
+
 		.header{
 			width: 100%;
+		}
+
+		.logo {
+			a{
+				&::before,&::after{
+					width: 100%;
+				}
+			}
 		}
 	
 		ul:first-child{

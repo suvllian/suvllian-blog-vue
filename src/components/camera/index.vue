@@ -4,7 +4,7 @@
 			<div class="box-content">
 				<img :class="{imgClicked:single.isActive}" class="content-img" v-bind:src="'http://suvllian.com/V/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(key)">
 				<div class="introduction" :class="{introClicked:single.isActive}">
-					<h3 class="introduction-h3">{{single.iTopic}}:</h3>
+					<!-- <h3 class="introduction-h3">{{single.iTopic}}:</h3> -->
 					<p class="introduction-p" :class="{borderClicked:single.isActive}">{{single.iContent}}</p>
 				</div>
 			</div>
@@ -16,7 +16,8 @@
 				</span>
 			</div>
 		</div>
-		<h1 @click="addData()">{{bottomTitle}}</h1>
+		<h1 @click="addData()" v-if="isMore">{{bottomTitle}}</h1>
+		<h2 v-else>-- THE END --</h2>
 	</section>
 </template>
 
@@ -27,7 +28,12 @@ export default{
 			data:[],
 			pageCounter:1,
 			bottomTitle:"查看更多",
-			apiPath:"http://www.suvllian.com/C/bapi/"
+
+			// api路径
+			apiPath:"http://127.0.0.1/bapi/",
+			
+			// 点击查看更多是否还有内容
+			isMore:true
 		}
 	},
 
@@ -84,7 +90,7 @@ export default{
 	        	var data = res.data;
                 var resLength = data.length;
 	        	if(resLength===0){
-		        	this.bottomTitle = "没有更多内容了";
+		        	this.isMore = false;
 		        	return;
 		        }
 		        
@@ -149,20 +155,31 @@ export default{
 
 	section{
 		@include widthHeightMaxWidth(100%,auto);
-		padding:2em 0;
+		padding:2em 0 0;
 		position:relative;
+		clear: both;
 
-		h1{
+		%h{
 			font-weight: 400;
 			text-align: center;
 			margin: 1em 0;
+			outline: none;
+		}	
+
+		h1{		
+			@extend %h; 
 			cursor: pointer;
 			transition: 1s all ease;
-			outline: none;
 
 			&:hover{
 				color: #333;
 			}
+		}
+
+		h2{
+			@extend %h; 
+			font-weight: 300;
+			font-size: 16px;
 		}
 	}
 

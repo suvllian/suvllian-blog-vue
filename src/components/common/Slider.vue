@@ -71,7 +71,7 @@ export default {
 				}else{
 					that.number = 0;
 				}
-			},4000);
+			},3000);
 		},
 
 		changeItem:function(index){
@@ -114,6 +114,7 @@ export default {
 		margin:0.1em auto;
 		position:relative;
 		overflow: hidden;
+		transition: 1s all ease;
 
 		.big{
 			height: 232px;

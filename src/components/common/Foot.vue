@@ -1,9 +1,9 @@
 <template>
 	<footer>
 		<div>
-			<p class="count" v-cloak>已有 {{vistorNumber}} 人次访问</p>
+			<!-- <p class="count" v-cloak>已有 {{vistorNumber}} 人次访问</p> -->
 			<p><small>© 2016 瓦尔登湖畔一棵松. All Rights Reserved</small></p>
-			<p><small>备案号：陕IPC备16014072号</a></small></p>
+			<p><small>备案号：陕IPC备16014072-1号</a></small></p>
 		</div>
 	</footer>
 </template>

@@ -52,7 +52,7 @@ export default {
 			isVote:false,
 			data:[],
 			bottomTitle:"查看更多",
-			apiPath:"http://www.suvllian.com/C/bapi/"
+			apiPath:"http://127.0.0.1/bapi/"
 		}
 	},
 	methods:{
@@ -131,6 +131,7 @@ export default {
 		margin:0.1em auto 0em;
 		padding:2em 0;
 		position:relative;
+		clear: both;
 
 		section{
 			width: 450px;
