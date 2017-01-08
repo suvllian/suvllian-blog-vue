@@ -57,7 +57,7 @@ export default{
 
 	data(){
 		return{
-			articleList:[],
+			articleList:[1],
 			// api路径
 			apiPath:"http://127.0.0.1/bapi/",
 		}
@@ -65,15 +65,15 @@ export default{
 
 	methods:{
 		getData:function(){
-			var url = this.apiPath + "data.php";
-			var postData = "do=article";
+			var url = this.apiPath;
+			var postData = "do=article&concrete=getList";
 	        var xhr = new XMLHttpRequest();
 	        xhr.open('POST',url);
 	        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	        var that = this;
 	        xhr.onload = function(e){
-	        	var data = JSON.parse(this.response);
-	        	that.articleList = data;
+	        	//var data = JSON.parse(this.response);
+	        	//that.articleList = data;
 	        }
 	        xhr.send(postData);
 		},

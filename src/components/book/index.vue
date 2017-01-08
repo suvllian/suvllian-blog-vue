@@ -57,8 +57,8 @@ export default {
 	},
 	methods:{
 		getData:function(){
-			var url = this.apiPath + "data.php";
-			var postData = "do=book";
+			var url = this.apiPath;
+			var postData = "do=book&concrete=getBook";
 	        var xhr = new XMLHttpRequest();
 	        xhr.open('POST',url);
 	        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");

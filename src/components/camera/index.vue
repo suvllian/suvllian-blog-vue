@@ -54,8 +54,8 @@ export default{
 		},
 
 		getData:function(){
-			var url = this.apiPath + "data.php";
-			var postData = "do=data&page=1";
+			var url = this.apiPath;
+			var postData = "do=image&concrete=getImage&page=1";
 	        var xhr = new XMLHttpRequest();
 	        xhr.open('POST',url);
 	        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -81,9 +81,10 @@ export default{
 			this.pageCounter++;
 
 			this.$http.post(
-	            this.apiPath + "data.php",
+	            this.apiPath,
 	            {
-	            	do:"data",
+	            	do:"image",
+	            	concrete:"getImage",
 	            	page:this.pageCounter,
 	            }
 	        ).then(function (res) {
@@ -106,9 +107,10 @@ export default{
 
 		changeVote:function(id,way){
 			this.$http.post(
-	            this.apiPath + "data.php",
+	            this.apiPath,
 	            {
-	            	do:"vote",
+	            	do:"image",
+	            	concrete:"voteImage",
 	            	way:way,
 	            	id:id
 	            }

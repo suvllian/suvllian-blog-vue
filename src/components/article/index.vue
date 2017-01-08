@@ -109,8 +109,8 @@ export default{
 		},
 
 		getData:function(){
-			var url = this.apiPath + "data.php";
-			var postData = "do=article&and=visit";
+			var url = this.apiPath;
+			var postData = "do=article&concrete=getContent";
 	        var xhr = new XMLHttpRequest();
 	        xhr.open('POST',url);
 	        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
