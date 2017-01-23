@@ -49,6 +49,7 @@
 
 <script>
 import Music from './../music/index.vue'
+import api from '../../api'
 
 export default{
 	components: {
@@ -58,24 +59,18 @@ export default{
 	data(){
 		return{
 			articleList:[1],
-			// api路径
-			apiPath:"http://127.0.0.1/bapi/",
 		}
 	},
 
 	methods:{
 		getData:function(){
-			var url = this.apiPath;
-			var postData = "do=article&concrete=getList";
-	        var xhr = new XMLHttpRequest();
-	        xhr.open('POST',url);
-	        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	        var that = this;
-	        xhr.onload = function(e){
-	        	//var data = JSON.parse(this.response);
-	        	//that.articleList = data;
-	        }
-	        xhr.send(postData);
+			api.getArticleList().then((res) => {
+		        var response  = res.data;
+		        console.log(res.data);
+			    // this.articleList = response;
+			},(res) => {
+		       console.log(res.data);
+			});
 		},
 	},
 

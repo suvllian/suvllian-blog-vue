@@ -18,9 +18,11 @@ class Client
 		if(isset($_POST["do"])){
 			$this->doType = addslashes(trim($_POST["do"]));
 			$this->doConcrete = addslashes(trim($_POST["concrete"]));
-		}else{
+		}else if(isset($_GET["do"])){
 			$this->doType = addslashes(trim($_GET["do"]));
 			$this->doConcrete = addslashes(trim($_GET["concrete"]));
+		}else{
+			return false;
 		}
 
 		if (isset($this->doType)) {
@@ -32,7 +34,7 @@ class Client
 		$book  = new Book();
 		$article  = new Article();
 
-		// 设置后继
+		// // 设置后继
 		$image->setSuccessor($book);
 		$book->setSuccessor($article);
 	

@@ -33,7 +33,7 @@ class Book extends Handler
 	}
 
 	public function getBook(){
-		$sql = "SELECT iId,iBgLink,iName,iImage,iContent,iShow,iDate,iLike,cClass FROM bookinfor,bookclass WHERE iClass=cId";
+		$sql = "SELECT iId,iBgLink,iName,iImage,iContent,iShow,iDate,iLike,cClass FROM bookinfor,bookclass WHERE iClass=cId AND iShow=1";
 		$result = $this->dataBaseHandle->fetchAll($sql);
 		echo json_encode($result);
 	}

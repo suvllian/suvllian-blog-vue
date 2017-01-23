@@ -4,7 +4,7 @@
 
 		<article>
 			<section v-for="item in data">
-				<a href="" >
+				<a @click.prevent="" href="" >
 					<div class="bg-img">
 						<img :src="item.iBgLink" :alt="item.iName">
 					</div>
@@ -24,8 +24,8 @@
 					<div class="common">
 						<div class="common-left">
 							<span>热度({{item.iLike}})</span>
-							<span @click="dealVote()">
-								<img v-if="isVote" src="./../../assets/after.png">
+							<span @click="dealVote(item)">
+								<img v-if="item.isVote" src="./../../assets/after.png">
 								<img v-else src="./../../assets/before.png">
 							</span>	
 						</div>
@@ -41,6 +41,7 @@
 
 <script>
 import Slider from './../common/Slider.vue'
+import api from '../../api'
 
 export default {
 	components: {
@@ -49,44 +50,32 @@ export default {
 
 	data(){
 		return{
-			isVote:false,
 			data:[],
 			bottomTitle:"查看更多",
-			apiPath:"http://127.0.0.1/bapi/"
 		}
 	},
 	methods:{
 		getData:function(){
-			var url = this.apiPath;
-			var postData = "do=book&concrete=getBook";
-	        var xhr = new XMLHttpRequest();
-	        xhr.open('POST',url);
-	        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	        var that = this;
-	        xhr.onload = function(e){
-	    		var responseLength = this.response.length;
+			api.getBookData().then((res) => {
+		        var response  = res.data;
+		        var responseLength = response.length;
 	        	if(responseLength===0){
 		        	that.bottomTitle = "暂无内容";
 		        	return;
 		        }
-		        
-	        	var data = JSON.parse(this.response);
-	        	for(let i=0;i<data.length;i++){
-	        		data[i].isActive = false;
-	        		data[i].isVote = false;
+		        for(let i=0;i<response.length;i++){
+	        		response[i].isActive = false;
+	        		response[i].isVote = false;
 	        	}	
-	        	that.data = data;
-	        }
-	        xhr.send(postData);
+			    this.data = response;
+			},(res) => {
+		       console.log(res.data);
+			});
 		},
 
-		dealVote:function(){
-			this.isVote = !this.isVote;
+		dealVote:function(item){
+			item.isVote = !item.isVote;
 		},
-
-		aclick:function(){
-			alert(1);
-		}
 	},
 	created(){
 		this.getData();

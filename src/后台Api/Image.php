@@ -40,13 +40,18 @@ class Image extends Handler
 	}
 
 	public function getImage(){
+		$page = 1;
+
 		if(!empty($_POST['page'])){
-			$page = $_POST['page']-0;
-			$pageNumber = ($page-1)*15;
-			$sql = "SELECT * FROM travelImage WHERE iShow=1 LIMIT ".$pageNumber.",15";
-			$result = $this->dataBaseHandle->fetchAll($sql);
-			echo json_encode($result);
+			$page = $_POST['page'] - 0;
+		}else if(!empty($_GET['page'])){
+			$page = $_GET['page'] - 0;
 		}
+		
+		$pageNumber = ($page-1)*15;
+		$sql = "SELECT * FROM travelImage WHERE iShow=1 LIMIT ".$pageNumber.",15";
+		$result = $this->dataBaseHandle->fetchAll($sql);
+		echo json_encode($result);
 	}
 
 	public function voteImage(){

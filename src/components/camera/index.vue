@@ -4,7 +4,7 @@
 			<div class="box-content">
 				<img :class="{imgClicked:single.isActive}" class="content-img" v-bind:src="'http://suvllian.com/V/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(key)">
 				<div class="introduction" :class="{introClicked:single.isActive}">
-					<!-- <h3 class="introduction-h3">{{single.iTopic}}:</h3> -->
+					<h3 class="introduction-h3">{{single.iTopic}}:</h3>
 					<p class="introduction-p" :class="{borderClicked:single.isActive}">{{single.iContent}}</p>
 				</div>
 			</div>
@@ -22,15 +22,14 @@
 </template>
 
 <script>
+import api from '../../api'
+
 export default{
 	data(){
 		return{
 			data:[],
 			pageCounter:1,
 			bottomTitle:"查看更多",
-
-			// api路径
-			apiPath:"http://127.0.0.1/bapi/",
 			
 			// 点击查看更多是否还有内容
 			isMore:true
@@ -54,55 +53,41 @@ export default{
 		},
 
 		getData:function(){
-			var url = this.apiPath;
-			var postData = "do=image&concrete=getImage&page=1";
-	        var xhr = new XMLHttpRequest();
-	        xhr.open('POST',url);
-	        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	        var that = this;
-	        xhr.onload = function(e){
-	    		var responseLength = this.response.length;
+			api.getImageData(1).then((res) => {
+		        var response  = res.data;
+		        var responseLength = response.length;
 	        	if(responseLength===0){
 		        	that.bottomTitle = "暂无内容";
 		        	return;
 		        }
-		        
-	        	var data = JSON.parse(this.response);
-	        	for(let i=0;i<data.length;i++){
-	        		data[i].isActive = false;
-	        		data[i].isVote = false;
+		        for(let i=0;i<response.length;i++){
+	        		response[i].isActive = false;
+	        		response[i].isVote = false;
 	        	}	
-	        	that.data = data;
-	        }
-	        xhr.send(postData);
+			    this.data = response;
+			},(res) => {
+		       console.log(res.data);
+			});
 		},
 
 		addData:function(){
 			this.pageCounter++;
 
-			this.$http.post(
-	            this.apiPath,
-	            {
-	            	do:"image",
-	            	concrete:"getImage",
-	            	page:this.pageCounter,
-	            }
-	        ).then(function (res) {
-	        	var data = res.data;
-                var resLength = data.length;
+			api.getImageData(this.pageCounter).then((res) => {
+		        var response  = res.data;
+		        var resLength = response.length;
 	        	if(resLength===0){
 		        	this.isMore = false;
 		        	return;
 		        }
-		        
-	        	for(let i=0;i<data.length;i++){
-	        		data[i].isActive = false;
-	        		data[i].isVote = false;
+		        for(let i=0; i<resLength; i++){
+	        		response[i].isActive = false;
+	        		response[i].isVote = false;
 	        	}	
-	        	this.data.concat(data);
-            },function (res) {
-                console.log(res.data);
-            });
+			    this.data.concat(response);
+			},(res) => {
+		       console.log(res.data);
+			});
 		},
 
 		changeVote:function(id,way){
