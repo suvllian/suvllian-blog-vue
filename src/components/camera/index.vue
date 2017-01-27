@@ -92,16 +92,16 @@ export default{
 
 		changeVote:function(id,way){
 			this.$http.post(
-	            this.apiPath,
+	            "http://127.0.0.1/bapi/",
 	            {
 	            	do:"image",
 	            	concrete:"voteImage",
 	            	way:way,
 	            	id:id
 	            }
-	        ).then(function (res) {
+	        ).then((res) => {
                
-            },function (res) {
+            },(res) => {
                 console.log(res.data);
             });
 		},

@@ -1,6 +1,6 @@
 <template>
 	<div class="article-list">
-		<article class="article" v-for="article in articleList">
+		<article class="article">
 			<span class="roate-date">
 				<span class="month">12月</span>
 				<span class="day">28</span>
@@ -12,7 +12,7 @@
 				<p class="article-meta">
 					<i></i>
 					发表于
-					<time datetime="2011-01-12">December 26th, 2016</time>
+					<time>December 28th, 2016</time>
 					•
 					<i></i>
 					<span>{{article.aVisit}}次围观</span>
@@ -22,7 +22,7 @@
 				</p>
 
 				<div class="label">
-					<a href="" title="生活">生活</a>
+					<a href="" :title="article.aClassName">{{article.aClassName}}</a>
 				</div>
 			</header>
 
@@ -40,7 +40,7 @@ export default{
 	data(){
 		return{
 			isShow:false,
-			articleList:[],
+			article:[],
 		}
 	},
 
@@ -52,7 +52,7 @@ export default{
 		getData:function(){
 			api.getArticleContent().then((res) => {
 		        var response  = res.data;
-			    this.articleList = response;
+			    this.article = response[0];
 			},(res) => {
 		       console.log(res.data);
 			});
@@ -64,7 +64,7 @@ export default{
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 	// 响应式布局
 	@mixin respond-to($breakpoint) {
 	    @if $breakpoint == "small" {

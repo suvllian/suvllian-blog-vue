@@ -12,7 +12,6 @@ import Index from './components/home/index.vue';
 import Camera from './components/camera/index.vue';
 import Book from './components/Book/index.vue';
 import Article from './components/article/index.vue';
-import Music from './components/music/index.vue';
 
 const router = new VueRouter({
   mode: 'history',
@@ -21,7 +20,6 @@ const router = new VueRouter({
     { path: '/', component: Index },
     { path: '/article', component: Article },
     { path: '/camera', component: Camera },
-    { path: '/music', component: Music },
     { path: '/book', component: Book },
     { path: '/*', component: Index },
   ]
