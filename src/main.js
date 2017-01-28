@@ -1,12 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueResource from 'vue-resource'
 
 import App from './App'
 
-Vue.use(VueResource);
 Vue.use(VueRouter);
-
 
 import Index from './components/home/index.vue';
 import Camera from './components/camera/index.vue';
@@ -26,7 +23,3 @@ const router = new VueRouter({
 })
 
 new Vue(Vue.util.extend({ router }, App)).$mount('#app');
-
-Vue.http.options.emulateJSON = true;
-
-

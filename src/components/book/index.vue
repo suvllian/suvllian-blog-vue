@@ -3,7 +3,7 @@
 		<slider></slider>
 
 		<article>
-			<section v-for="item in data">
+			<section v-for="item in bookList">
 				<a @click.prevent="" href="" >
 					<div class="bg-img">
 						<img :src="item.iBgLink" :alt="item.iName">
@@ -35,6 +35,9 @@
 					</div>
 				</a>
 			</section>
+
+			<h1 @click="getData(++pageCounter)" v-if="isMore">查看更多</h1>
+			<h2 v-else>-- THE END --</h2>
 		</article>
 	</div>
 </template>
@@ -50,25 +53,29 @@ export default {
 
 	data(){
 		return{
-			data:[],
-			bottomTitle:"查看更多",
+			bookList:[],
+			pageCounter:1,
+			isMore:true
 		}
 	},
 	methods:{
-		getData:function(){
-			api.getBookData().then((res) => {
+		getData:function(page){
+			api.getBookData(page).then(res => {
 		        var response  = res.data;
-		        var responseLength = response.length;
-	        	if(responseLength===0){
-		        	that.bottomTitle = "暂无内容";
+		        var resLength = response.length;
+	        	if(resLength === 0){
+		        	this.isMore = false;
 		        	return;
 		        }
-		        for(let i=0;i<response.length;i++){
+		        for(let i=0; i<resLength; i++){
 	        		response[i].isActive = false;
 	        		response[i].isVote = false;
 	        	}	
-			    this.data = response;
-			},(res) => {
+			    this.bookList = this.bookList.concat(response);
+			    if(resLength < 10){
+		        	this.isMore = false;
+		        }
+			},res => {
 		       console.log(res.data);
 			});
 		},
@@ -78,7 +85,7 @@ export default {
 		},
 	},
 	created(){
-		this.getData();
+		this.getData(1);
 	}
 }
 </script>
@@ -121,6 +128,29 @@ export default {
 		padding:2em 0;
 		position:relative;
 		clear: both;
+
+		%h{
+			font-weight: 400;
+			text-align: center;
+			margin: 1em 0;
+			outline: none;
+		}	
+
+		h1{		
+			@extend %h; 
+			cursor: pointer;
+			transition: 1s all ease;
+
+			&:hover{
+				color: #333;
+			}
+		}
+
+		h2{
+			@extend %h; 
+			font-weight: 300;
+			font-size: 16px;
+		}
 
 		section{
 			width: 450px;

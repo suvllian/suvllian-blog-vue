@@ -1,11 +1,18 @@
-import {getResource,PostResource} from './resources';
+import {getResource,voteResource} from './resources';
 
 export default{
-	getBookData:() => { return getResource.get({do:"book",concrete:"getBook"}); },
 
+	// 书籍
+	getBookData:(page) => { return getResource.get({do:"book",concrete:"getBook",page:page}); },
+
+	// 照片
 	getImageData:(page) => { return getResource.get({do:"image",concrete:"getImage",page:page}); },
 
+	voteImage:(id,way) => { return voteResource.save({do:"image",concrete:"voteImage",way:way,id:id}) },
+
+	// 文章
 	getArticleList:() => { return getResource.get({do:"article",concrete:"getList"}) },
 
 	getArticleContent:() => { return getResource.get({do:"article",concrete:"getContent"}) },
+
 }

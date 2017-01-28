@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<div class="box" v-for="(single,key) in data">
+		<div class="box" v-for="(single,key) in imageList">
 			<div class="box-content">
 				<img :class="{imgClicked:single.isActive}" class="content-img" v-bind:src="'http://suvllian.com/V/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(key)">
 				<div class="introduction" :class="{introClicked:single.isActive}">
@@ -16,7 +16,7 @@
 				</span>
 			</div>
 		</div>
-		<h1 @click="addData()" v-if="isMore">{{bottomTitle}}</h1>
+		<h1 @click="getData(++pageCounter)" v-if="isMore">查看更多</h1>
 		<h2 v-else>-- THE END --</h2>
 	</section>
 </template>
@@ -27,56 +27,33 @@ import api from '../../api'
 export default{
 	data(){
 		return{
-			data:[],
+			imageList:[],
 			pageCounter:1,
-			bottomTitle:"查看更多",
-			
-			// 点击查看更多是否还有内容
 			isMore:true
 		}
 	},
 
 	methods:{
 		enlargeImage:function(index){
-			this.data[index].isActive = !this.data[index].isActive;
+			this.imageList[index].isActive = !this.imageList[index].isActive;
 		},
 
 		dealVote:function(index,id){
-			this.data[index].isVote = !this.data[index].isVote;
-			if(this.data[index].isVote){
-				this.data[index].iLike++;
+			this.imageList[index].isVote = !this.imageList[index].isVote;
+			if(this.imageList[index].isVote){
+				this.imageList[index].iLike++;
 				this.changeVote(id,"add");
 			}else{
-				this.data[index].iLike--;
+				this.imageList[index].iLike--;
 				this.changeVote(id,"sub");
 			}
 		},
 
-		getData:function(){
-			api.getImageData(1).then((res) => {
-		        var response  = res.data;
-		        var responseLength = response.length;
-	        	if(responseLength===0){
-		        	that.bottomTitle = "暂无内容";
-		        	return;
-		        }
-		        for(let i=0;i<response.length;i++){
-	        		response[i].isActive = false;
-	        		response[i].isVote = false;
-	        	}	
-			    this.data = response;
-			},(res) => {
-		       console.log(res.data);
-			});
-		},
-
-		addData:function(){
-			this.pageCounter++;
-
-			api.getImageData(this.pageCounter).then((res) => {
+		getData:function(page){
+			api.getImageData(page).then(res => {
 		        var response  = res.data;
 		        var resLength = response.length;
-	        	if(resLength===0){
+	        	if(resLength === 0){
 		        	this.isMore = false;
 		        	return;
 		        }
@@ -84,31 +61,22 @@ export default{
 	        		response[i].isActive = false;
 	        		response[i].isVote = false;
 	        	}	
-			    this.data.concat(response);
-			},(res) => {
+			    this.imageList = this.imageList.concat(response);
+			    if(resLength < 15){
+		        	this.isMore = false;
+		        }
+			},res => {
 		       console.log(res.data);
 			});
 		},
 
 		changeVote:function(id,way){
-			this.$http.post(
-	            "http://127.0.0.1/bapi/",
-	            {
-	            	do:"image",
-	            	concrete:"voteImage",
-	            	way:way,
-	            	id:id
-	            }
-	        ).then((res) => {
-               
-            },(res) => {
-                console.log(res.data);
-            });
+			api.voteImage(id,way);
 		},
 	},
 
 	created(){
-		this.getData();
+		this.getData(1);
     }
 }
 </script>

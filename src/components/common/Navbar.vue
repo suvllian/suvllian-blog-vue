@@ -42,7 +42,6 @@ export default{
 			liItems:[
 				{title:"首页",src:'/',isActive:true},
 				{title:"图集",src:'/camera',isActive:false},
-				// {title:"音乐",src:'/article',isActive:false},
 				{title:"读书",src:'/book',isActive:false},
 			],
 			isSmall:false
@@ -52,7 +51,7 @@ export default{
 	methods:{
 		changeActive:function(item,event){
 			var length = this.liItems.length;
-			for(var i = 0;i<length;i++){
+			for(var i = 0; i<length; i++){
 				this.liItems[i].isActive = false;
 			}
 			item.isActive = true;

@@ -60,10 +60,10 @@ export default{
 
 	methods:{
 		getData:function(){
-			api.getArticleList().then((res) => {
+			api.getArticleList().then(res => {
 		        var response  = res.data;
 			    this.articleList = response;
-			},(res) => {
+			},res => {
 		       console.log(res.data);
 			});
 		},
