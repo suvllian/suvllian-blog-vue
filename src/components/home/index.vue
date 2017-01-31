@@ -1,11 +1,11 @@
 <template>
 	<div class="article-list">
-		<Music></Music>
+		<!-- <Music></Music> -->
 
 		<article class="article" v-for="article in articleList">
 			<span class="roate-date">
-				<span class="month">12月</span>
-				<span class="day">28</span>
+				<span class="month">{{ article.month }}</span>
+				<span class="day">{{ article.day }}</span>
 			</span>
 
 			<header class="artcile-head">
@@ -14,7 +14,7 @@
 				<p class="article-meta">
 					<i></i>
 					发表于
-					<time>December 26th, 2016</time>
+					<time>{{ article.time }}</time>
 					•
 					<i></i>
 					<span>{{article.aVisit}}次围观</span>
@@ -36,7 +36,9 @@
 
 			<div class="article-content">
 				<div class="more">
-					<p><router-link to="/article">阅读全文 >></router-link></p>
+					<p>
+						<router-link :to="{path:'article',query:{id:article.aId}}">阅读全文 >></router-link>
+					</p>
 				</div>
 			</div>
 		</article>
@@ -62,7 +64,22 @@ export default{
 		getData:function(){
 			api.getArticleList().then(res => {
 		        var response  = res.data;
+			    
+			    for (let i=0; i<response.length; i++) {
+			    	var time =  Array.prototype.slice.
+			    		call((new Date(parseInt(response[i].aDate)*100000)).toDateString(),0).
+			    		slice(4).join("");
+				    var timeArray = time.split(" ");
+				    var month = timeArray[0];
+				    var day   = timeArray[1];
+
+			    	response[i].time = time;
+			    	response[i].month = month;
+			    	response[i].day = day;
+			    }
 			    this.articleList = response;
+
+			    console.log(Date.parse(new Date(2015,12,28)));
 			},res => {
 		       console.log(res.data);
 			});

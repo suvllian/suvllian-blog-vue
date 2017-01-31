@@ -2,8 +2,8 @@
 	<div class="article-list">
 		<article class="article">
 			<span class="roate-date">
-				<span class="month">12月</span>
-				<span class="day">28</span>
+				<span class="month">{{ article.month }}</span>
+				<span class="day">{{ article.day }}</span>
 			</span>
 
 			<header class="artcile-head">
@@ -12,7 +12,7 @@
 				<p class="article-meta">
 					<i></i>
 					发表于
-					<time>December 28th, 2016</time>
+					<time>{{ article.time }}</time>
 					•
 					<i></i>
 					<span>{{article.aVisit}}次围观</span>
@@ -49,10 +49,20 @@ export default{
 			this.isShow = !this.isShow;
 		},
 
-		getData:function(){
-			api.getArticleContent().then((res) => {
-		        var response  = res.data;
-			    this.article = response[0];
+		getData:function(id){
+			api.getArticleContent(id).then((res) => {
+		        var response  = res.data[0];
+		    	var time =  Array.prototype.slice.
+		    		call((new Date(parseInt(response.aDate)*100000)).toDateString(),0).
+		    		slice(4).join("");
+			    var timeArray = time.split(" ");
+			    var month = timeArray[0];
+			    var day   = timeArray[1];
+
+		    	response.time = time;
+		    	response.month = month;
+		    	response.day = day;
+			    this.article = response;
 			},(res) => {
 		       console.log(res.data);
 			});
@@ -60,7 +70,8 @@ export default{
 	},
 
 	created(){
-		this.getData();
+		var id = this.$route.query.id;
+		this.getData(id);
     }
 }
 </script>

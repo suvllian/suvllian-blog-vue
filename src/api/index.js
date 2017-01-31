@@ -11,7 +11,7 @@ export default{
 	voteImage:(id,way) => { return voteResource.save({do:"image",concrete:"voteImage",way:way,id:id}) },
 
 	// 文章
-	getArticleList:() => { return getResource.get({do:"article",concrete:"getList"}) },
+	getArticleList:(id) => { return getResource.get({do:"article",concrete:"getList",id:id}) },
 
 	getArticleContent:() => { return getResource.get({do:"article",concrete:"getContent"}) },
 

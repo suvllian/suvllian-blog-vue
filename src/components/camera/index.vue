@@ -18,6 +18,7 @@
 		</div>
 		<h1 @click="getData(++pageCounter)" v-if="isMore">查看更多</h1>
 		<h2 v-else>-- THE END --</h2>
+
 	</section>
 </template>
 
