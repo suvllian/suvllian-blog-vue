@@ -21,12 +21,6 @@
 export default{
 	data(){
 		return{
-			articleList:[
-				{
-					id:1,
-					title:"我的2016年"
-				}
-			],
 			audioItem:{
 				handle:null,
 				audio:null,

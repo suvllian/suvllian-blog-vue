@@ -1,42 +1,22 @@
 <template>
 	<div class="article-list">
 		<article class="article">
-			<span class="roate-date">
-				<span class="month">{{ article.month }}</span>
-				<span class="day">{{ article.day }}</span>
-			</span>
-
-			<header class="artcile-head">
-				<p class="title"><a href="">{{article.aTopic}}</a></p>
-				
-				<p class="article-meta">
-					<i></i>
-					发表于
-					<time>{{ article.time }}</time>
-					•
-					<i></i>
-					<span>{{article.aVisit}}次围观</span>
-					<!-- •
-					<i></i>
-					<span>100条评论</span> -->
-				</p>
-
-				<div class="label">
-					<a href="" :title="article.aClassName">{{article.aClassName}}</a>
-				</div>
-			</header>
-
-			<div class="article-content" v-html="article.aContent">
-				
-			</div>
+			<Ahead :article-head="article"></Ahead>
+			<div class="article-content" v-html="article.aContent"></div>
 		</article>
 	</div>
 </template>
 
 <script>
 import api from '../../api'
+import Ahead from './../common/Ahead.vue'
+import filters from '../../utils/filters.js'
 
 export default{
+	components: {
+    	Ahead
+	},
+
 	data(){
 		return{
 			isShow:false,
@@ -50,20 +30,19 @@ export default{
 		},
 
 		getData:function(id){
-			api.getArticleContent(id).then((res) => {
+			api.getArticleContent(id).then(res => {
 		        var response  = res.data[0];
-		    	var time =  Array.prototype.slice.
-		    		call((new Date(parseInt(response.aDate)*100000)).toDateString(),0).
-		    		slice(4).join("");
-			    var timeArray = time.split(" ");
-			    var month = timeArray[0];
-			    var day   = timeArray[1];
+		        var filterTime = filters.formatTime(response.aDate);
+			    var monthInChinese = filterTime.monthInChinese;
+			    var month = filterTime.month;
+			    var day   = filterTime.day;
+			    var year  = filterTime.year;				      
 
-		    	response.time = time;
-		    	response.month = month;
+		    	response.time = year + " " + month + " " + day;
+		    	response.month = monthInChinese;
 		    	response.day = day;
 			    this.article = response;
-			},(res) => {
+			},res => {
 		       console.log(res.data);
 			});
 		},
@@ -219,6 +198,11 @@ export default{
 					img{
 						border-radius:5px;
 						max-width: 100%;
+						max-height: 500px;		
+					}
+
+					.small-img{
+						max-height: 300px;
 					}
 				}
 
