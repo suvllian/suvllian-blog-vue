@@ -6,6 +6,8 @@ import Book from './components/Book/index.vue';
 import Article from './components/article/index.vue';
 
 const router = new VueRouter({
+  history: true,
+  hashbang: false,
   mode: 'history',
   base: __dirname,
   routes: [

@@ -46,7 +46,7 @@ class Image extends Handler
 		}
 		
 		$pageNumber = ($page-1)*15;
-		$sql = "SELECT * FROM travelImage WHERE iShow=1 LIMIT ".$pageNumber.",15";
+		$sql = "SELECT * FROM travelimage WHERE iShow=1 LIMIT ".$pageNumber.",15";
 		$result = $this->dataBaseHandle->fetchAll($sql);
 		echo json_encode($result);
 	}
@@ -64,10 +64,10 @@ class Image extends Handler
 
 		// 根据get传参进行操作
 		if($way === "add"){
-			$sql = "UPDATE travelImage SET iLike = iLike +1 WHERE iId=".$id;
+			$sql = "UPDATE travelimage SET iLike = iLike +1 WHERE iId=".$id;
 			$result = $this->dataBaseHandle->query($sql);	
 		}else if($way === "sub"){
-			$sql = "UPDATE travelImage SET iLike = iLike - 1 WHERE iId=".$id;
+			$sql = "UPDATE travelimage SET iLike = iLike - 1 WHERE iId=".$id;
 			$result = $this->dataBaseHandle->query($sql);
 		}
 	}

@@ -2,7 +2,7 @@
 	<section>
 		<div class="box" v-for="(single,key) in imageList">
 			<div class="box-content">
-				<img :class="{imgClicked:single.isActive}" class="content-img" v-bind:src="'http://suvllian.com/V/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(single)">
+				<img :class="{imgClicked:single.isActive}" class="content-img" v-bind:src="'http://suvllian.com/static/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(single)">
 				<div class="introduction" :class="{introClicked:single.isActive}">
 					<h3 class="introduction-h3">{{single.iTopic}}:</h3>
 					<p class="introduction-p" :class="{borderClicked:single.isActive}">{{single.iContent}}</p>

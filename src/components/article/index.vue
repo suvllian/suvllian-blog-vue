@@ -74,7 +74,7 @@ export default{
 			.roate-date{
 				height: 70px;
 				width: 70px;
-				padding:9px 12px;
+				padding:9px 6px;
 				position:absolute;
 				top: -30px;
 				left: -25px;

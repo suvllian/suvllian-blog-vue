@@ -46,7 +46,7 @@ export default {
 					show:false
 				},
 				{
-					src:"http://www.suvllian.com/V/images/books/bookBg/4.jpg",
+					src:"http://www.suvllian.com/static/images/books/bookBg/4.jpg",
 					title:"Hello",
 					show:false
 				}

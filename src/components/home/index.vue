@@ -1,6 +1,6 @@
 <template>
 	<div class="article-list">
-		<!-- <Music></Music> -->
+		<Music></Music>
 		<article class="article" v-for="article in articleList">
 			<Ahead :article-head="article"></Ahead>
 

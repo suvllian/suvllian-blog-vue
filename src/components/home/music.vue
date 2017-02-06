@@ -1,14 +1,14 @@
 <template>
 	<section>
 		<div class="container">
-			<audio id="audio" src="http://127.0.0.1/1.mp3" loop="true"></audio>
+			<audio id="audio" src="http://suvllian.com/static/music/1.mp3" loop="true"></audio>
 			<div class="music-info">
 				
 			</div>
 			<div class="music-img" @click="pause">
 				<div class="img-block">
 					<div class="stop-button" :class="{stop:audioItem.isPlay,play:!audioItem.isPlay}"></div>
-					<img id="image" src="http://suvllian.com/V/images/tyhyh.jpg" alt="">
+					<img id="image" src="http://suvllian.com/static/music/1.jpg" alt="">
 				</div>
 				
 			</div>
