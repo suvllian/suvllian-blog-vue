@@ -1,6 +1,7 @@
-// 格式化文章发布时间
+// 格式化时间
 export default
 {
+	// 格式化文章发布时间
 	formatTime: time => {
 		// 数据库中存储时删除了后面五位0
 		let tempDate = new Date(parseInt(time) * 100000);
@@ -67,5 +68,17 @@ export default
 			monthInChinese: monthInChinese,
 			day: day
 		}
+	},
+
+	// 格式化书籍发布时间
+	bookTime: time => {
+		let tempDate = new Date(parseInt(time) * 1000);
+
+		let year  = tempDate.getFullYear();
+		let month = tempDate.getMonth() + 1;
+		let day   = tempDate.getDate(); 
+
+		let returnTime = year + "/" + month + "/" + day;
+		return returnTime;
 	}
 }

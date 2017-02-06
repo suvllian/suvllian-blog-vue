@@ -24,7 +24,7 @@
 
 <script>
 import Music from './music.vue'
-import Ahead from './../common/Ahead.vue'
+import Ahead from './Ahead.vue'
 import { mapActions, mapState} from 'vuex'
 import { ARTICLE_LIST } from './../../vuex/type.js'
 

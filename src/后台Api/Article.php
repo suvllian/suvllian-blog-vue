@@ -39,13 +39,23 @@ class Article extends Handler
 	}
 
 	public function getContent(){
-
+		$id = 1;
+		if(!empty($_GET['id'])){
+			$id = $_GET['id'] - 0;
+		}
 		// 访问量
-		$sql1 = "UPDATE article SET aVisit = aVisit+1 WHERE aId = 1";
+		$sql1 = "UPDATE article SET aVisit = aVisit+1 WHERE aId = $id";
 		$result1 = $this->dataBaseHandle->IDA($sql1);
 
 		// 文章内容
-		$sql = "SELECT * FROM article";
+		$sql = "SELECT aContent, aDate, article.aId, aImage, aIntro, aTopic, aVisit, aClassName FROM article,articleclass WHERE article.aClass = articleclass.aId AND article.aId = $id";
+		$result = $this->dataBaseHandle->fetchAll($sql);
+		echo json_encode($result);
+	}
+
+	public function getList(){
+		// 文章内容
+		$sql = "SELECT aDate,article.aId, aImage, aIntro, aTopic, aVisit, aClassName FROM article,articleclass WHERE article.aClass = articleclass.aId";
 		$result = $this->dataBaseHandle->fetchAll($sql);
 		echo json_encode($result);
 	}

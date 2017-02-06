@@ -41,10 +41,7 @@ class Image extends Handler
 
 	public function getImage(){
 		$page = 1;
-
-		if(!empty($_POST['page'])){
-			$page = $_POST['page'] - 0;
-		}else if(!empty($_GET['page'])){
+		if(!empty($_GET['page'])){
 			$page = $_GET['page'] - 0;
 		}
 		
@@ -66,10 +63,10 @@ class Image extends Handler
 		}
 
 		// 根据get传参进行操作
-		if($way==="add"){
+		if($way === "add"){
 			$sql = "UPDATE travelImage SET iLike = iLike +1 WHERE iId=".$id;
 			$result = $this->dataBaseHandle->query($sql);	
-		}else if($way==="sub"){
+		}else if($way === "sub"){
 			$sql = "UPDATE travelImage SET iLike = iLike - 1 WHERE iId=".$id;
 			$result = $this->dataBaseHandle->query($sql);
 		}

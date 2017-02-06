@@ -2,7 +2,7 @@
 	<section>
 		<div class="box" v-for="(single,key) in imageList">
 			<div class="box-content">
-				<img :class="{imgClicked:single.isActive}" class="content-img" v-bind:src="'http://suvllian.com/V/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(key)">
+				<img :class="{imgClicked:single.isActive}" class="content-img" v-bind:src="'http://suvllian.com/V/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(single)">
 				<div class="introduction" :class="{introClicked:single.isActive}">
 					<h3 class="introduction-h3">{{single.iTopic}}:</h3>
 					<p class="introduction-p" :class="{borderClicked:single.isActive}">{{single.iContent}}</p>
@@ -10,74 +10,47 @@
 			</div>
 			<div class="box-common">
 				<span class="common-span">热度({{single.iLike}})</span>
-				<span class="common-span" @click="dealVote(key,single.iId)">
+				<span class="common-span" @click="dealVote(single)">
 					<img  v-if="single.isVote" src="./../../assets/after.png">
 					<img  v-else src="./../../assets/before.png">
 				</span>
 			</div>
 		</div>
-		<h1 @click="getData(++pageCounter)" v-if="isMore">查看更多</h1>
+		<h1 @click="GET_IMAGE_LIST(++pageCounter)" v-if="isMore">查看更多</h1>
 		<h2 v-else>-- THE END --</h2>
 
 	</section>
 </template>
 
 <script>
-import api from '../../api'
+import { mapActions, mapState} from 'vuex'
+import { GET_IMAGE_LIST, VOTE_IMAGE } from './../../vuex/type.js'
 
 export default{
-	data(){
-		return{
-			imageList:[],
-			pageCounter:1,
-			isMore:true
+	computed: mapState({ 
+		imageList: store => store.imageList.items,
+		pageCounter: store => store.imageList.page,
+		isMore: store => store.imageList.isMore
+	}),
+	methods:{
+		...mapActions([GET_IMAGE_LIST, VOTE_IMAGE]),
+		enlargeImage:function(item){
+			item.isActive = !item.isActive;
+		},
+
+		dealVote:function(item){
+			item.isVote = !item.isVote;
+			if(item.isVote){
+				item.iLike++;
+				this.VOTE_IMAGE({id:item.iId,way:"add"});
+			}else{
+				item.iLike--;
+				this.VOTE_IMAGE({id:item.iId,way:"sub"});
+			}
 		}
 	},
-
-	methods:{
-		enlargeImage:function(index){
-			this.imageList[index].isActive = !this.imageList[index].isActive;
-		},
-
-		dealVote:function(index,id){
-			this.imageList[index].isVote = !this.imageList[index].isVote;
-			if(this.imageList[index].isVote){
-				this.imageList[index].iLike++;
-				this.changeVote(id,"add");
-			}else{
-				this.imageList[index].iLike--;
-				this.changeVote(id,"sub");
-			}
-		},
-
-		getData:function(page){
-			api.getImageData(page).then(res => {
-		        var response  = res.data;
-		        var resLength = response.length;
-	        	if(resLength === 0){
-		        	this.isMore = false;
-		        	return;
-		        }
-		        for(let i=0; i<resLength; i++){
-	        		response[i].isActive = false;
-	        		response[i].isVote = false;
-	        	}	
-			    this.imageList = this.imageList.concat(response);
-			    if(resLength < 15){
-		        	this.isMore = false;
-		        }
-			},res => {
-		       console.log(res.data);
-			});
-		},
-
-		changeVote:function(id,way){
-			api.voteImage(id,way);
-		},
-	},
-
 	created(){
-		this.getData(1);
+		this.GET_IMAGE_LIST(1);
     }
 }
 </script>

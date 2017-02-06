@@ -30,62 +30,45 @@
 							</span>	
 						</div>
 						<div class="common-right">
-							<span>{{new Date(parseInt(item.iDate) * 1000).toLocaleString().slice(0,10)}}</span>
+							<span>{{ item.time }}</span>
 						</div>
 					</div>
 				</a>
 			</section>
 
-			<h1 @click="getData(++pageCounter)" v-if="isMore">查看更多</h1>
+			<h1 @click="GET_BOOK_LIST(++pageCounter)" v-if="isMore">查看更多</h1>
 			<h2 v-else>-- THE END --</h2>
 		</article>
 	</div>
 </template>
 
 <script>
-import Slider from './../common/Slider.vue'
-import api from '../../api'
+import Slider from './slider.vue'
+import { mapActions, mapState} from 'vuex'
+import { GET_BOOK_LIST, VOTE_BOOK } from './../../vuex/type.js'
 
 export default {
-	components: {
-    	Slider
-	},
-
-	data(){
-		return{
-			bookList:[],
-			pageCounter:1,
-			isMore:true
-		}
-	},
+	components: { Slider },
+	computed: mapState({ 
+		bookList: store => store.bookList.items,
+		pageCounter: store => store.bookList.page,
+		isMore: store => store.bookList.isMore
+	}),
 	methods:{
-		getData:function(page){
-			api.getBookData(page).then(res => {
-		        var response  = res.data;
-		        var resLength = response.length;
-	        	if(resLength === 0){
-		        	this.isMore = false;
-		        	return;
-		        }
-		        for(let i=0; i<resLength; i++){
-	        		response[i].isActive = false;
-	        		response[i].isVote = false;
-	        	}	
-			    this.bookList = this.bookList.concat(response);
-			    if(resLength < 10){
-		        	this.isMore = false;
-		        }
-			},res => {
-		       console.log(res.data);
-			});
-		},
-
+		...mapActions([GET_BOOK_LIST, VOTE_BOOK]),
 		dealVote:function(item){
 			item.isVote = !item.isVote;
+			if(item.isVote){
+				item.iLike++;
+				this.VOTE_BOOK({id:item.iId,way:"add"});
+			}else{
+				item.iLike--;
+				this.VOTE_BOOK({id:item.iId,way:"sub"});
+			}
 		},
 	},
 	created(){
-		this.getData(1);
+		this.GET_BOOK_LIST(1);
 	}
 }
 </script>

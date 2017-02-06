@@ -7,7 +7,6 @@ import router from './routes'
 import store from './vuex/store'
 
 Vue.use(VueRouter);
-Vue.use(Vuex);
 
 new Vue(Vue.util.extend({ router, store }, App)).$mount('#app');
 window.router = router

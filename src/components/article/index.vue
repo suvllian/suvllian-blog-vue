@@ -9,48 +9,22 @@
 
 <script>
 import api from '../../api'
-import Ahead from './../common/Ahead.vue'
-import filters from '../../utils/filters.js'
+import Ahead from './../home/Ahead.vue'
+import { mapActions, mapState} from 'vuex'
+import { ARTICLE_CONTNET } from './../../vuex/type.js'
 
 export default{
-	components: {
-    	Ahead
-	},
+	components: { Ahead },
+	computed: mapState({ 
+		article: store => store.articleContent.article,
+		id: store => store.articleContent.id
+	}),
 
-	data(){
-		return{
-			isShow:false,
-			article:[],
-		}
-	},
-
-	methods:{
-		show:function(){
-			this.isShow = !this.isShow;
-		},
-
-		getData:function(id){
-			api.getArticleContent(id).then(res => {
-		        var response  = res.data[0];
-		        var filterTime = filters.formatTime(response.aDate);
-			    var monthInChinese = filterTime.monthInChinese;
-			    var month = filterTime.month;
-			    var day   = filterTime.day;
-			    var year  = filterTime.year;				      
-
-		    	response.time = year + " " + month + " " + day;
-		    	response.month = monthInChinese;
-		    	response.day = day;
-			    this.article = response;
-			},res => {
-		       console.log(res.data);
-			});
-		},
-	},
+	methods:{ ...mapActions([ARTICLE_CONTNET]) },
 
 	created(){
 		var id = this.$route.query.id;
-		this.getData(id);
+		this.ARTICLE_CONTNET(id);;
     }
 }
 </script>

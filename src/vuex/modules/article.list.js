@@ -1,8 +1,6 @@
 import api from '../../api';
 import filters from '../../utils/filters.js';
-import {
-	ARTICLE_LIST, ADD_ARTICLE_LIST, GET_ARTICLE_LIST_FAILURE
-} from './../type';
+import { ARTICLE_LIST, ADD_ARTICLE_LIST, GET_ARTICLE_LIST_FAILURE } from './../type';
 
 
 export default {
