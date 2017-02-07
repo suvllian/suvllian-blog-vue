@@ -6,7 +6,7 @@
 
 			<div class="article-content">
 				<div class="intro-img">
-					<img :src="article.aImage" alt="">
+					<img class="small-img" :src="article.aImage">
 				</div>
 				<div class="intro-p" v-html="article.aIntro"></div>
 			</div>

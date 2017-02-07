@@ -65,8 +65,8 @@ export default{
 	},
 
 	mounted(){
-		this.audioItem.audio = document.getElementById("audio");
-		this.pause();
+		// this.audioItem.audio = document.getElementById("audio");
+		// this.pause();
     }
 }
 </script>

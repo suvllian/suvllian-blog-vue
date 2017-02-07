@@ -2,7 +2,10 @@
 	<div class="article-list">
 		<article class="article">
 			<Ahead :article-head="article"></Ahead>
-			<div class="article-content" v-html="article.aContent"></div>
+			<p class="line"></p>
+			<div class="article-content" v-html="article.aContent">
+
+			</div>
 		</article>
 	</div>
 </template>
@@ -59,17 +62,12 @@ export default{
 
 
 		.article{
-			padding:15px;
+			padding:30px;
 			margin: 50px auto;
 			width: 100%;
 			background-color:#fff;
 			position:relative;
 			border-radius:5px;
-
-			p{
-				line-height: 24px;
-				margin: 10px 0;
-			}
 
 			.roate-date{
 				height: 70px;
@@ -89,44 +87,61 @@ export default{
 				}
 
 				.month{
-					font-size: 16px;
+					font-size: 18px;
 					@extend %span;
 				}
 
 				.day{
 					@extend %span;
-					font-size: 28px;
-					font-weight: 600;
+					font-size: 24px;
+					font-weight: 500;
 				}
 
 			}
 
+			// 文章头部
 			.artcile-head{
 				position:relative;
 				padding-bottom:48px;
 
+				// 文章标题
 				.title{
-					font-size: 25px;
-					font-weight: 700;
-					line-height: 30px;
+					font-size: 26px;
 					text-align: center;
+					font-weight: 400;
 					max-height: 100%;
+					margin: 10px 0;
+					font-family: "Lato","PingFang SC","Microsoft YaHei",sans-serif;
+					line-height: 1.5;
+					padding:0;
 
 					a{
-						color: #444;
+						color: #555;
 					}
 				}
 
+				// 文章发布时间、浏览量等信息
 				.article-meta{
 					color: #555;
 					font-size: 14px;
 					text-align: center;
+					margin-bottom:12px; 
+
+					.icon{
+						height: 16px;
+						width: 16px;
+						img {
+							position:relative;
+							top: 2px;
+						}
+					}
 				}
 
+				// 分类标签
 				.label{
 					padding:5px 16px 5px 32px;
 					position:absolute;
-					left: -29px;
+					left: -45px;
 					background-color:$Color;
 					border-radius:0 4px 4px 0;
 					box-shadow:1px 1px 5px #333;
@@ -148,81 +163,151 @@ export default{
 				}
 			}
 
+			// 文章内容
 			.article-content{
 				clear: both;
 
-				.money{
-					transition: 1s all ease;
-					height: 0;
-					overflow: hidden;
-
-					img{
-						height: 300px;
-					}
+				// 下划线
+				.line{
+					height: 1px;
+					border-top:1px dashed #bbb;
 				}
 
-				.show{
-					height: 300px;
-				}
-
+				// 图片的样式
 				.intro-img{
 					text-align: center;
 					width: 100%;
 
-					img{
+					%img{
 						border-radius:5px;
-						max-width: 100%;
-						max-height: 500px;		
+						max-width: 100%;		
+					}
+
+					.big-img{
+						max-height: 500px;
+						@extend %img;
+					}
+
+					.medium-img{
+						max-height: 400px;
+						@extend %img;
 					}
 
 					.small-img{
 						max-height: 300px;
+						@extend %img;
 					}
 				}
 
-				.intro-p{
-					margin-top: 40px;
+				// 文字样式
+				%p{
+					line-height: 2;
+					color: #555;
+					font-size: 16px;
+					overflow-wrap: break-word;
+				    white-space: normal;
+				    word-break: break-all;
+				    font-family: "Lato","PingFang SC","Microsoft YaHei",sans-serif;
+				    letter-spacing: 1px;
+				}
+
+				// 文字样式
+				p{
+					@extend %p;
+					margin:0 0 25px;
+				}
+
+				// 无序列表
+				ol,ul{
+					margin: 10px 0;
+					padding:6px 0px 6px 48px;
+
+					li{
+						@extend %p;
+						list-style: outside none circle;
+					}
+				}
+
+				ol{
+					li{
+						list-style: decimal;
+					}
+				}
+
+				// 指令
+				code{
+				    background: #eee none repeat scroll 0 0;
+				    border-radius: 4px;
+				    color: #555;
+				    font-size: 13px;
+				    padding: 2px 4px;
+				    word-break: break-all;
+				}
+
+				pre, code {
+				    font-family: consolas,Menlo,"PingFang SC","Microsoft YaHei",monospace;
+				}
+
+				a{
+					color: #555;
+					border-bottom:1px solid #ccc;
+
+					&:hover{
+				    	border-bottom-color: #000;
+			    		color: #000;
+			    	}
+				}
+
+				// 左边框块
+				.border-left{
+					border-left:4px solid #eee;
+					margin-bottom:25px;
 
 					p{
-						line-height: 20px;
-						margin: 10px 0;
-						color: #444;
-						font-size: 15px;
-						line-height: 24px;
-						overflow-wrap: break-word;
-					    white-space: normal;
-					    word-break: break-all;
-
-						a{
-							color: $Color;
-						}
+						padding-left:48px;
 					}
+				}
 
-					.biger{
-						font-size: 17px;
-						font-weight: 700;
-					}
+				.part-title{
+					padding-top:10px;
+					margin: 20px 0 10px;
+					font-size: 22px;
+					font-family: "Lato","PingFang SC","Microsoft YaHei",sans-serif;
+				    font-weight: bold;
+				    line-height: 1.5;
+				    color: #555;
 
-					.end{
-						margin-top:30px;
-					}
+				    span{
+				   		border-bottom:1px solid #ccc;
+
+				   		&:hover{
+					    	border-bottom-color: #000;
+
+					    	&{
+					    		color: #000;
+					    	}
+				    	}
+				    }
 				}
 
 				.more{
 					text-align: center;
-
 					p{
 						margin-top: 20px;
 					}
-
 					a{
 						background-color:$Color;
 						color: #fff;
 						font-size: 14px;
 						padding:6px 10px;
 						border-radius:5px;
+
+						&:hover{
+							border:0;
+						}
 					}
 				}
+				
 			}
 		}
 	}

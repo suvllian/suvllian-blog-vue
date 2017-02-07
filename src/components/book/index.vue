@@ -24,7 +24,7 @@
 					<div class="common">
 						<div class="common-left">
 							<span>热度({{item.iLike}})</span>
-							<span @click="dealVote(item)">
+							<span class="icon" @click="dealVote(item)">
 								<img v-if="item.isVote" src="./../../assets/after.png">
 								<img v-else src="./../../assets/before.png">
 							</span>	
@@ -265,11 +265,8 @@ export default {
 
 						&:nth-child(2){
 							img{
-								max-height: 1.6em;
-								padding-left:0;
 								cursor: pointer;
-								outline: none;
-								max-height:1em;
+								width: 16px;
 							}
 						}
 					}

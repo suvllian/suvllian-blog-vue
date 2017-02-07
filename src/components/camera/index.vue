@@ -187,10 +187,10 @@ export default{
 				&:nth-child(2){
 					img{
 						width: 20px;
-						max-height: 1.6em;
-						padding-left:0;
 						cursor: pointer;
-						outline: none;
+						position:relative;
+						top: 4px;
+						margin-left: -0.2em;
 					}
 				}
 			}
