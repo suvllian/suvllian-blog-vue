@@ -55,7 +55,7 @@ class Article extends Handler
 
 	public function getList(){
 		// 文章内容
-		$sql = "SELECT aDate,article.aId, aImage, aIntro, aTopic, aVisit, aClassName FROM article,articleclass WHERE article.aClass = articleclass.aId";
+		$sql = "SELECT aDate,article.aId, aImage, aIntro, aTopic, aVisit, aClassName FROM article,articleclass WHERE article.aClass = articleclass.aId ORDER BY article.aDate DESC";
 		$result = $this->dataBaseHandle->fetchAll($sql);
 		echo json_encode($result);
 	}

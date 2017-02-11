@@ -2,7 +2,7 @@
 	<footer>
 		<div>
 			<!-- <p class="count" v-cloak>已有 {{vistorNumber}} 人次访问</p> -->
-			<p><small>© 2016 瓦尔登湖畔一棵松. All Rights Reserved</small></p>
+			<p><small>© 2016 - 2017 瓦尔登湖畔一棵松. All Rights Reserved</small></p>
 			<p><small>备案号：陕IPC备16014072-1号</a></small></p>
 		</div>
 	</footer>
@@ -12,23 +12,14 @@
 export default {
 	data(){
 		return{
-			vistorNumber: 100
+			
 		}
 	},
 	methods:{
-		getVisitCount:function(){
-			var url = "http://xunlan.chd.edu.cn/camera/v/api/visitcount.php";
-	        var xhr = new XMLHttpRequest();
-	        xhr.open('GET',url);
-	        var that = this;
-	        xhr.onload = function(e){
-	        	that.vistorNumber = this.response;
-	        }
-	        xhr.send();
-		}
+		
 	},
 	created(){
-		//this.getVisitCount();
+		
 	}
 }
 </script>

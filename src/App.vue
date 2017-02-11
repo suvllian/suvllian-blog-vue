@@ -12,9 +12,7 @@ import Foot from './components/common/Foot.vue'
 
 export default {
   name: 'app',
-  components: {
-    Navbar,Foot
-  }
+  components: { Navbar,Foot }
 }
 </script>
 

@@ -17,4 +17,7 @@ export default{
 
 	getArticleContent:(id) => { return getResource.get({do:"article",concrete:"getContent",id:id}) },
 
+	getPreNext:(id) => { return getResource.get({do:"article", concrete:"getPreNext", id:id}) },
+
+
 }

@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="container">
-			<audio id="audio" src="http://suvllian.com/static/music/1.mp3" loop="true"></audio>
+			<audio ref="audio" src="http://suvllian.com/static/music/1.mp3" loop="true"></audio>
 			<div class="music-info">
 				
 			</div>
@@ -26,22 +26,11 @@ export default{
 				audio:null,
 				deg:0,
 				isPlay:false,
-			}
-			
+			}		
 		}
 	},
 
 	methods:{
-		play:function(){
-			var audio = this.audioItem.audio;
-			audio.play();
-		},
-
-		stop:function(){
-			var audio = this.audioItem.audio;
-			audio.pause();
-		},
-
 		rotate:function(){
 			var image = document.getElementById("image");
 			var that = this;
@@ -56,16 +45,16 @@ export default{
 			this.audioItem.isPlay = !this.audioItem.isPlay;
 			if(!this.audioItem.isPlay){
 				clearInterval(this.audioItem.handle);
-				this.stop();
+				this.audioItem.audio.pause();
 			}else{
 				this.rotate();
-				this.play();
+				this.audioItem.audio.play();
 			}
 		}
 	},
 
 	mounted(){
-		// this.audioItem.audio = document.getElementById("audio");
+		this.audioItem.audio = this.$refs.audio;
 		// this.pause();
     }
 }
@@ -120,11 +109,13 @@ export default{
 
 	    			.stop{
 	    				background-image:url(./../../assets/pause.png);
+	    				border-radius:%50;
 	    				background-size:100% 100%;
 	    			}
 
 	    			.play{
 	    				background-image:url(./../../assets/play.png);
+	    				border-radius:%50;
 	    				background-size:100% 100%;
 	    			}
 
