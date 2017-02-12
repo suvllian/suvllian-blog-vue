@@ -36,7 +36,7 @@
 				</a>
 			</section>
 
-			<h1 @click="GET_BOOK_LIST(++pageCounter)" v-if="isMore">查看更多</h1>
+			<h1 @click="ADD_BOOK_LIST(++page)" v-if="isMore"><span>查看更多</span></h1>
 			<h2 v-else>-- THE END --</h2>
 		</article>
 	</div>
@@ -45,17 +45,17 @@
 <script>
 import Slider from './slider.vue'
 import { mapActions, mapState} from 'vuex'
-import { GET_BOOK_LIST, VOTE_BOOK } from './../../vuex/type.js'
+import { GET_BOOK_LIST, VOTE_BOOK, ADD_BOOK_LIST } from './../../vuex/type.js'
 
 export default {
 	components: { Slider },
 	computed: mapState({ 
 		bookList: store => store.bookList.items,
-		pageCounter: store => store.bookList.page,
+		page: store => store.bookList.page,
 		isMore: store => store.bookList.isMore
 	}),
 	methods:{
-		...mapActions([GET_BOOK_LIST, VOTE_BOOK]),
+		...mapActions([GET_BOOK_LIST, VOTE_BOOK, ADD_BOOK_LIST]),
 		dealVote:function(item){
 			item.isVote = !item.isVote;
 			if(item.isVote){
@@ -68,7 +68,7 @@ export default {
 		},
 	},
 	created(){
-		this.GET_BOOK_LIST(1);
+		this.GET_BOOK_LIST();
 	}
 }
 </script>
@@ -111,29 +111,6 @@ export default {
 		padding:2em 0;
 		position:relative;
 		clear: both;
-
-		%h{
-			font-weight: 400;
-			text-align: center;
-			margin: 1em 0;
-			outline: none;
-		}	
-
-		h1{		
-			@extend %h; 
-			cursor: pointer;
-			transition: 1s all ease;
-
-			&:hover{
-				color: #333;
-			}
-		}
-
-		h2{
-			@extend %h; 
-			font-weight: 300;
-			font-size: 16px;
-		}
 
 		section{
 			width: 450px;

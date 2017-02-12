@@ -45,7 +45,7 @@ class Book extends Handler
 		
 		$pageNumber = ($page - 1) * 10;
 
-		$sql = "SELECT iId,iBgLink,iName,iImage,iContent,iShow,iDate,iLike,cClass FROM bookinfor,bookclass WHERE iClass=cId AND iShow=1 LIMIT ".$pageNumber.",10";
+		$sql = "SELECT iId,iBgLink,iName,iImage,iContent,iShow,iDate,iLike,cClass FROM bookinfor,bookclass WHERE iClass=cId AND iShow=1 LIMIT $pageNumber, 10";
 		$result = $this->dataBaseHandle->fetchAll($sql);
 		echo json_encode($result);
 	}

@@ -1,21 +1,26 @@
 import api from '../../api';
-import { GET_IMAGE_LIST, GET_IMAGE_LIST_FAILURE, VOTE_IMAGE } from './../type';
+import { GET_IMAGE_LIST, GET_IMAGE_LIST_FAILURE, VOTE_IMAGE, ADD_IMAGE_LIST } from './../type';
 
 export default {
 	state: {
 		page: 1,
 		items: [],
-		isMore:true
+		isMore:false
 	},
 
 	mutations: {
 		[GET_IMAGE_LIST](state, action) {
 			state.isMore = action.isMore;
-			state.page  = action.page; 
-			state.items  = [...state.items, ...action.imageList]; 
+			state.page   = 1; 
+			state.items  = action.imageList; 
 		},
 		[GET_IMAGE_LIST_FAILURE](state){
 
+		},
+		[ADD_IMAGE_LIST](state, action){
+			state.isMore = action.isMore;
+			state.page   = action.page; 
+			state.items  = [...state.items, ...action.imageList]; 
 		},
 		[VOTE_IMAGE](state){
 
@@ -23,8 +28,8 @@ export default {
 	},
 
 	actions: {
-		[GET_IMAGE_LIST]({ commit }, page){
-			api.getImageData(page).then(res => {
+		[GET_IMAGE_LIST]({ commit }){
+			api.getImageData(1).then(res => {
 		        var response  = res.data;
 		        var resLength = response.length;
 		        var isMore = true;
@@ -37,6 +42,27 @@ export default {
 		        	isMore = false;
 		        }
 		        commit(GET_IMAGE_LIST,{
+		            imageList: response,
+		            isMore: isMore
+		        });
+			},res => {
+		       commit(GET_IMAGE_LIST_FAILURE);
+			});
+		},
+		[ADD_IMAGE_LIST]({ commit }, page){
+			api.getImageData(page).then(res => {
+		        var response  = res.data;
+		        var resLength = response.length;
+		        var isMore = true;
+
+		        for(let i=0; i < resLength; i++){
+	        		response[i].isActive = false;
+	        		response[i].isVote = false;
+	        	}	
+			    if(resLength < 15){
+		        	isMore = false;
+		        }
+		        commit(ADD_IMAGE_LIST,{
 		            imageList: response,
 		            isMore: isMore,
 		            page: page

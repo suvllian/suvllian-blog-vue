@@ -3,16 +3,18 @@
     <Navbar></Navbar>
     <router-view></router-view>
     <Foot></Foot>
+    <toTop></toTop>
   </div>
 </template>
 
 <script>
 import Navbar from './components/common/Navbar.vue'
 import Foot from './components/common/Foot.vue'
+import toTop from './components/common/toTop.vue'
 
 export default {
   name: 'app',
-  components: { Navbar,Foot }
+  components: { Navbar, Foot, toTop }
 }
 </script>
 

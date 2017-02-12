@@ -13,7 +13,7 @@ export default{
 	voteImage:(id,way) => { return voteResource.save({do:"image",concrete:"voteImage",way:way,id:id}) },
 
 	// 文章
-	getArticleList:() => { return getResource.get({do:"article",concrete:"getList"}) },
+	getArticleList:(page) => { return getResource.get({do:"article",concrete:"getList", page:page}) },
 
 	getArticleContent:(id) => { return getResource.get({do:"article",concrete:"getContent",id:id}) },
 

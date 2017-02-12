@@ -16,7 +16,7 @@
 				</span>
 			</div>
 		</div>
-		<h1 @click="GET_IMAGE_LIST(++pageCounter)" v-if="isMore">查看更多</h1>
+		<h1 @click="ADD_IMAGE_LIST(++page)" v-if="isMore">查看更多</h1>
 		<h2 v-else>-- THE END --</h2>
 
 	</section>
@@ -24,16 +24,16 @@
 
 <script>
 import { mapActions, mapState} from 'vuex'
-import { GET_IMAGE_LIST, VOTE_IMAGE } from './../../vuex/type.js'
+import { GET_IMAGE_LIST, VOTE_IMAGE, ADD_IMAGE_LIST } from './../../vuex/type.js'
 
 export default{
 	computed: mapState({ 
 		imageList: store => store.imageList.items,
-		pageCounter: store => store.imageList.page,
+		page: store => store.imageList.page,
 		isMore: store => store.imageList.isMore
 	}),
 	methods:{
-		...mapActions([GET_IMAGE_LIST, VOTE_IMAGE]),
+		...mapActions([GET_IMAGE_LIST, VOTE_IMAGE, ADD_IMAGE_LIST]),
 		enlargeImage:function(item){
 			item.isActive = !item.isActive;
 		},
@@ -50,7 +50,7 @@ export default{
 		}
 	},
 	created(){
-		this.GET_IMAGE_LIST(1);
+		this.GET_IMAGE_LIST();
     }
 }
 </script>
