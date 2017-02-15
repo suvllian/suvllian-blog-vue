@@ -261,7 +261,8 @@ export default{
           width: 60%;
           position:relative;
           left: 20%;
-          white-space: pre-wrap;
+          // white-space: pre-wrap;
+          overflow-x: scroll; 
 
           span{
             display: block;

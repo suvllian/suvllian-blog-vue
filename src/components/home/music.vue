@@ -75,25 +75,15 @@ export default{
     		margin: 0 auto;
     		transition: 2s all ease;
 
-    		// .music-info{
-    		// 	width: 650px;
-    		// 	height: $height;
-    		// 	float: left;
-    		// 	background-color: #ddd;
-    		// }
-
     		.music-img{
     			width: 240px;
     			height: 240px;
-    			// float: left;
-    			margin: 0 auto;
-    			
+    			margin: 0 auto;		
 
     			.img-block{
     				width: 240px;
     				height: 240px;
-    				position:relative;
-    				
+    				position:relative;				
 
     				.stop-button{
     					cursor: pointer;
@@ -104,7 +94,7 @@ export default{
 	    				top: 50%;
 	    				margin-top: -21px;
 	    				margin-left: -21px;
-	    				z-index: 1000;
+	    				z-index: 2;
 	    			}
 
 	    			.stop{

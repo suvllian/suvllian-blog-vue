@@ -1,7 +1,6 @@
 <template>
 	<div class="article-list">
-		<Music></Music>
-
+		<!-- <Music></Music> -->
 		<article class="article" v-for="article in articleList">
 			<Ahead :article-head="article"></Ahead>
 
@@ -33,7 +32,7 @@ import { ARTICLE_LIST, ADD_ARTICLE_LIST } from './../../vuex/type.js'
 
 
 export default{
-	components: { Music,Ahead },
+	components: { Music, Ahead },
 	computed: mapState({ 
 		articleList: store => store.articleList.items,
 		page: store => store.articleList.page,
