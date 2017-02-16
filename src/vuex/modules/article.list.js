@@ -32,16 +32,8 @@ export default {
 		        var response  = res.data;
 		        var resLength = response.length;
 		        var isMore = true;
-			    for (let i=0; i<resLength; i++) {
-				    var filterTime = filters.formatTime(response[i].aDate);
-				    var monthInChinese = filterTime.monthInChinese;
-				    var month = filterTime.month;
-				    var day   = filterTime.day;
-				    var year  = filterTime.year;				      
-
-			    	response[i].time = year + " " + month + " " + day;
-			    	response[i].month = monthInChinese;
-			    	response[i].day = day;
+			    for (let i=0; i<resLength; i++) {	
+				    response[i] = filters.formatTime(response[i]);			      
 			    }
 			    if(resLength < 5){
 		        	isMore = false;

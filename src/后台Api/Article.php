@@ -18,23 +18,29 @@ class Article extends Handler
 		$this->handleFirst  = "getContent";
 		$this->handleSecond = "getList";
 		$this->handleThird  = "getPreNext";
+		$this->handleFourth  = "getAbout";
 		
-		if($request->getService()==$this->handle){	
+		if($request->getService() == $this->handle){	
 
-			if($request->getConcrete()==$this->handleFirst){	
+			if($request->getConcrete() == $this->handleFirst){	
 
 				// 得到一篇文章所有信息
 				$this->getContent();
 			}
-			elseif ($request->getConcrete()==$this->handleSecond) {
+			elseif ($request->getConcrete() == $this->handleSecond) {
 				
 				// 得到一篇文章列表
 				$this->getList();
 			}
-			elseif ($request->getConcrete()==$this->handleThird) {
+			elseif ($request->getConcrete() == $this->handleThird) {
 				
 				// 得到上一篇下一篇
 				$this->getPreNext();
+			}
+			elseif ($request->getConcrete() == $this->handleFourth) {
+				
+				// 关于信息
+				$this->getAbout();
 			}
 		}
 		elseif($this->successor!=NULL){
@@ -59,6 +65,18 @@ class Article extends Handler
 		echo json_encode($result);
 	}
 
+	public function getAbout(){
+
+		// 访问量
+		$sql1 = "UPDATE article SET aVisit = aVisit+1 WHERE aClass = -1";
+		$result1 = $this->dataBaseHandle->IDA($sql1);
+
+		// 文章内容
+		$sql = "SELECT aContent, aDate, aImage, aTopic, aVisit  FROM article WHERE aClass = -1";
+		$result = $this->dataBaseHandle->fetchAll($sql);
+		echo json_encode($result);
+	}
+
 	public function getList(){
 		// 文章列表
 		$page = 1;
@@ -68,7 +86,7 @@ class Article extends Handler
 		
 		$pageNumber = ($page - 1) * 5;
 
-		$sql = "SELECT aDate,article.aId, aImage, aIntro, aTopic, aVisit, aClassName FROM article,articleclass WHERE article.aClass = articleclass.aId ORDER BY article.aDate DESC LIMIT $pageNumber, 5";
+		$sql = "SELECT aDate,article.aId, aImage, aIntro, aTopic, aVisit, aClassName FROM article,articleclass WHERE article.aClass = articleclass.aId AND articleclass.aId > 0 ORDER BY article.aDate DESC LIMIT $pageNumber, 5";
 		$result = $this->dataBaseHandle->fetchAll($sql);
 		echo json_encode($result);
 	}
@@ -82,10 +100,10 @@ class Article extends Handler
 			$time = $time["aDate"];
 
 			// 上一篇
-			$sql = "SELECT aId, aTopic FROM article WHERE aDate < $time ORDER BY aDate DESC LIMIT 0,1";
+			$sql = "SELECT aId, aTopic FROM article WHERE aDate < $time AND aClass > 0 ORDER BY aDate DESC LIMIT 0,1";
 			$result[0] = $this->dataBaseHandle->fetchAll($sql);
 			// 下一篇
-			$sql = "SELECT aId, aTopic FROM article WHERE aDate > $time ORDER BY aDate ASC LIMIT 0,1";
+			$sql = "SELECT aId, aTopic FROM article WHERE aDate > $time AND aClass > 0 ORDER BY aDate ASC LIMIT 0,1";
 			$result[1] = $this->dataBaseHandle->fetchAll($sql);
 
 			$result = array('prev'=>$result[0], 'next'=>$result[1]);

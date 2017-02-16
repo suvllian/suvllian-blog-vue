@@ -2,9 +2,9 @@
 export default
 {
 	// 格式化文章发布时间
-	formatTime: time => {
+	formatTime: jsonData => {
 		// 数据库中存储时删除了后面五位0
-		let tempDate = new Date(parseInt(time) * 100000);
+		let tempDate = new Date(parseInt(jsonData.aDate) * 100000);
 
 		let year  = tempDate.getFullYear();
 		let month = tempDate.getMonth() + 1;
@@ -62,12 +62,12 @@ export default
 				break;
 		}
 
-		return {
-			year: year,
-			month: month,
-			monthInChinese: monthInChinese,
-			day: day
-		}
+		jsonData.year = year;
+		jsonData.month = monthInChinese;
+		jsonData.day = day;
+		jsonData.time = year + " " + month + " " + day;
+		
+		return jsonData;
 	},
 
 	// 格式化书籍发布时间

@@ -1,12 +1,8 @@
 <template>
 	<section>
-		<span class="roate-date">
-			<span class="month">{{ articleHead.month }}</span>
-			<span class="day">{{ articleHead.day }}</span>
-		</span>
 		<header class="artcile-head">
 			<h1 class="title">
-				<router-link :to="{path:'article',query:{id:articleHead.aId}}">{{articleHead.aTopic}}</router-link>
+				<a @click.prevent="">{{articleHead.aTopic}}</a>
 			 </h1>
 			
 			<p class="article-meta">
@@ -18,9 +14,6 @@
 				<i class="icon"><img src="./../../assets/comment.png"></i>
 				<span>0条评论</span>
 			</p>
-			<div class="label">
-				<a href="" :title="articleHead.aClassName">{{articleHead.aClassName}}</a>
-			</div>
 		</header>
 	</section>
 </template>

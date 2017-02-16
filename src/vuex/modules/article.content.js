@@ -21,16 +21,7 @@ export default {
 	actions: {
 		[ARTICLE_CONTNET]({ commit }, id){
 			api.getArticleContent(id).then(res => {
-		        var response  = res.data[0];
-		        var filterTime = filters.formatTime(response.aDate);
-			    var monthInChinese = filterTime.monthInChinese;
-			    var month = filterTime.month;
-			    var day   = filterTime.day;
-			    var year  = filterTime.year;				      
-
-		    	response.time = year + " " + month + " " + day;
-		    	response.month = monthInChinese;
-		    	response.day = day;
+		        var response = filters.formatTime(res.data[0]);
 
 			    commit(ARTICLE_CONTNET,{
 		            article: response,

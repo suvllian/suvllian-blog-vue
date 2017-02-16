@@ -19,5 +19,9 @@ export default{
 
 	getPreNext:(id) => { return getResource.get({do:"article", concrete:"getPreNext", id:id}) },
 
+	// 关于
+	getAbout:() => { return getResource.get({do:"article", concrete:"getAbout"}) },
+
+
 
 }

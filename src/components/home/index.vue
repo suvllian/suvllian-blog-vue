@@ -30,7 +30,6 @@ import Ahead from './Ahead.vue'
 import { mapActions, mapState} from 'vuex'
 import { ARTICLE_LIST, ADD_ARTICLE_LIST } from './../../vuex/type.js'
 
-
 export default{
 	components: { Music, Ahead },
 	computed: mapState({ 

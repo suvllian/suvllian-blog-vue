@@ -25,13 +25,14 @@ export default{
 	}),
 
 	methods:{ ...mapActions([ARTICLE_CONTNET, GET_PRENEXT_LIST]),
-      getData(){
-        var id = this.$route.query.id;
-        this.ARTICLE_CONTNET(id);
-        this.GET_PRENEXT_LIST(id);
-        effect.toTop();
-      }
-    },
+    getData(){
+      var id = this.$route.query.id;
+      this.ARTICLE_CONTNET(id);
+      this.GET_PRENEXT_LIST(id);
+      effect.toTop();
+      this.$parent.$children[0].$refs.header.className = "navbar";
+    }
+  },
 
   watch:{
     '$route':'getData'
@@ -280,7 +281,7 @@ export default{
         }
 
         // 超链接
-        a{
+        .a-link{
           color: #555;
           border-bottom:1px solid #ccc;
 
