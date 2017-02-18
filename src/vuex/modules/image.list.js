@@ -45,8 +45,8 @@ export default {
 		            imageList: response,
 		            isMore: isMore
 		        });
-			},res => {
-		       commit(GET_IMAGE_LIST_FAILURE);
+			}).catch(err => {
+				commit(GET_IMAGE_LIST_FAILURE);
 			});
 		},
 		[ADD_IMAGE_LIST]({ commit }, page){
@@ -67,8 +67,8 @@ export default {
 		            isMore: isMore,
 		            page: page
 		        });
-			},res => {
-		       commit(GET_IMAGE_LIST_FAILURE);
+			}).catch(err => {
+				commit(GET_IMAGE_LIST_FAILURE);
 			});
 		},
 		[VOTE_IMAGE]({ commit }, action){

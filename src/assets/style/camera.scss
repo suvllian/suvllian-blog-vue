@@ -1,0 +1,149 @@
+@import "./mixins/_respond.scss";	
+// 设置宽高及最大宽度
+@mixin widthHeightMaxWidth($width:auto,$height:auto,$maxWidth:100%){
+	width:$width;
+	height:$height;
+	max-width:$maxWidth;
+}
+
+section{
+	@include widthHeightMaxWidth(100%,auto);
+	padding:2em 0 0;
+	position:relative;
+	clear: both;
+
+	%h{
+		font-weight: 400;
+		margin: 1em 0;
+		outline: none;
+	}	
+
+	h1{		
+		@extend %h; 
+		cursor: pointer;
+		transition: 1s all ease;
+
+		&:hover{
+			color: #333;
+		}
+	}
+
+	h2{
+		@extend %h; 
+		font-weight: 300;
+		font-size: 16px;
+	}
+}
+
+.box{
+	@include widthHeightMaxWidth(auto,auto,48em);
+	background-color: #fff;	
+	padding-bottom:1em;
+	margin: 1em auto;
+	border: 1px solid #eee;
+	border-radius:2px;
+	outline: none;
+
+	.box-content{
+		.content-img{
+			@include widthHeightMaxWidth(auto,auto,40%); 
+			padding:1em;
+			cursor: pointer;
+			outline: none;
+		}
+
+		.introduction{
+			max-width: 60%;
+			min-width: 60%;
+			padding:1em;
+			padding-bottom:0;
+			float: left;
+			color: #333;
+
+			.intro-p{
+				line-height: 1.5em;
+			}
+		}
+
+		// 点击图片后的样式
+		.imgClicked{
+			@include widthHeightMaxWidth(100%,auto,100%);
+			padding-bottom:0;
+		}
+
+		.introClicked{
+			float: none;
+			max-width: 100%;
+		}
+
+		.borderClicked{
+			border-left:3px solid #dfdfdf;
+			padding-left:1em;
+		}
+	}
+
+	.box-common{
+		height: 2em;
+		width: 100%;
+		padding:0 1em;
+		margin-top:0.5em;
+		clear: left;
+		border-top:1px dotted #ddd;
+
+		.common-span{
+			margin-left: 0;
+			color: #aaa;
+			font-size: 0.875em;
+			line-height: 3em;
+		}
+	}
+	
+}
+
+.vote-true{
+	color:#CE0000;
+}
+@include respond-to(medium){
+	.box{
+		max-width: 96%;
+		margin: 1em 2%;
+	}
+}
+
+@include respond-to(small){
+	.box{
+		max-width: 100%;
+		margin: 1em 0;
+		min-width: 300px;
+		border:0px;
+
+		.box-content{
+			.content-img{
+				@include widthHeightMaxWidth(100%,auto,100%);
+				padding:0;
+				margin: 0;
+				outline: none;
+			}
+
+			.introduction{
+				float: none;
+				max-width: 100%;
+
+				.intro-p{
+					border-left:3px solid #dfdfdf;
+					padding-left:1em;
+				}
+			}
+		}
+
+		.box-common{
+			.common-span{
+				&:first-child{
+					padding-left:0%; 
+				}
+
+				outline: none;
+			}
+		}
+	}
+}

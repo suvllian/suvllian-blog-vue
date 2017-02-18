@@ -2,13 +2,18 @@
 	<div class="article-list">
 		<article class="article">
 			<Ahead :article-head="article"></Ahead>
+			<div class="article-content">
+				<div class="img-center">
+					<img class="img-big" :src="article.aImage">
+				</div>
+			</div>
 			<div class="article-content about" v-html="article.aContent"></div>
 		</article>
 	</div>
 </template>
 
 <script>
-import Ahead from './Ahead.vue'	
+import Ahead from './ahead.vue'	
 import { mapActions, mapState} from 'vuex'
 import { GET_ABOUT_INFO, GET_ABOUT_INFO_FAILURE } from './../../vuex/type.js'
 export default{
@@ -24,7 +29,7 @@ export default{
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.about a {
 	    border-bottom: 0px solid #ccc;
 	    text-align: center;

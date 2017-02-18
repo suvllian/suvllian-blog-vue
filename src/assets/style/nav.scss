@@ -1,0 +1,64 @@
+@import "./mixins/_respond.scss";
+
+$height:38px;
+
+.navbar{
+	width: 100%;
+	background: rgba(40, 42, 44, 0.6);
+	position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    transition:all 0.5s ease;
+
+    nav{
+	    position: relative;
+	    width: 1170px;
+		height: $height;
+		padding:0px 15px;
+		margin: 0 auto;
+		transition: 1s all ease;
+
+	    ul{
+		    line-height: $height;
+
+		    li{
+				float: left;
+				list-style: none;
+				cursor: pointer;
+
+				a{
+				    text-decoration: none;
+					outline: none;
+					font-size: 15px;
+				    font-weight: 400;
+					font-family: "Lato","PingFang SC","Microsoft YaHei",sans-serif;
+					color: #fff;
+					padding:0 12px;
+				}
+			}
+		}
+	}	
+
+	.fa{
+		margin: 0 0.2em;
+	}
+}
+
+.hidden{
+	transform:translateY(-$height);
+}
+
+
+
+@include respond-to(medium){
+	.navbar nav{
+		width: 550px;
+	}
+}
+
+@include respond-to(small){
+	.navbar .fa{
+		display: none;
+	}
+}

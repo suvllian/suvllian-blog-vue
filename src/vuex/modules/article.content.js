@@ -27,8 +27,8 @@ export default {
 		            article: response,
 		            id: (id - 1)
 		        });
-			},res => {
-		       commit(GET_ARTICLE_CONTENT_FAILURE);
+			}).catch(err => {
+				commit(GET_ARTICLE_CONTENT_FAILURE);
 			});
 		}
 	}

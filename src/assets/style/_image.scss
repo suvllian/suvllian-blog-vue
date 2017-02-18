@@ -1,0 +1,21 @@
+// 图片的大小样式
+
+@import "./mixins/_image.scss";
+
+.img-big{
+  @include img-max-size(500px, 5px, 100%);
+}
+
+.img-medium{
+  @include img-max-size(400px, 5px, 100%);
+}
+
+.img-small{
+  @include img-max-size(300px, 5px, 100%);
+}
+
+// 图片居中
+.img-center{
+  text-align: center;
+  width: 100%;
+}

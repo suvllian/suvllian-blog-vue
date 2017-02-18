@@ -7,10 +7,12 @@
 			</div>
 			<div class="music-img" @click="pause">
 				<div class="img-block">
-					<div class="stop-button" :class="{stop:audioItem.isPlay,play:!audioItem.isPlay}"></div>
+					<div class="stop-button">
+						<i class="fa fa-play-circle fa-3x" v-if="!audioItem.isPlay"></i>
+						<i class="fa fa-pause-circle fa-3x" v-if="audioItem.isPlay"></i>
+					</div>
 					<img id="image" src="http://suvllian.com/static/music/1.jpg" alt="">
-				</div>
-				
+				</div>	
 			</div>
 		</div>
 	</section>
@@ -62,6 +64,16 @@ export default{
 
 
 <style lang="scss" scoped>
+	.fa{
+		color: #fff;
+		border-radius:50%;
+		border-box:content-box;
+		background-color:#47a6e7;
+		height: 42px;
+		line-height: 42px;
+		width: 42px;
+		border:2px solid #aaa;
+	}
     section{
     	position:relative;
     	width: 100%;
@@ -97,19 +109,7 @@ export default{
 	    				z-index: 2;
 	    			}
 
-	    			.stop{
-	    				background-image:url(./../../assets/pause.png);
-	    				border-radius:%50;
-	    				background-size:100% 100%;
-	    			}
-
-	    			.play{
-	    				background-image:url(./../../assets/play.png);
-	    				border-radius:%50;
-	    				background-size:100% 100%;
-	    			}
-
-	    			img{
+	    			#image{
 	    				width: 240px;
 	    				height: 240px;
 	    				border-radius: 50%;
@@ -119,6 +119,5 @@ export default{
     			}    			
     		}
     	}
-    }
-    
+    }   
 </style>

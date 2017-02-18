@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import Navbar from './components/common/Navbar.vue'
-import Foot from './components/common/Foot.vue'
-import toTop from './components/common/toTop.vue'
-import headSite from './components/home/header.vue'
+import Navbar from './components/common/navbar.vue'
+import Foot from './components/common/foot.vue'
+import toTop from './components/common/totop.vue'
+import headSite from './components/common/header.vue'
 
 export default {
   name: 'app',

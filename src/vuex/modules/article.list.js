@@ -33,7 +33,8 @@ export default {
 		        var resLength = response.length;
 		        var isMore = true;
 			    for (let i=0; i<resLength; i++) {	
-				    response[i] = filters.formatTime(response[i]);			      
+				    response[i] = filters.formatTime(response[i]);
+				    response[i].aImageHome = true;			      
 			    }
 			    if(resLength < 5){
 		        	isMore = false;
@@ -42,9 +43,9 @@ export default {
 		            articleList: response,
 		            isMore: isMore
 		        });
-			},res => {
-		        commit(GET_ARTICLE_LIST_FAILURE)
-			})
+			}).catch(err => {
+				commit(GET_ARTICLE_LIST_FAILURE);
+			});
 		},
 		[ADD_ARTICLE_LIST]({ commit }, page){
 			api.getArticleList(page).then(res => {
@@ -52,15 +53,8 @@ export default {
 		        var resLength = response.length;
 		        var isMore = true;
 			    for (let i=0; i<resLength; i++) {
-				    var filterTime = filters.formatTime(response[i].aDate);
-				    var monthInChinese = filterTime.monthInChinese;
-				    var month = filterTime.month;
-				    var day   = filterTime.day;
-				    var year  = filterTime.year;				      
-
-			    	response[i].time = year + " " + month + " " + day;
-			    	response[i].month = monthInChinese;
-			    	response[i].day = day;
+			    	response[i] = filters.formatTime(response[i]);	
+			    	response[i].aImageHome = true;	
 			    }
 			    if(resLength < 5){
 		        	isMore = false;
@@ -70,9 +64,9 @@ export default {
 		            isMore: isMore,
 		            page:page
 		        });
-			},res => {
-		        commit(GET_ARTICLE_LIST_FAILURE)
-			})
+			}).catch(err => {
+				commit(GET_ARTICLE_LIST_FAILURE);
+			});
 		}
 	}
 }

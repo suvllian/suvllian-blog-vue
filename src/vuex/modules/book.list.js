@@ -46,10 +46,11 @@ export default {
 		            bookList: response,
 		            isMore: isMore
 		        });
-			},res => {
-		       commit(GET_BOOK_LIST_FAILURE);
+			}).catch(err => {
+				commit(GET_BOOK_LIST_FAILURE);
 			});
 		},
+
 		[ADD_BOOK_LIST]({ commit }, page){
 			api.getBookData(page).then(res => {
 		        var response  = res.data;
@@ -68,10 +69,11 @@ export default {
 		            isMore: isMore,
 		            page: page
 		        });
-			},res => {
-		       commit(GET_BOOK_LIST_FAILURE);
-			});
+			}).catch(err => {
+				commit(GET_BOOK_LIST_FAILURE);
+			});;
 		},
+		
 		[VOTE_BOOK]({ commit }, action){
 			api.voteBook(action.id,action.way);
 		}

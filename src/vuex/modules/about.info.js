@@ -19,14 +19,13 @@ export default {
 	actions: {
 		[GET_ABOUT_INFO]({ commit }, id){
 			api.getAbout().then(res => {
-		        var response  = res.data[0];
-		        var data = filters.formatTime(response);
+		        var data = filters.formatTime(res.data[0]);
 
 			    commit(GET_ABOUT_INFO,{
 		            article: data
 		        });
-			},res => {
-		       commit(GET_ABOUT_INFO_FAILURE);
+			}).catch(err =>{
+				commit(GET_ABOUT_INFO_FAILURE);
 			});
 		}
 	}

@@ -1,27 +1,34 @@
 <template>
 	<section>
 		<span class="roate-date">
-			<span class="month">{{ articleHead.month }}</span>
-			<span class="day">{{ articleHead.day }}</span>
+			<span class="month text-center">{{ articleHead.month }}</span>
+			<span class="day text-center">{{ articleHead.day }}</span>
 		</span>
 		<header class="artcile-head">
-			<h1 class="title">
+			<h1 class="title text-center">
 				<router-link :to="{path:'article',query:{id:articleHead.aId}}">{{articleHead.aTopic}}</router-link>
 			 </h1>
 			
-			<p class="article-meta">
-				<i class="icon"><img src="./../../assets/date.png"></i>
+			<p class="article-meta text-center">
+				<i class="fa fa-calendar"></i>
 				发表于
 				<time>{{ articleHead.time }}</time>
-				<i class="icon"><img src="./../../assets/eyes.png"></i>
+				<i class="fa fa-eye"></i>
 				<span>{{articleHead.aVisit}}次围观</span>
-				<i class="icon"><img src="./../../assets/comment.png"></i>
+				<i class="fa fa-comments"></i>
 				<span>0条评论</span>
 			</p>
 			<div class="label">
 				<a href="" :title="articleHead.aClassName">{{articleHead.aClassName}}</a>
 			</div>
 		</header>
+		<div class="article-content">
+			<div class="img-center">
+				<img class="img-small" :src="articleHead.aImage" v-if="articleHead.aImageHome">
+				<img class="img-big" :src="articleHead.aImage" v-else>
+			</div>
+			<div class="intro-p" v-html="articleHead.aIntro" v-if="articleHead.aImageHome"></div>
+		</div>
 	</section>
 </template>
 

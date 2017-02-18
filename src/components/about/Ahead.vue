@@ -1,17 +1,17 @@
 <template>
 	<section>
 		<header class="artcile-head">
-			<h1 class="title">
+			<h1 class="title text-center">
 				<a @click.prevent="">{{articleHead.aTopic}}</a>
 			 </h1>
 			
-			<p class="article-meta">
-				<i class="icon"><img src="./../../assets/date.png"></i>
+			<p class="article-meta text-center">
+				<i class="fa fa-calendar"></i>
 				发表于
 				<time>{{ articleHead.time }}</time>
-				<i class="icon"><img src="./../../assets/eyes.png"></i>
+				<i class="fa fa-eye"></i>
 				<span>{{articleHead.aVisit}}次围观</span>
-				<i class="icon"><img src="./../../assets/comment.png"></i>
+				<i class="fa fa-comments"></i>
 				<span>0条评论</span>
 			</p>
 		</header>

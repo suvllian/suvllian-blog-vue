@@ -86,7 +86,7 @@ class Article extends Handler
 		
 		$pageNumber = ($page - 1) * 5;
 
-		$sql = "SELECT aDate,article.aId, aImage, aIntro, aTopic, aVisit, aClassName FROM article,articleclass WHERE article.aClass = articleclass.aId AND articleclass.aId > 0 ORDER BY article.aDate DESC LIMIT $pageNumber, 5";
+		$sql = "SELECT aDate,article.aId, aImage, aIntro, aTopic, aVisit, aClassName FROM article,articleclass WHERE article.aClass = articleclass.aId AND articleclass.aId > 0 AND article.aShow = 1 ORDER BY article.aDate DESC LIMIT $pageNumber, 5";
 		$result = $this->dataBaseHandle->fetchAll($sql);
 		echo json_encode($result);
 	}

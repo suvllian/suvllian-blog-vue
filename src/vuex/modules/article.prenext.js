@@ -19,9 +19,9 @@ export default {
 			api.getPreNext(id).then(res => {
 		        var response  = res.data;
 	        	commit(GET_PRENEXT_LIST, response);		    
-			},res => {
-		        
-			});
+			}).catch(err => {
+				
+			});;
 		}
 	}
 }
