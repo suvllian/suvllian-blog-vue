@@ -1,51 +1,39 @@
 @import "./mixins/_respond.scss";
-
-%span{
-	font-size: 1em;
-}
+$widthMax:950px;
+$widthMedium:475px;
+$widthMin:100%;
 
 .vote-true{
 	color:#CE0000;
 }
 
-.container{
+.book-container{
 	background-color: #f7f1ed;
-	padding-top:2em;
 }
 
-article{
+.black{
+	color:#000;
+}
+
+.book{
 	height: auto;
-	width: 950px;
-	margin:0.1em auto 0em;
-	padding:2em 0;
+	width: $widthMax;
+	margin:0em auto;
+	padding:1em 0;
 	position:relative;
 	clear: both;
+	overflow:hidden;
 
-	section{
-		width: 450px;
+	span{
+		color:#aaa;
+	}
+
+
+	.book-section{
+		width: ($widthMax - 50px) / 2;
 		display: inline-block;
 		margin: 25px 0;
 		box-shadow:5px 5px 5px 5px #eee;
-
-		&:nth-child(odd){
-			margin-right: 50px;
-		}
-
-		&:hover{
-			opacity: 0.8;
-
-			.bg-img{
-				img{
-					transform: scale3d(1.2,1.2,1.2);
-				}
-			}
-
-			.book-img{
-				img{
-					transform: rotate(360deg);
-				}
-			}
-		}
 
 		.bg-img{
 			height: 200px;
@@ -65,8 +53,7 @@ article{
 			background-color: #fff;
 			position:relative;
 
-
-			.book-img{
+			.img-book{
 				position:absolute;
 				bottom:36px;
 				left:25px;
@@ -79,16 +66,14 @@ article{
 				}
 			}
 
-			span{
+			.bclass-label{
 				padding: 3px 8px;
 				position: absolute;
 				right: -8px;
 			    top: -13px;
-			    font-size: 16px;
 			    line-height: 22px; 
 			    background-color: #e76648;
 			    color: #fff;
-		        border-color: #47456d;
 				box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 				border-radius:4px 0 0 4px;
 
@@ -106,16 +91,13 @@ article{
 				height: 100px;
 				overflow: hidden;
 				margin-left: 151px;
+				padding-right:10px;
 
 				.quote-p{
 				    color: #9b9b9b;
 				    display: -webkit-box;
 				    font-size: 15px;
-				    height: 42px;
-				    line-height: 21px;
-				    overflow: hidden;
 				    text-overflow: ellipsis;
-				    width: 274px;
 				    padding:1px;
 				 }
 			}
@@ -131,33 +113,43 @@ article{
 			.common-left{
 				width: 50%;
 				display:inline-block;
-
-				span{
-					@extend %span;
-					margin-left: 0;
-				}
 			}
 
 			.common-right{
 				width: 35%;
 				display:inline-block;
 				float: right;
+			}
 
-				span{
-					@extend %span;
-					float: right;
+		}
+
+		&:nth-child(odd){
+			margin-right: 50px;
+		}
+
+		&:hover{
+			opacity: 0.8;
+
+			.bg-img{
+				img{
+					transform: scale3d(1.2,1.2,1.2);
 				}
 			}
 
+			.img-book{
+				img{
+					transform: rotate(360deg);
+				}
+			}
 		}
 	}
 }
 
-@include respond-to(medium){
-	article{
+@include respond-to(big){
+	.book{
 		width: 475px;
 
-		section{
+		.book-section{
 			width: 475px;
 
 			&:nth-child(odd){
@@ -168,12 +160,10 @@ article{
 }
 
 @include respond-to(small){
-	article{
+	.book{
 		width: 100%;
-		padding:2em 16px;
-		min-width: 330px;
 
-		section{
+		.book-section{
 			width: 100%;		
 
 			&:hover{
@@ -185,19 +175,9 @@ article{
 					}
 				}
 
-				.book-img{
+				.img-book{
 					img{
 						transform: rotate(0);
-					}
-				}
-			}
-
-			.content{
-				.book-quote{
-
-					.quote-p{
-						width: 50%;
-						height: auto;
 					}
 				}
 			}

@@ -1,19 +1,16 @@
 <template>
-	<section>
-		<div class="big">
+	<section class="book-banner">
+		<div class="img-bg-block">
 			<ul>
 				<li v-for="item in items">
-					<img class="big-img" :class="{show:item.show}" :src="item.src">
-					<!-- <div class="big-div">
-						<p>{{item.title}}</p>
-					</div> -->
+					<img class="img-bg" :class="{show:item.show}" :src="item.src">
 				</li>
 			</ul>
 		</div>
-		<div class="small">
+		<div class="img-slide-block">
 			<ul>
-				<li class="small-li" v-for="(item,index) in items">
-					<img class="small-img" :class="{imgActive:item.show}" @mouseover="changeItem(index)" :src="item.src">
+				<li class="li-inline" v-for="(item,index) in items">
+					<img class="img-slide" :class="{imgActive:item.show}" @mouseover="changeItem(index)" :src="item.src">
 				</li>
 			</ul>
 		</div>
@@ -85,131 +82,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-	// 响应式布局
-	@mixin respond-to($breakpoint) {
-	    @if $breakpoint == "small" {
-	        @media (max-width: 568px) {
-	            @content;
-	        }
-	    }
-	    @else if $breakpoint == "medium" {
-	        @media (max-width: 980px) {
-	        	@content;
-	    	}
-	  	} 
-	    @else if $breakpoint == "large" {
-	    	@media (max-width: 1200px) {
-	    		@content;
-	    	}
-	    }
-	}
-
-	$largeWidth:950px;
-
-	section{
-		width: $largeWidth;
-		height: 290px;
-		margin:0.1em auto;
-		position:relative;
-		overflow: hidden;
-		transition: 1s all ease;
-
-		.big{
-			height: 232px;
-			width:100%;
-			position:relative;
-
-			.big-img{
-				position:absolute;
-				top: 0;
-				left: 0;
-				height: 100%;
-				width: 100%;
-				opacity: 0;
-				transition: 1.6s all ease;
-				cursor: pointer;
-			}
-
-			.big-div{
-				position:absolute;
-				background-color: #fff;
-			}
-
-			.show{
-				opacity: 1;
-			}
-		}
-
-		.small{
-			height: 70px;
-			width:$largeWidth;
-			position:relative;
-
-			.small-li{
-				display: inline;
-
-				.small-img{
-					opacity: 1;
-					height: 70px;
-					width: 20%;
-					transition: 0.2s all ease;
-				}
-
-				.imgActive{
-					transform: translateY(-12px);
-				}
-			}
-		}
-	}
-
-	@include respond-to(medium){
-		$mediumWidth:475px;
-
-		section{
-			width: $mediumWidth;
-			height: 268px;
-			min-width: 332px;
-
-			.small{
-				width: $mediumWidth;
-
-				.small-li{
-
-					.small-img{
-						height: 48px;
-					}
-				}
-			}
-		}
-	}
-
-	@include respond-to(small){
-		$mediumWidth:100%;
-
-		section{
-			width: $mediumWidth;
-			height: 228px;
-
-			.big{
-				height: 200px;
-			}
-
-			.small{
-				width: $mediumWidth;
-
-				.small-li{
-
-					.small-img{
-						height: 36px;
-					}
-
-					.imgActive{
-						transform: translateY(-6px);
-					}
-				}
-			}
-		}
-	}
-</style>

@@ -79,7 +79,7 @@ $Color:#00adb5;
         top: 30px;
         left: 0;
         content: "";
-        border-left:14px solid #efefef;
+        border-left:14px solid transparent;
         border-top:14px solid #333;
       }
 
@@ -260,4 +260,47 @@ $Color:#00adb5;
       }
     }
     
+  }
+
+
+.article-list{
+    width: 70%;
+    margin: 0 auto;
+    font-family: PingFang TC,Avenir Next,Helvetica,Arial,Hiragino Sans GB,Microsoft YaHei,sans-serif;
+    clear: both;
+    transition: 1s all ease;
+  }
+
+
+  @include respond-to(medium){
+    .article-list{
+      width: 100%;
+
+      .roate-date{
+        display: none;
+      }
+
+      .article{
+        .article-content{
+          pre{
+            width: 100%;
+            left: 0;
+          }
+
+          $leftIndent:30px;
+          // 无序列表
+          ol,ul{
+            padding:6px 0px 6px $leftIndent;
+          }
+
+          // 左边框块
+          .border-left{
+            p{
+              padding-left:$leftIndent;
+            }
+          }
+
+        }
+      } 
+    }
   }

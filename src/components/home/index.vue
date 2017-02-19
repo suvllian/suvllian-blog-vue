@@ -1,12 +1,12 @@
 <template>
 	<div class="article-list">
-		<Music></Music>
+		<!-- <Music></Music> -->
 		<article class="article" v-for="article in articleList">
 			<Ahead :article-head="article"></Ahead>
 			<div class="article-content">
 				<div class="more">
 					<p>
-						<router-link :to="{path:'article',query:{id:article.aId}}">阅读全文 >></router-link>
+						<router-link :to="{ path:'/article/' + article.aId}">阅读全文 >></router-link>
 					</p>
 				</div>
 			</div>

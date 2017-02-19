@@ -26,7 +26,7 @@ export default{
 
 	methods:{ ...mapActions([ARTICLE_CONTNET, GET_PRENEXT_LIST]),
     getData(){
-      var id = this.$route.query.id;
+      var id = this.$route.params.id;
       this.ARTICLE_CONTNET(id);
       this.GET_PRENEXT_LIST(id);
       effect.toTop();
@@ -49,47 +49,10 @@ export default{
   @import "./../../assets/style/totop.scss";
   @import "./../../assets/style/foot.scss";
   @import "./../../assets/style/nav.scss";
-
-  .article-list{
-    width: 70%;
-    margin: 0 auto;
-    font-family: PingFang TC,Avenir Next,Helvetica,Arial,Hiragino Sans GB,Microsoft YaHei,sans-serif;
-    clear: both;
-    transition: 1s all ease;
-  }
-
-
-  @include respond-to(medium){
-    .article-list{
-      width: 100%;
-
-      .roate-date{
-        display: none;
-      }
-
-      .article{
-        .article-content{
-          pre{
-            width: 100%;
-            left: 0;
-          }
-
-          $leftIndent:30px;
-          // 无序列表
-          ol,ul{
-            padding:6px 0px 6px $leftIndent;
-          }
-
-          // 左边框块
-          .border-left{
-            p{
-              padding-left:$leftIndent;
-            }
-          }
-
-        }
-      } 
-    }
-  }
-
+  @import "./../../assets/style/slider.scss";
+  @import "./../../assets/style/book.scss";
+  @import "./../../assets/style/header.scss";
+  @import "./../../assets/style/camera.scss";
+  @import "./../../assets/style/prenext.scss";
+  @import "./../../assets/style/about.scss";
 </style>

@@ -50,8 +50,7 @@ export default{
 		}
 
 		// 谷歌、欧朋
-		window.addEventListener("mousewheel", slideNav);
-		
+		window.onmousewheel = document.onmousewheel = slideNav;
 		// 火狐
 		window.addEventListener("DOMMouseScroll", slideNav);	
 	}

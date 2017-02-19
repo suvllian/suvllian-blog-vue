@@ -1,0 +1,23 @@
+@import "./mixins/_respond.scss";
+
+header{
+	background-image: url("https://img.alicdn.com/tps/TB15XU_LpXXXXbEXpXXXXXXXXXX-900-500.png");
+    background-position: center 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    position: relative;
+    width: 100%;
+}
+
+@include respond-to(medium){
+	header{
+		height: 400px;
+	}
+}
+
+@include respond-to(small){
+	header{
+		height: 280px;
+	}
+}

@@ -30,8 +30,9 @@ $height:38px;
 				a{
 				    text-decoration: none;
 					outline: none;
+					line-height: $height;
+					display: block;
 					font-size: 15px;
-				    font-weight: 400;
 					font-family: "Lato","PingFang SC","Microsoft YaHei",sans-serif;
 					color: #fff;
 					padding:0 12px;

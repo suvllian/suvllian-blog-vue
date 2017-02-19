@@ -9,9 +9,14 @@
     @media (max-width: 800px) {
       @content;
     }
+  }
+  @else if $breakpoint == "big" {
+    @media (max-width: 950px) {
+      @content;
+    }
   } 
   @else if $breakpoint == "large" {
-    @media (max-width: 1170px) {
+    @media (max-width: 1200px) {
       @content;
     }
   }

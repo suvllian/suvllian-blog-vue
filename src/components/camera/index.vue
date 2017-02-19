@@ -1,6 +1,6 @@
 <template>
-	<section>
-		<div class="box" v-for="(single,key) in imageList">
+	<div class="camrea-container">
+		<section class="box" v-for="(single,key) in imageList">
 			<div class="box-content">
 				<img :class="{imgClicked:single.isActive}" class="content-img" v-bind:src="'http://suvllian.com/static/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(single)">
 				<div class="introduction" :class="{introClicked:single.isActive}">
@@ -15,9 +15,9 @@
 					<i v-else class="fa fa-heart-o"></i>
 				</span>
 			</div>
-		</div>
-		<h1 @click="ADD_IMAGE_LIST(++page)" v-if="isMore">查看更多</h1>
-		<h2 v-else>-- THE END --</h2>
+		</section>
+		<h3 class="text-center" @click="ADD_IMAGE_LIST(++page)" v-if="isMore">查看更多</h3>
+		<h3 class="text-center" v-else>-- THE END --</h3>
 
 	</section>
 </template>
@@ -54,6 +54,3 @@ export default{
     }
 }
 </script>
-<style lang="scss" scoped>
-	@import "./../../assets/style/camera.scss";
-</style>

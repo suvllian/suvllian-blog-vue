@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<header class="artcile-head">
+		<div class="artcile-head">
 			<h1 class="title text-center">
 				<a @click.prevent="">{{articleHead.aTopic}}</a>
 			 </h1>
@@ -14,7 +14,7 @@
 				<i class="fa fa-comments"></i>
 				<span>0条评论</span>
 			</p>
-		</header>
+		</div>
 	</section>
 </template>
 

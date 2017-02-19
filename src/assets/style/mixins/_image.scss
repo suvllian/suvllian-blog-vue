@@ -2,5 +2,5 @@ $width100:100%;
 @mixin img-max-size($max-height, $border-radius, $max-width: $width100){
   border-radius: $border-radius;
   max-width: $max-width;  
-  max-height: $max-height;  
+  max-height: $max-height; 
 }

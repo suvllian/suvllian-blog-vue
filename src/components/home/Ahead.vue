@@ -4,7 +4,7 @@
 			<span class="month text-center">{{ articleHead.month }}</span>
 			<span class="day text-center">{{ articleHead.day }}</span>
 		</span>
-		<header class="artcile-head">
+		<div class="artcile-head">
 			<h1 class="title text-center">
 				<router-link :to="{path:'article',query:{id:articleHead.aId}}">{{articleHead.aTopic}}</router-link>
 			 </h1>
@@ -21,7 +21,7 @@
 			<div class="label">
 				<a href="" :title="articleHead.aClassName">{{articleHead.aClassName}}</a>
 			</div>
-		</header>
+		</div>
 		<div class="article-content">
 			<div class="img-center">
 				<img class="img-small" :src="articleHead.aImage" v-if="articleHead.aImageHome">

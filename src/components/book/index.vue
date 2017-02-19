@@ -1,24 +1,22 @@
 <template>
-	<div class="container">
+	<div class="book-container">
 		<slider></slider>
 
-		<article>
-			<section v-for="item in bookList">
-				<a @click.prevent="" href="" >
+		<article class="book">
+			<section v-for="item in bookList" class="book-section">
+				<a @click.prevent="" href="">
 					<div class="bg-img">
 						<img :src="item.iBgLink" :alt="item.iName">
 					</div>
 
 					<div class="content">
-						<div class="book-img">
+						<div class="img-book">
 							<img :src="item.iImage" :alt="item.iName">
 						</div>
-						<span>{{item.cClass}}</span>
+						<span class="bclass-label">{{item.cClass}}</span>
 						<div class="book-quote">
-							<h4 class="quote-h3">{{item.iName}}</h4>
-							<div>
-								<p class="quote-p">{{item.iContent}}</p>	
-							</div>
+							<h4 class="black">{{item.iName}}</h4>
+							<p class="quote-p">{{item.iContent}}</p>	
 						</div>
 					</div>
 					<div class="common">
@@ -29,7 +27,7 @@
 								<i v-else class="fa fa-heart-o"></i>
 							</span>	
 						</div>
-						<div class="common-right">
+						<div class="common-right text-right">
 							<span>{{ item.time }}</span>
 						</div>
 					</div>
@@ -72,7 +70,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-	@import "./../../assets/style/book.scss";
-</style>
