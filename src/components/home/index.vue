@@ -1,18 +1,21 @@
 <template>
 	<div class="article-list">
 		<!-- <Music></Music> -->
-		<article class="article" v-for="article in articleList">
+		<section class="article" v-for="article in articleList">
 			<Ahead :article-head="article"></Ahead>
 			<div class="article-content">
-				<div class="more">
+				<div class="more text-center">
 					<p>
 						<router-link :to="{ path:'/article/' + article.aId}">阅读全文 >></router-link>
 					</p>
 				</div>
 			</div>
-		</article>
-		<h3 class="text-center" @click="ADD_ARTICLE_LIST(++page)" v-if="isMore"><span>查看更多</span></h3>
-		<h3 class="text-center" v-else>-- THE END --</h3>
+		</section>
+
+		<h3 class="text-center">
+			<span class="pointer" @click="ADD_ARTICLE_LIST(++page)" v-if="isMore">查看更多</span>
+			<span v-else>-- THE END --</span>
+		</h3>
 	</div>
 </template>
 

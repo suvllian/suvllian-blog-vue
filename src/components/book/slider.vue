@@ -9,7 +9,7 @@
 		</div>
 		<div class="img-slide-block">
 			<ul>
-				<li class="li-inline" v-for="(item,index) in items">
+				<li class="inline" v-for="(item,index) in items">
 					<img class="img-slide" :class="{imgActive:item.show}" @mouseover="changeItem(index)" :src="item.src">
 				</li>
 			</ul>

@@ -45,14 +45,19 @@ export default{
 </script>
 
 <style lang="scss">
+  @import "./../../assets/style/_mixins.scss";
+  @import "./../../assets/style/respond.scss";
+  @import "./../../assets/style/_image.scss";
+  @import "./../../assets/style/_text.scss";
+  @import "./../../assets/style/_some.scss";
+
   @import "./../../assets/style/article.scss";
   @import "./../../assets/style/totop.scss";
-  @import "./../../assets/style/foot.scss";
-  @import "./../../assets/style/nav.scss";
   @import "./../../assets/style/slider.scss";
   @import "./../../assets/style/book.scss";
   @import "./../../assets/style/header.scss";
   @import "./../../assets/style/camera.scss";
   @import "./../../assets/style/prenext.scss";
-  @import "./../../assets/style/about.scss";
+  @import "./../../assets/style/_color.scss";
+  @import "./../../assets/style/_hover.scss";
 </style>

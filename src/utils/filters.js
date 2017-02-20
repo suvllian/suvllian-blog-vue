@@ -65,7 +65,7 @@ export default
 		jsonData.year = year;
 		jsonData.month = monthInChinese;
 		jsonData.day = day;
-		jsonData.time = year + " " + month + " " + day;
+		jsonData.time = (year + "/" + month + "/" + day).trim();
 		
 		return jsonData;
 	},

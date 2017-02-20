@@ -15,15 +15,15 @@
 						</div>
 						<span class="bclass-label">{{item.cClass}}</span>
 						<div class="book-quote">
-							<h4 class="black">{{item.iName}}</h4>
+							<h4 class="color-black">{{item.iName}}</h4>
 							<p class="quote-p">{{item.iContent}}</p>	
 						</div>
 					</div>
 					<div class="common">
 						<div class="common-left">
 							<span>热度({{item.iLike}})</span>
-							<span class="vote-icon" @click="dealVote(item)">
-								<i v-if="item.isVote" class="fa fa-heart vote-true"></i>
+							<span class="vote-icon pointer" @click="dealVote(item)">
+								<i v-if="item.isVote" class="fa fa-heart color-red"></i>
 								<i v-else class="fa fa-heart-o"></i>
 							</span>	
 						</div>
@@ -34,8 +34,10 @@
 				</a>
 			</section>
 
-			<h3 class="text-center" @click="ADD_BOOK_LIST(++page)" v-if="isMore"><span>查看更多</span></h3>
-			<h3 class="text-center" v-else>-- THE END --</h3>
+			<h3 class="text-center">
+				<span class="pointer" @click="ADD_BOOK_LIST(++page)" v-if="isMore">查看更多</span>
+				<span v-else>-- THE END --</span>
+			</h3>
 		</article>
 	</div>
 </template>

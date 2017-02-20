@@ -21,3 +21,42 @@
     }
   }
 }
+
+// 某个元素的响应式样式
+@mixin respond-element($element, $style, $styleMax, $styleMedium, $styleMin){
+  #{$element}{
+    #{$style}: $styleMax;
+  }
+  
+
+  @include respond-to(medium){
+    #{$element}{
+      #{$style}: $styleMedium;
+    }
+  }
+
+  @include respond-to(small){
+    #{$element}{
+      #{$style}: $styleMin;
+    }
+  }
+}
+
+@mixin respond-big-element($element, $style, $styleMax, $styleMedium, $styleMin){
+  #{$element}{
+    #{$style}: $styleMax;
+  }
+  
+
+  @include respond-to(big){
+    #{$element}{
+      #{$style}: $styleMedium;
+    }
+  }
+
+  @include respond-to(small){
+    #{$element}{
+      #{$style}: $styleMin;
+    }
+  }
+}

@@ -1,7 +1,4 @@
 // 图片的大小样式
-
-@import "./mixins/_image.scss";
-
 .img-big{
   @include img-max-size(500px, 5px, 100%);
 }
@@ -19,3 +16,37 @@
   text-align: center;
   width: 100%;
 }
+
+// web-icon
+.fa{
+	margin-right:-7px;
+}
+
+// web-icon-link
+$iconWidthMax:42px;
+$iconWidthMedium:32px;
+.icon-link{
+	background-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+  font-style: normal;
+  transition: all 0.2s ease-in-out 0s;
+  height: $iconWidthMax;
+  line-height: $iconWidthMax;
+  border-radius: $iconWidthMax;
+  width: $iconWidthMax;
+	margin:0 0.1em;
+
+    &:hover{
+		background-color:#b3d9d9;
+		color: #fff;
+	}
+}
+
+@include respond-to(medium){
+	.icon-link{
+	    height: $iconWidthMedium;
+	    line-height: $iconWidthMedium;
+	    border-radius: $iconWidthMedium;
+	    width: $iconWidthMedium;
+	}
+}	

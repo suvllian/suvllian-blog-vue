@@ -1,11 +1,12 @@
-@import "./mixins/_respond.scss";
+$widthMax: 16px;
+$widthMedium: 10px;
+
+$staticColor:#aaa;
+$activeColor:#e2e2e2;
 
 .back-top{
-	$width: 16px;
-	$beforeColor:#aaa;
-
-	height: 2.75 * $width;
-	width: 2.5 * $width;
+	height: 2.75 * $widthMax;
+	width: 2.5 * $widthMax;
 	padding: 6px 3px;
 	border-radius:3px;
 	position: fixed;
@@ -16,42 +17,38 @@
 	.arrow{
 		width:0; 
 	    height:0; 
-	    border-left:$width solid transparent;
-	    border-right:$width solid transparent;
-	    border-bottom:$width solid $beforeColor;
+	    @include complete-triangle($widthMax, $staticColor, border-left, border-right);
 	    position:relative;
 		margin: 0 auto;
 	}
+
 	.stick{
-		height: $width;
-		background-color: $beforeColor;
-		width: $width - 4px;
+		height: $widthMax;
+		background-color: $staticColor;
+		width: $widthMax - 4px;
 		position:relative;
 		margin: 0 auto;
 	}
 
 	&:hover{
-		background-color: #e2e2e2;
+		background-color: $activeColor;
 	}
 }
 
 @include respond-to(medium){
 	.back-top{
-		$width: 10px;
-
-		height: 3 * $width;
-		width: 2.5 * $width;
+		height: 3 * $widthMedium;
+		width: 2.5 * $widthMedium;
 		bottom:8px;
 		right:8px;
 
 		.arrow{
-		    border-left:$width solid transparent;
-		    border-right:$width solid transparent;
-		    border-bottom-width:$width;
+		    @include complete-triangle($widthMedium, $staticColor, border-left, border-right);
 		}
+
 		.stick{
-			height: $width;
-			width: $width - 4px;
+			height: $widthMedium;
+			width: $widthMedium - 4px;
 		}
 	}
 }

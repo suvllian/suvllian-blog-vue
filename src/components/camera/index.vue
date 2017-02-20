@@ -10,14 +10,17 @@
 			</div>
 			<div class="box-common">
 				<span class="common-span">热度({{single.iLike}})</span>
-				<span class="common-span" @click="dealVote(single)">
-					<i v-if="single.isVote" class="fa fa-heart vote-true"></i>
+				<span class="common-span pointer" @click="dealVote(single)">
+					<i v-if="single.isVote" class="fa fa-heart color-red"></i>
 					<i v-else class="fa fa-heart-o"></i>
 				</span>
 			</div>
 		</section>
-		<h3 class="text-center" @click="ADD_IMAGE_LIST(++page)" v-if="isMore">查看更多</h3>
-		<h3 class="text-center" v-else>-- THE END --</h3>
+
+		<h3 class="text-center">
+			<span class="pointer" @click="ADD_IMAGE_LIST(++page)" v-if="isMore">查看更多</span>
+			<span v-else>-- THE END --</span>
+		</h3>
 
 	</section>
 </template>

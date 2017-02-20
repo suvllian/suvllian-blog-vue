@@ -1,0 +1,12 @@
+// book
+@include respond-big-element('.book-banner', height, 290px, 268px, 228px);
+@include respond-big-element('.book-banner', width, 900px, 100%, 100%);
+@include respond-big-element('.img-slide-block', width, 900px, 100%, 100%);
+@include respond-big-element('.img-slide', height, 70px, 52px, 36px);
+
+// header nav
+@include respond-element('.navbar nav', width, 1170px, 500px, 360px);
+@include respond-element(header, height, 600px, 400px, 280px);
+
+// prenext
+@include respond-element('.prenext a', font-size, 16px, 16px, 14px);

@@ -6,14 +6,16 @@
 			 </h1>
 			
 			<p class="article-meta text-center">
-				<i class="fa fa-calendar"></i>
-				发表于
-				<time>{{ articleHead.time }}</time>
+				<i class="fa fa-calendar"></i>	
+				<time class="p-small">发表于{{articleHead.time }}</time>
 				<i class="fa fa-eye"></i>
-				<span>{{articleHead.aVisit}}次围观</span>
+				<span class="p-small">{{articleHead.aVisit}}次围观</span>
 				<i class="fa fa-comments"></i>
-				<span>0条评论</span>
+				<span class="p-small">0条评论</span>
 			</p>
+			<div class="label">
+				<a title="关于我">WoW</a>
+			</div>
 		</div>
 	</section>
 </template>

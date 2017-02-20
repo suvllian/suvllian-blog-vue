@@ -1,9 +1,9 @@
-@import "./mixins/_respond.scss";	
-// 设置宽高及最大宽度
-@mixin widthHeightMaxWidth($width:auto,$height:auto,$maxWidth:100%){
+// 设置宽高及最大宽高
+@mixin widthHeightMaxWidth($width:auto, $height:auto, $maxWidth:100%, $maxHeight:100%){
 	width:$width;
 	height:$height;
 	max-width:$maxWidth;
+	max-height:$maxHeight;
 }
 
 .camrea-container{
@@ -11,34 +11,12 @@
 	padding:1em 0 0;
 	position:relative;
 	clear: both;
-
-	%h{
-		font-weight: 400;
-		margin: 1em 0;
-		outline: none;
-	}	
-
-	h1{		
-		@extend %h; 
-		cursor: pointer;
-		transition: 1s all ease;
-
-		&:hover{
-			color: #333;
-		}
-	}
-
-	h2{
-		@extend %h; 
-		font-weight: 300;
-		font-size: 16px;
-	}
 }
 
 .box{
 	@include widthHeightMaxWidth(auto,auto,48em);
 	background-color: #fff;	
-	padding-bottom:1em;
+	padding-bottom:0.66em;
 	margin: 1em auto;
 	border: 1px solid #eee;
 	border-radius:2px;
@@ -59,10 +37,6 @@
 			padding-bottom:0;
 			float: left;
 			color: #333;
-
-			.intro-p{
-				line-height: 1.5em;
-			}
 		}
 
 		// 点击图片后的样式
@@ -77,21 +51,20 @@
 		}
 
 		.borderClicked{
-			border-left:3px solid #dfdfdf;
+			border-left:2px solid #dfdfdf;
 			padding-left:1em;
 		}
 	}
 
 	.box-common{
 		height: 2em;
+		margin-top: 0.5em;
 		width: 100%;
 		padding:0 1em;
-		margin-top:0.5em;
 		clear: left;
 		border-top:1px dotted #ddd;
 
 		.common-span{
-			margin-left: 0;
 			color: #aaa;
 			font-size: 0.875em;
 			line-height: 3em;
@@ -100,9 +73,6 @@
 	
 }
 
-.vote-true{
-	color:#CE0000;
-}
 @include respond-to(medium){
 	.box{
 		max-width: 96%;
@@ -113,8 +83,8 @@
 @include respond-to(small){
 	.box{
 		max-width: 100%;
+		min-width:300px;
 		margin: 1em 0;
-		min-width: 300px;
 		border:0px;
 
 		.box-content{
@@ -128,21 +98,12 @@
 			.introduction{
 				float: none;
 				max-width: 100%;
+				padding-top:0;
 
 				.intro-p{
 					border-left:3px solid #dfdfdf;
 					padding-left:1em;
 				}
-			}
-		}
-
-		.box-common{
-			.common-span{
-				&:first-child{
-					padding-left:0%; 
-				}
-
-				outline: none;
 			}
 		}
 	}

@@ -1,0 +1,6 @@
+// CSS实现三角形效果
+@mixin complete-triangle($width, $color, $direc1, $direc2){
+	#{$direc1}:$width solid transparent;
+    #{$direc2}:$width solid transparent;
+    border-bottom:$width solid $color;
+}

@@ -1,12 +1,8 @@
-@import "./mixins/_respond.scss";
-
-$widthMax:950px;
+$widthMax:900px;
 $widthMedium:475px;
 $widthMin:100%;
 
 .book-banner{
-	width: $widthMax;
-	height: 290px;
 	margin:0 auto;
 	position:relative;
 	overflow: hidden;
@@ -36,64 +32,26 @@ $widthMin:100%;
 
 	.img-slide-block{
 		height: 70px;
-		width:$widthMax;
 		position:relative;
 
-		.li-inline{
-			display: inline;
-
-			.img-slide{
-				opacity: 1;
-				height: 70px;
-				width: 20%;
-				transition: 0.2s all ease;
-			}
-
-			.imgActive{
-				transform: translateY(-12px);
-			}
+		.img-slide{
+			opacity: 1;
+			width: 20%;
+			transition: 0.2s all ease;
 		}
-	}
-}
 
-@include respond-to(big){
-	.book-banner{
-		width: 100%;
-		height: 268px;
-		
-		.img-slide-block{
-			width: 100%;
-
-			.li-inline{
-				.img-slide{
-					height: 52px;
-				}
-			}
+		.imgActive{
+			transform: translateY(-12px);
 		}
 	}
 }
 
 @include respond-to(small){
-	.book-banner{
-		width: $widthMin;
-		height: 228px;
+	.img-bg-block{
+		height: 200px;
+	}
 
-		.img-bg-block{
-			height: 200px;
-		}
-
-		.img-slide-block{
-			width: $widthMin;
-
-			.li-inlie{
-				.img-slide{
-					height: 36px;
-				}
-
-				.imgActive{
-					transform: translateY(-6px);
-				}
-			}
-		}
+	.imgActive{
+		transform: translateY(-6px);
 	}
 }
