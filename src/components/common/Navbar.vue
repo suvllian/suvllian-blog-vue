@@ -18,6 +18,7 @@ export default{
 		return{
 			liItems:[
 				{title:"首页",src:'/', class:"fa fa-home", isActive:true},
+				{title:"分类",src:'/', class:"fa fa-folder", isActive:true},
 				{title:"图集",src:'/camera', class:"fa fa-image",isActive:false},
 				{title:"读书",src:'/book', class:"fa fa-book",isActive:false},
 				{title:"关于",src:'/about', class:"fa fa-user",isActive:false},

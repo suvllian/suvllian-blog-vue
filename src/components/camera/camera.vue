@@ -1,0 +1,46 @@
+<template>
+	<div>
+		<section class="box" v-for="(single,key) in imageList">
+			<div class="box-content">
+				<img :class="{imgClicked:single.isActive}" class="content-img" v-bind:src="'http://suvllian.com/static/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(single)">
+				<div class="introduction" :class="{introClicked:single.isActive}">
+					<h4 class="text-underline">{{single.iTopic}}:</h4>
+					<p class="intro-p" :class="{borderClicked:single.isActive}">{{single.iContent}}</p>
+				</div>
+			</div>
+			<div class="box-common">
+				<span class="common-span">热度({{single.iLike}})</span>
+				<span class="common-span pointer" @click="dealVote(single)">
+					<i v-if="single.isVote" class="fa fa-heart color-red"></i>
+					<i v-else class="fa fa-heart-o"></i>
+				</span>
+			</div>
+		</section>
+	</div>
+</template>
+
+<script>
+import { VOTE_IMAGE } from './../../vuex/type.js'
+import { mapActions} from 'vuex'
+
+export default {
+	props:["imageList"],
+
+	methods:{
+		...mapActions([VOTE_IMAGE]),
+		enlargeImage:function(item){
+			item.isActive = !item.isActive;
+		},
+		dealVote:function(item){
+			item.isVote = !item.isVote;
+			if(item.isVote){
+				item.iLike++;
+				this.VOTE_IMAGE({id:item.iId,way:"add"});
+			}else{
+				item.iLike--;
+				this.VOTE_IMAGE({id:item.iId,way:"sub"});
+			}
+		}
+	},
+}
+</script>

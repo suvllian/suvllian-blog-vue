@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
-    <headSite></headSite>
+    <HeadSite></HeadSite>
     <router-view></router-view>
     <Foot></Foot>
     <toTop></toTop>
@@ -12,11 +12,11 @@
 import Navbar from './components/common/navbar.vue'
 import Foot from './components/common/foot.vue'
 import toTop from './components/common/totop.vue'
-import headSite from './components/common/header.vue'
+import HeadSite from './components/common/header.vue'
 
 export default {
   name: 'app',
-  components: { Navbar, Foot, toTop, headSite }
+  components: { Navbar, Foot, toTop, HeadSite }
 }
 </script>
 

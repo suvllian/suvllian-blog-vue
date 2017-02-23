@@ -1,7 +1,7 @@
 <template>
 	<div class="article-list">
 		<article class="article">
-			<Ahead :article-head="article"></Ahead>
+      <Head :article="article"></Head>
 			<div class="article-content" v-html="article.aContent"></div>
       <Prenext :prev-article="prev" :next-article="next"></Prenext>
 		</article>
@@ -9,14 +9,14 @@
 </template>
 
 <script>
-import Ahead from './../home/Ahead.vue'
 import Prenext from './prenext.vue'
+import Head from './commonhead.vue'
 import { mapActions, mapState} from 'vuex'
 import { ARTICLE_CONTNET, GET_PRENEXT_LIST } from './../../vuex/type.js'
 import effect from './../../utils/effect.js'
 
 export default{
-	components: { Ahead, Prenext },
+	components: { Prenext, Head},
 	computed: mapState({ 
 		article: store => store.articleContent.article,
 		id: store => store.articleContent.id,
@@ -46,11 +46,9 @@ export default{
 
 <style lang="scss">
   @import "./../../assets/style/_mixins.scss";
-  @import "./../../assets/style/respond.scss";
-  @import "./../../assets/style/_image.scss";
-  @import "./../../assets/style/_text.scss";
-  @import "./../../assets/style/_some.scss";
+  @import "./../../assets/style/_common.scss";
 
+  @import "./../../assets/style/respond.scss";
   @import "./../../assets/style/article.scss";
   @import "./../../assets/style/totop.scss";
   @import "./../../assets/style/slider.scss";
@@ -58,6 +56,4 @@ export default{
   @import "./../../assets/style/header.scss";
   @import "./../../assets/style/camera.scss";
   @import "./../../assets/style/prenext.scss";
-  @import "./../../assets/style/_color.scss";
-  @import "./../../assets/style/_hover.scss";
 </style>
