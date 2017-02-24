@@ -1,16 +1,16 @@
 <template>
 	<div>
-		<section class="box" v-for="(single,key) in imageList">
-			<div class="box-content">
-				<img :class="{imgClicked:single.isActive}" class="content-img" v-bind:src="'http://suvllian.com/static/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(single)">
+		<section class="camera" v-for="(single,key) in imageList">
+			<div class="camera-content">
+				<img :class="{imgClicked:single.isActive}" class="img-camera" v-bind:src="'http://suvllian.com/static/images/travel/'+single.iImage+'.jpg'" :alt="single.iTopic" @click="enlargeImage(single)">
 				<div class="introduction" :class="{introClicked:single.isActive}">
 					<h4 class="text-underline">{{single.iTopic}}:</h4>
-					<p class="intro-p" :class="{borderClicked:single.isActive}">{{single.iContent}}</p>
+					<p class="p-img" :class="{borderClicked:single.isActive}">{{single.iContent}}</p>
 				</div>
 			</div>
-			<div class="box-common">
-				<span class="common-span">热度({{single.iLike}})</span>
-				<span class="common-span pointer" @click="dealVote(single)">
+			<div class="camera-bottom">
+				<span class="span">热度({{single.iLike}})</span>
+				<span class="span pointer" @click="dealVote(single)">
 					<i v-if="single.isVote" class="fa fa-heart color-red"></i>
 					<i v-else class="fa fa-heart-o"></i>
 				</span>

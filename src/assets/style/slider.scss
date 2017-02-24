@@ -47,8 +47,12 @@ $widthMin:100%;
 }
 
 @include respond-to(small){
-	.img-bg-block{
+	.book-banner .img-bg-block{
 		height: 200px;
+	}
+
+	.img-slide-block{
+		height: 36px;
 	}
 
 	.imgActive{

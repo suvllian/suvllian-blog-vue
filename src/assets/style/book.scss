@@ -18,13 +18,13 @@ $widthMin:100%;
 		color:#aaa;
 	}
 
-	.book-section{
+	.section-book{
 		width: ($widthMax - 50px) / 2;
 		display: inline-block;
 		margin: 16px 0;
 		box-shadow:5px 5px 5px 5px #eee;
 
-		.bg-img{
+		.img-bg{
 			height: 200px;
 			overflow: hidden;
 			box-shadow:1px 1px 5px #aaa;
@@ -55,7 +55,7 @@ $widthMin:100%;
 				}
 			}
 
-			.bclass-label{
+			.class-book{
 				padding: 3px 12px 3px 8px;
 				position: absolute;
 				right: -8px;
@@ -77,13 +77,13 @@ $widthMin:100%;
 				}
 			}
 
-			.book-quote{
+			.intro-book{
 				height: 100px;
 				overflow: hidden;
 				margin-left: 151px;
 				padding-right:10px;
 
-				.quote-p{
+				.p-book{
 				    color: #9b9b9b;
 				    display: -webkit-box;
 				    font-size: 15px;
@@ -93,19 +93,19 @@ $widthMin:100%;
 			}
 		}
 
-		.common{
+		.book-bottom{
 			clear: both;
 			padding: 8px;
 			background-color: #fff;
 			border-top:1px dotted #ddd;
 			position:relative;
 
-			.common-left{
+			.bottom-left{
 				width: 50%;
 				display:inline-block;
 			}
 
-			.common-right{
+			.bottom-right{
 				width: 35%;
 				display:inline-block;
 				float: right;
@@ -120,7 +120,7 @@ $widthMin:100%;
 		&:hover{
 			opacity: 0.8;
 
-			.bg-img{
+			.img-bg{
 				img{
 					transform: scale3d(1.2,1.2,1.2);
 				}
@@ -140,7 +140,7 @@ $widthMin:100%;
 		width: 475px;
 		overflow: hidden;
 
-		.book-section{
+		.section-book{
 			width: 475px;
 
 			&:nth-child(odd){
@@ -154,13 +154,13 @@ $widthMin:100%;
 	.book{
 		width: 100%;
 
-		.book-section{
+		.section-book{
 			width: 100%;		
 
 			&:hover{
 				opacity: 1;
 
-				.bg-img{
+				.img-bg{
 					img{
 						transform: scale3d(1,1,1);
 					}

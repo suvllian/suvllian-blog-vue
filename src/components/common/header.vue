@@ -15,7 +15,6 @@ export default {
 	mounted(){
 		var $this = this;
 		var header = $this.$refs.header;
-		console.log(header);
 		var slide = (event) => {
 			let top = document.body.scrollTop || window.scroolY || document.documentElement.scrollTop;
 			let direction = event.wheelDelta || -event.detail;

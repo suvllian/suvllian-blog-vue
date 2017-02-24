@@ -1,0 +1,7 @@
+// 设置宽高及最大宽高
+@mixin widthHeightMaxWidth($width:auto, $height:auto, $maxWidth:100%, $maxHeight:100%){
+	width:$width;
+	height:$height;
+	max-width:$maxWidth;
+	max-height:$maxHeight;
+}

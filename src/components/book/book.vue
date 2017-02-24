@@ -1,8 +1,8 @@
 <template>
 	<article class="book">
-		<section v-for="item in bookList" class="book-section">
+		<section v-for="item in bookList" class="section-book">
 			<a @click.prevent="" href="">
-				<div class="bg-img">
+				<div class="img-bg">
 					<img :src="item.iBgLink" :alt="item.iName">
 				</div>
 
@@ -10,21 +10,21 @@
 					<div class="img-book">
 						<img :src="item.iImage" :alt="item.iName">
 					</div>
-					<span class="bclass-label">{{item.cClass}}</span>
-					<div class="book-quote">
+					<span class="class-book">{{item.cClass}}</span>
+					<div class="intro-book">
 						<h4 class="color-black">{{item.iName}}</h4>
-						<p class="quote-p">{{item.iContent}}</p>	
+						<p class="p-book">{{item.iContent}}</p>	
 					</div>
 				</div>
-				<div class="common">
-					<div class="common-left">
+				<div class="book-bottom">
+					<div class="bottom-left">
 						<span>热度({{item.iLike}})</span>
 						<span class="vote-icon pointer" @click="dealVote(item)">
 							<i v-if="item.isVote" class="fa fa-heart color-red"></i>
 							<i v-else class="fa fa-heart-o"></i>
 						</span>	
 					</div>
-					<div class="common-right text-right">
+					<div class="bottom-right text-right">
 						<span>{{ item.time }}</span>
 					</div>
 				</div>
