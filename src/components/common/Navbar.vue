@@ -22,6 +22,7 @@ export default{
 				{title:"图集",src:'/camera', class:"fa fa-image",isActive:false},
 				{title:"读书",src:'/book', class:"fa fa-book",isActive:false},
 				{title:"关于",src:'/about', class:"fa fa-user",isActive:false},
+				{title:"音乐",src:'/music', class:"fa fa-music",isActive:false},
 			]
 		}
 	},
@@ -51,7 +52,8 @@ export default{
 		}
 
 		// 谷歌、欧朋
-		window.onmousewheel = document.onmousewheel = slideNav;
+		window.addEventListener("mousewheel", slideNav);
+
 		// 火狐
 		window.addEventListener("DOMMouseScroll", slideNav);	
 	}

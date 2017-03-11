@@ -26,10 +26,11 @@ export default{
 
 	methods:{ ...mapActions([ARTICLE_CONTNET, GET_PRENEXT_LIST]),
     getData(){
-      var id = this.$route.params.id;
+      let id = this.$route.query.id;
       this.ARTICLE_CONTNET(id);
       this.GET_PRENEXT_LIST(id);
       effect.toTop();
+      document.title = this.article.aTpoic;
       this.$parent.$children[0].$refs.header.className = "navbar";
     }
   },

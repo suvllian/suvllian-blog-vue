@@ -1,7 +1,7 @@
 <template>
 	<div class="artcile-head">
 		<h2 class="title text-center">
-			<router-link :to="{ path:'/article/' + articleHead.aId}">{{articleHead.aTopic}}</router-link>
+			<router-link :to="{path:'article',query:{id:articleHead.aId}}">{{articleHead.aTopic}}</router-link>
 		</h2>
 		<Meta :article-head="articleHead"></Meta>
 	</div>
