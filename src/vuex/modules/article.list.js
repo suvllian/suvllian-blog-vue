@@ -28,6 +28,7 @@ export default {
 
 	actions: {
 		[ARTICLE_LIST]({ commit }){
+			document.title = "瓦尔登湖畔一棵松";
 			api.getArticleList(1).then(res => {
 		        var response  = res.data;
 		        var resLength = response.length;

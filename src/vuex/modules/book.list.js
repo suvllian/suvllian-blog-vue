@@ -30,6 +30,7 @@ export default {
 
 	actions: {
 		[GET_BOOK_LIST]({ commit }){
+			document.title = "读书";
 			api.getBookData(1).then(res => {
 		        var response  = res.data;
 		        var resLength = response.length;

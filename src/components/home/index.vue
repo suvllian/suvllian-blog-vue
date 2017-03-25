@@ -1,6 +1,6 @@
 <template>
 	<div class="article-list">
-		<!-- <Music></Music> -->
+		<Music></Music>
 		<section class="article" v-for="article in articleList">
 			<Head :article="article"></Head>
 			<Link :article="article"></Link>

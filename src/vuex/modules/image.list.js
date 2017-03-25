@@ -29,6 +29,7 @@ export default {
 
 	actions: {
 		[GET_IMAGE_LIST]({ commit }){
+			document.title = "图集";
 			api.getImageData(1).then(res => {
 		        var response  = res.data;
 		        var resLength = response.length;

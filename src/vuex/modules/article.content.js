@@ -22,7 +22,7 @@ export default {
 		[ARTICLE_CONTNET]({ commit }, id){
 			api.getArticleContent(id).then(res => {
 		        var response = filters.formatTime(res.data[0]);
-
+		        document.title = response.aTopic;
 			    commit(ARTICLE_CONTNET,{
 		            article: response,
 		            id: (id - 1)

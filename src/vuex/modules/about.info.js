@@ -18,6 +18,7 @@ export default {
 
 	actions: {
 		[GET_ABOUT_INFO]({ commit }, id){
+			document.title = "关于";
 			api.getAbout().then(res => {
 		        var data = filters.formatTime(res.data[0]);
 		        data.aClassName = "Wow";

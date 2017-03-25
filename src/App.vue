@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar></Navbar>
     <HeadSite></HeadSite>
-    <router-view></router-view>
+    	<router-view></router-view>
     <Foot></Foot>
     <toTop></toTop>
   </div>
@@ -31,8 +31,7 @@ export default {
 		background: #f9f9f9 none repeat scroll 0 0;
 		color: #89867e;
 		font-size: 16px;
-	    font-family: "Lato",Calibri,Arial,sans-serif;
-	    cursor: url("https://www.anotherhome.net/wp-content/themes/Amativeness/images/cursor.ico"), auto;
+    	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,PingFang SC,Source Han Sans CN,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
 	}
 	li{
 		list-style: none;

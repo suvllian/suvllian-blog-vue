@@ -30,7 +30,6 @@ export default{
       this.ARTICLE_CONTNET(id);
       this.GET_PRENEXT_LIST(id);
       effect.toTop();
-      document.title = this.article.aTpoic;
       this.$parent.$children[0].$refs.header.className = "navbar";
     }
   },
@@ -57,4 +56,5 @@ export default{
   @import "./../../assets/style/header.scss";
   @import "./../../assets/style/camera.scss";
   @import "./../../assets/style/prenext.scss";
+  @import "./../../assets/style/music.scss";
 </style>
