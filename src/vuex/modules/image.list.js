@@ -1,29 +1,33 @@
 import api from '../../api';
-import { GET_IMAGE_LIST, GET_IMAGE_LIST_FAILURE, VOTE_IMAGE, ADD_IMAGE_LIST } from './../type';
+import { GET_IMAGE_LIST, GET_IMAGE_LIST_FAILURE, VOTE_IMAGE, 
+		ADD_IMAGE_LIST, LOADING_IMAGE } from './../type';
 
 export default {
 	state: {
 		page: 1,
 		items: [],
-		isMore:false
+		isMore: false,
+		loading: false
 	},
 
 	mutations: {
 		[GET_IMAGE_LIST](state, action) {
-			state.isMore = action.isMore;
-			state.page   = 1; 
-			state.items  = action.imageList; 
+			state.isMore  = action.isMore;
+			state.loading = false;
+			state.page    = 1; 
+			state.items   = action.imageList; 
 		},
 		[GET_IMAGE_LIST_FAILURE](state){
 
 		},
 		[ADD_IMAGE_LIST](state, action){
-			state.isMore = action.isMore;
-			state.page   = action.page; 
-			state.items  = [...state.items, ...action.imageList]; 
+			state.isMore  = action.isMore;
+			state.loading = false;
+			state.page    = action.page; 
+			state.items   = [...state.items, ...action.imageList]; 
 		},
-		[VOTE_IMAGE](state){
-
+		[LOADING_IMAGE](state){
+			state.loading = true;
 		}
 	},
 
@@ -50,7 +54,9 @@ export default {
 				commit(GET_IMAGE_LIST_FAILURE);
 			});
 		},
+
 		[ADD_IMAGE_LIST]({ commit }, page){
+			commit(LOADING_IMAGE);
 			api.getImageData(page).then(res => {
 		        var response  = res.data;
 		        var resLength = response.length;

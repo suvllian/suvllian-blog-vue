@@ -4,12 +4,11 @@ export default
 	// 格式化文章发布时间
 	formatTime: jsonData => {
 		// 数据库中存储时删除了后面五位0
-		let tempDate = new Date(parseInt(jsonData.aDate) * 100000);
-
-		let year  = tempDate.getFullYear();
-		let month = tempDate.getMonth() + 1;
-		let monthInChinese = "";
-		let day   = tempDate.getDate(); 
+		let tempDate = new Date(parseInt(jsonData.aDate) * 100000),
+		    year  = tempDate.getFullYear(),
+		    month = tempDate.getMonth() + 1,
+		    monthInChinese = "",
+		    day   = tempDate.getDate(); 
 		
 		switch (month) {
 			case 1 :
@@ -74,11 +73,9 @@ export default
 	bookTime: time => {
 		let tempDate = new Date(parseInt(time) * 1000);
 
-		let year  = tempDate.getFullYear();
-		let month = tempDate.getMonth() + 1;
-		let day   = tempDate.getDate(); 
-
-		let returnTime = year + "/" + month + "/" + day;
+		let returnTime = tempDate.getFullYear() + "/" + 
+						(tempDate.getMonth() + 1) + "/" +
+						 tempDate.getDate();
 		return returnTime;
 	}
 }

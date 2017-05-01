@@ -1,11 +1,12 @@
 import api from '../../api';
 import filters from '../../utils/filters.js';
-import { ARTICLE_LIST, ADD_ARTICLE_LIST, GET_ARTICLE_LIST_FAILURE } from './../type';
+import { ARTICLE_LIST, ADD_ARTICLE_LIST, GET_ARTICLE_LIST_FAILURE, LOADING_ARTICLE } from './../type';
 
 
 export default {
 	state: {
 		isMore: false,
+		loading: false,
 		items: [],
 		page: 1
 	},
@@ -19,9 +20,13 @@ export default {
 		[GET_ARTICLE_LIST_FAILURE](state){
 			
 		},
+		[LOADING_ARTICLE](state){
+			state.loading = true;
+		},
 		[ADD_ARTICLE_LIST](state, action) {
 			state.page   = action.page;
 			state.isMore = action.isMore;
+			state.loading = false;
 			state.items  = [...state.items, ...action.articleList];
 		}
 	},
@@ -30,13 +35,15 @@ export default {
 		[ARTICLE_LIST]({ commit }){
 			document.title = "瓦尔登湖畔一棵松";
 			api.getArticleList(1).then(res => {
-		        var response  = res.data;
-		        var resLength = response.length;
-		        var isMore = true;
-			    for (let i=0; i<resLength; i++) {	
-				    response[i] = filters.formatTime(response[i]);
-				    response[i].aImageHome = true;			      
-			    }
+		        var response  = res.data,
+		            resLength = response.length,
+		            isMore = true;
+
+		        response.forEach((item, index) =>{
+		        	item = filters.formatTime(item);
+				    item.aImageHome = true;	
+		        });	
+
 			    if(resLength < 5){
 		        	isMore = false;
 		        }
@@ -49,14 +56,18 @@ export default {
 			});
 		},
 		[ADD_ARTICLE_LIST]({ commit }, page){
+			commit(LOADING_ARTICLE);
+
 			api.getArticleList(page).then(res => {
-		        var response  = res.data;
-		        var resLength = response.length;
-		        var isMore = true;
-			    for (let i=0; i<resLength; i++) {
-			    	response[i] = filters.formatTime(response[i]);	
-			    	response[i].aImageHome = true;	
-			    }
+		        var response  = res.data,
+		            resLength = response.length,
+		            isMore = true;
+		            
+			    response.forEach((item, index) =>{
+		        	item = filters.formatTime(item);
+				    item.aImageHome = true;	
+		        });	
+
 			    if(resLength < 5){
 		        	isMore = false;
 		        }

@@ -1,0 +1,53 @@
+.row::after{
+	clear: both;
+	content: " ";
+    display: table;
+}
+
+.col-md-1-2 {
+	width: 4.16%;
+	float: left;
+	position: relative;
+}
+
+.col-md-1 {
+	width: 8.33%;
+	float: left;
+	position: relative;
+}
+
+.col-md-3 {
+	width: 25%;
+	float: left;
+	position: relative;
+}
+
+.col-md-4 {
+	width: 33.3%;
+	float: left;
+	position: relative;
+}
+
+.col-md-6 {
+	width: 50%;
+	float: left;
+	position: relative;
+}
+
+.col-md-9 {
+	width: 75%;
+	float: left;
+	position: relative;
+}
+
+.col-md-11 {
+	width: 91.3%;
+	float: left;
+	position: relative;
+}
+
+.col-md-11-2 {
+	width: 95.84%;
+	float: left;
+	position: relative;
+}

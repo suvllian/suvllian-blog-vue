@@ -24,7 +24,7 @@ $widthMin:100%;
 		margin: 16px 0;
 		box-shadow:5px 5px 5px 5px #eee;
 
-		.img-bg{
+		.img-book-bg{
 			height: 200px;
 			overflow: hidden;
 			box-shadow:1px 1px 5px #aaa;
@@ -93,26 +93,6 @@ $widthMin:100%;
 			}
 		}
 
-		.book-bottom{
-			clear: both;
-			padding: 8px;
-			background-color: #fff;
-			border-top:1px dotted #ddd;
-			position:relative;
-
-			.bottom-left{
-				width: 50%;
-				display:inline-block;
-			}
-
-			.bottom-right{
-				width: 35%;
-				display:inline-block;
-				float: right;
-			}
-
-		}
-
 		&:nth-child(odd){
 			margin-right: 50px;
 		}
@@ -133,6 +113,15 @@ $widthMin:100%;
 			}
 		}
 	}
+
+	.book-bottom{
+		clear: both;
+		padding: 8px;
+		background-color: #fff;
+		border-top:1px dotted #ddd;
+		position:relative;
+	}
+
 }
 
 @include respond-to(big){

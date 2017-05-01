@@ -10,7 +10,7 @@
 		<div class="img-slide-block">
 			<ul>
 				<li class="inline" v-for="(item,index) in items">
-					<img class="img-slide" :class="{imgActive:item.show}" @mouseover="changeItem(index)" :src="item.src">
+					<img class="img-slide" :class="{imgActive:item.show}" @mouseenter="changeItem(index)" :src="item.src">
 				</li>
 			</ul>
 		</div>
@@ -51,16 +51,17 @@ export default {
 			number:0
 		}
 	},
+
 	methods:{
-		clearAll:function(){
-			for(let i = 0;i < this.items.length;i++){
-				this.items[i].show = false;
-			}
+		clearAll: function(){
+			this.items.forEach((item) => {
+				item.show = false;
+			})
 		},
 
-		slideImg:function(){
-			var that = this;
-			var handle = setInterval(function(){
+		slideImg: function(){
+			var that = this,
+			    handle = setInterval(function(){
 				that.clearAll();
 				that.items[that.number].show = true;
 				if(that.number < (that.items.length - 1)){
@@ -68,10 +69,10 @@ export default {
 				}else{
 					that.number = 0;
 				}
-			},3000);
+			}, 3000);
 		},
 
-		changeItem:function(index){
+		changeItem: function(index){
 			this.clearAll();
 			this.number = index;
 			this.items[this.number].show = true;
