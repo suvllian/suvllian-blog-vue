@@ -2,68 +2,71 @@ $height:38px;
 
 header{
 	background-image: url("https://img.alicdn.com/tps/TB15XU_LpXXXXbEXpXXXXXXXXXX-900-500.png");
-    background-position: center 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    width: 100%;
+  background-position: center 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
 }
 
-footer{
+/* 导航 Start */
+.nav-container {
+	width: 100%;
+	background: rgba(40, 42, 44, 0.6);
+	position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  transition: all 0.5s ease;
+
+	.fa {
+		margin: 0 0.2em;
+	}
+}
+
+.nav {
+  position: relative;
+	height: $height;
+	padding: 0px 15px;
+	margin: 0 auto;
+	transition: 1s all ease;
+}	
+
+.nav-ul {
+  line-height: $height;
+
+  li {
+		float: left;
+		cursor: pointer;
+
+		a {
+			line-height: $height;
+			display: block;
+			font-size: 15px;
+			color: #fff;
+			padding: 0 12px;
+		}
+	}
+}
+
+/* 隐藏导航 */
+.hidden{
+	transform: translateY(-$height);
+}
+
+/* 导航 End */
+
+
+/* 底部 Start */
+.footer{
 	padding: 0.6em 0;
 	width: 100%;
 	height: auto;
 	background-color: rgba(21, 31, 44, 0.1);
-
-	p{
-		color: #818892;
-		padding:0.25em 0;
-	}
 }
 
-.hidden{
-	transform:translateY(-$height);
+.footer-p{
+	color: #818892;
+	padding: 0.25em 0;
 }
-
-.navbar{
-	width: 100%;
-	background: rgba(40, 42, 44, 0.6);
-	position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 3;
-    transition:all 0.5s ease;
-
-    nav{
-	    position: relative;
-		height: $height;
-		padding:0px 15px;
-		margin: 0 auto;
-		transition: 1s all ease;
-
-	    ul{
-		    line-height: $height;
-
-		    li{
-				float: left;
-				list-style: none;
-				cursor: pointer;
-
-				a{
-				    text-decoration: none;
-					outline: none;
-					line-height: $height;
-					display: block;
-					font-size: 15px;
-					font-family: "Lato","PingFang SC","Microsoft YaHei",sans-serif;
-					color: #fff;
-					padding:0 12px;
-				}
-			}
-		}
-	}	
-
-	.fa{
-		margin: 0 0.2em;
-	}
-}
+/* 底部 End */

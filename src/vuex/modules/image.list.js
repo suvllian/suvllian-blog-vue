@@ -58,22 +58,22 @@ export default {
 		[ADD_IMAGE_LIST]({ commit }, page){
 			commit(LOADING_IMAGE);
 			api.getImageData(page).then(res => {
-		        var response  = res.data;
-		        var resLength = response.length;
-		        var isMore = true;
+        var response  = res.data;
+        var resLength = response.length;
+        var isMore = true;
 
-		        for(let i=0; i < resLength; i++){
-	        		response[i].isActive = false;
-	        		response[i].isVote = false;
-	        	}	
-			    if(resLength < 15){
-		        	isMore = false;
-		        }
-		        commit(ADD_IMAGE_LIST,{
-		            imageList: response,
-		            isMore: isMore,
-		            page: page
-		        });
+        for(let i=0; i < resLength; i++){
+      		response[i].isActive = false;
+      		response[i].isVote = false;
+      	}	
+		    if(resLength < 15){
+        	isMore = false;
+        }
+        commit(ADD_IMAGE_LIST,{
+          imageList: response,
+          isMore: isMore,
+          page: page
+        });
 			}).catch(err => {
 				commit(GET_IMAGE_LIST_FAILURE);
 			});

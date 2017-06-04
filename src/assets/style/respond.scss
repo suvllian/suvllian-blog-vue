@@ -5,7 +5,7 @@
 @include respond-big-element('.img-slide', height, 70px, 52px, 36px);
 
 // header nav
-@include respond-element('.navbar nav', width, 1170px, 500px, 360px);
+@include respond-element('.nav-container .nav', width, 1170px, auto, auto);
 @include respond-element(header, height, 600px, 400px, 280px);
 
 // prenext

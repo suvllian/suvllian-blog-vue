@@ -15,7 +15,7 @@ export default {
 			effect.toTop();
 
 			// 显示导航栏
-			this.$parent.$children[0].$refs.header.className = "navbar";
+			this.$parent.$children[0].$refs.header.className = "nav-container";
 		}
 	}
 }

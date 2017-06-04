@@ -20,11 +20,11 @@ export default {
 		[GET_ABOUT_INFO]({ commit }, id){
 			document.title = "关于";
 			api.getAbout().then(res => {
-		        var data = filters.formatTime(res.data[0]);
-		        data.aClassName = "Wow";
-			    commit(GET_ABOUT_INFO,{
-		            article: data
-		        });
+        var data = filters.formatTime(res.data[0]);
+        data.aClassName = "Wow";
+		    commit(GET_ABOUT_INFO,{
+          article: data
+        });
 			}).catch(err =>{
 				commit(GET_ABOUT_INFO_FAILURE);
 			});

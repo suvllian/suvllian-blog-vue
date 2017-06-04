@@ -25,6 +25,6 @@ export default{
 	methods:{ ...mapActions([GET_ABOUT_INFO]) },
     created(){
 		this.GET_ABOUT_INFO();
-    }
+  }
 }
 </script>

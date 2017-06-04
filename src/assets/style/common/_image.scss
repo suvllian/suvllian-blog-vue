@@ -8,7 +8,7 @@
 }
 
 .img-small{
-  @include img-max-size(300px, 5px, 100%);
+  @include img-max-size(300px, 0px, 100%);
 }
 
 // 图片居中

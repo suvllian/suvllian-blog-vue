@@ -7,7 +7,7 @@
 			<span v-if="!isMore">-- THE END --</span>
 		<span v-if="isMore && loading">大力加载中...</span>
 		</h3>
-	</section>
+	</div>
 </template>
 
 <script>

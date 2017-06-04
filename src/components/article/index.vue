@@ -30,7 +30,7 @@ export default{
       this.ARTICLE_CONTNET(id);
       this.GET_PRENEXT_LIST(id);
       effect.toTop();
-      this.$parent.$children[0].$refs.header.className = "navbar";
+      this.$parent.$children[0].$refs.header.className = "nav-container";
     }
   },
 

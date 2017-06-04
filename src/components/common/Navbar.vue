@@ -1,9 +1,9 @@
 <template>
-	<div class="navbar" ref="header">
-		<nav>
+	<div class="nav-container" ref="header">
+		<nav class="nav">
 			<ul class="nav-ul">
-				<li v-for="item in liItems" v-bind:class="{active:item.isActive}" @click="toTop">
-					<router-link v-bind:to="item.src"><i :class="item.class"></i>{{item.title}}</router-link>
+				<li v-for="item in liItems" :class="{active: item.isActive}" @click="toTop">
+					<router-link :to="item.src"><i :class="item.class"></i>{{item.title}}</router-link>
 				</li>
 			</ul>
 		</nav>
@@ -17,11 +17,11 @@ export default{
 	data(){
 		return{
 			liItems:[
-				{title:"首页",src:'/', class:"fa fa-home", isActive:true},
-				// {title:"分类",src:'/', class:"fa fa-folder", isActive:true},
-				{title:"图集",src:'/camera', class:"fa fa-image",isActive:false},
-				{title:"读书",src:'/book', class:"fa fa-book",isActive:false},
-				{title:"关于",src:'/about', class:"fa fa-user",isActive:false}
+				{title:"首页",src:'/', class:"fa fa-home", isActive: true},
+				{title:"实验室",src:'/lab', class:"fa fa-folder", isActive: false},
+				{title:"图集",src:'/camera', class:"fa fa-image",isActive: false},
+				{title:"读书",src:'/book', class:"fa fa-book",isActive: false},
+				{title:"关于",src:'/about', class:"fa fa-user",isActive: false}
 			]
 		}
 	},
@@ -32,21 +32,30 @@ export default{
 	},
 
 	mounted(){
-		var $this = this;
-		var header = $this.$refs.header;
+		let header = this.$refs.header;
 
-		var slideNav = (event) => {
+    // 根据相应的操作改变class
+		let changeClass = (newClass) => {
+			if (header.className === newClass) {
+				return
+			} else {
+				header.className = newClass;
+			}
+		}
+
+		let slideNav = (event) => {
 			let top = document.body.scrollTop || window.scroolY || document.documentElement.scrollTop;
 			let direction = event.wheelDelta || -event.detail;
+			console.log(top);
 			if (top > 300){
 				// 向下滑
 				if (direction < 0){
-					header.className = "hidden navbar";
+					changeClass("hidden nav-container")
 				} else{
-					header.className = "navbar";
+					changeClass("nav-container")
 				}
 			} else{
-				header.className = "navbar";
+				changeClass("nav-container")
 			}
 		}
 
