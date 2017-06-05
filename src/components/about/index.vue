@@ -1,14 +1,17 @@
 <template>
-	<div class="article-list">
-		<article class="article">
-			<Ahead :article-head="article"></Ahead>
-			<div class="article-content">
-				<div class="img-center">
-					<img class="img-big" :src="article.aImage">
+	<div>
+		<header></header>
+		<div class="article-list">
+			<article class="article">
+				<Ahead :article-head="article"></Ahead>
+				<div class="article-content">
+					<div class="img-center">
+						<img class="img-big" :src="article.aImage">
+					</div>
 				</div>
-			</div>
-			<div class="article-content about" v-html="article.aContent"></div>
-		</article>
+				<div class="article-content about" v-html="article.aContent"></div>
+			</article>
+		</div>
 	</div>
 </template>
 

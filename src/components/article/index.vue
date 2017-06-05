@@ -57,4 +57,5 @@ export default{
   @import "./../../assets/style/camera.scss";
   @import "./../../assets/style/prenext.scss";
   @import "./../../assets/style/music.scss";
+  @import "./../../assets/style/lab.scss";
 </style>

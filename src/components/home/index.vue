@@ -1,11 +1,14 @@
 <template>
-	<div class="article-list">
-		<section class="article" v-for="article in articleList">
-			<Head :article="article"></Head>
-			<Link :article="article"></Link>
-		</section>
+	<div>
+		<header></header>
+		<div class="article-list">
+			<section class="article" v-for="article in articleList">
+				<Head :article="article"></Head>
+				<Link :article="article"></Link>
+			</section>
 
-		<Load></Load>
+			<Load></Load>
+		</div>
 	</div>
 </template>
 

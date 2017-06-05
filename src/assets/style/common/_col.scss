@@ -1,7 +1,7 @@
 .row::after{
 	clear: both;
 	content: " ";
-    display: table;
+   display: table;
 }
 
 .col-md-1-2 {
@@ -26,7 +26,10 @@
 	width: 33.3%;
 	float: left;
 	position: relative;
+	padding: 10px; 
 }
+
+@include respond-element('.col-md-4', width, 33.3%, 50%, 100%);
 
 .col-md-6 {
 	width: 50%;

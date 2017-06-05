@@ -1,14 +1,17 @@
 <template>
-	<div class="book-container">
-		<slider></slider>
+	<div>
+		<header></header>
+		<div class="book-container">
+			<slider></slider>
 
-		<Book :book-list="bookList"></Book>	
-		
-		<h3 class="text-center">
-			<span class="pointer" @click="ADD_BOOK_LIST(++page)" v-if="isMore && !loading">查看更多</span>
-			<span v-if="!isMore">-- THE END --</span>
-		<span v-if="isMore && loading">大力加载中...</span>
-		</h3>
+			<Book :book-list="bookList"></Book>	
+			
+			<h3 class="text-center">
+				<span class="pointer" @click="ADD_BOOK_LIST(++page)" v-if="isMore && !loading">查看更多</span>
+				<span v-if="!isMore">-- THE END --</span>
+			<span v-if="isMore && loading">大力加载中...</span>
+			</h3>
+		</div>
 	</div>
 </template>
 

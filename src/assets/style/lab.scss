@@ -1,0 +1,74 @@
+.lab-container {
+	height: auto;
+	margin: 80px auto 20px;
+}
+
+.lab-full-bg {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background-image: url("http://suvllian.com/static/images/lab/bg.jpg");
+}
+
+.lab-main {
+	position: relative;
+	z-index: 2;
+	opacity: 0.92;
+}
+
+.lab-box {
+	padding: 20px;
+	margin: 0 0 50px;
+	background-color: #fff;
+	height: 600px;
+	overflow: hidden;
+}
+
+.lab-time {
+	color: #999;
+  font-size: 12px;
+}
+
+.lab-img {
+		&:hover {
+			img { 
+				transform: translateY(-8px); 
+			}
+		}
+
+		img {
+			width: 100%;
+			transition: all 0.5s ease-out 0s;
+		}
+	}
+
+.lab-link {
+	color: #111;
+
+	&:hover {
+		p { 
+			color: #000; 
+		}
+	}
+
+	p {
+		font-size: 21px;
+    letter-spacing: 1px;
+    line-height: 28px;
+    margin-bottom: 20px;
+    margin-top: 12px;
+    transition: all 0.3s ease 0s;
+	}
+}
+
+.lab-brief {
+	color: #666;
+  font-size: 13px;
+  line-height: 22px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}

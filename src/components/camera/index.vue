@@ -1,12 +1,15 @@
 <template>
-	<div class="camrea-container">
-		<Camera :image-list="imageList"></Camera>
+	<div>
+		<header></header>
+		<div class="camrea-container">
+			<Camera :image-list="imageList"></Camera>
 
-		<h3 class="text-center">
-			<span class="pointer" @click="ADD_IMAGE_LIST(++page)" v-if="isMore && !loading">查看更多</span>
-			<span v-if="!isMore">-- THE END --</span>
-		<span v-if="isMore && loading">大力加载中...</span>
-		</h3>
+			<h3 class="text-center">
+				<span class="pointer" @click="ADD_IMAGE_LIST(++page)" v-if="isMore && !loading">查看更多</span>
+				<span v-if="!isMore">-- THE END --</span>
+			<span v-if="isMore && loading">大力加载中...</span>
+			</h3>
+		</div>
 	</div>
 </template>
 

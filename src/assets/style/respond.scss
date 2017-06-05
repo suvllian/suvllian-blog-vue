@@ -7,6 +7,8 @@
 // header nav
 @include respond-element('.nav-container .nav', width, 1170px, auto, auto);
 @include respond-element(header, height, 600px, 400px, 280px);
+@include respond-element('.lab-container', width, 90%, 90%, 100%);
 
 // prenext
 @include respond-element('.prenext a', font-size, 16px, 16px, 14px);
+@include respond-element('.nav-container .fa', display, inline-block, inline-block, none);

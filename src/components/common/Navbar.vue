@@ -46,7 +46,7 @@ export default{
 		let slideNav = (event) => {
 			let top = document.body.scrollTop || window.scroolY || document.documentElement.scrollTop;
 			let direction = event.wheelDelta || -event.detail;
-			console.log(top);
+
 			if (top > 300){
 				// 向下滑
 				if (direction < 0){
