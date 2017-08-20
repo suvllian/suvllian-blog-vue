@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <Navbar></Navbar>
+    <Navbar />
     <router-view></router-view>
-    <Foot></Foot>
-    <toTop></toTop>
+    <Footer />
+    <toTop />
   </div>
 </template>
 
 <script>
-import Navbar from './components/common/navbar.vue'
-import Foot from './components/common/foot.vue'
-import toTop from './components/common/totop.vue'
-import Music from './components/common/music.vue'
+import Navbar from './pages/components/navbar.vue'
+import Footer from './pages/components/footer.vue'
+import toTop from './pages/components/totop.vue'
+import Music from './pages/components/music.vue'
 
 export default {
   name: 'app',
-  components: { Navbar, Foot, toTop, Music }
+  components: { Navbar, Footer, toTop, Music }
 }
 </script>
 

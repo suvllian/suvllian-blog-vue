@@ -1,11 +1,11 @@
 import VueRouter from 'vue-router'
 
-import Index from './components/home/index.vue'
-import Camera from './components/camera/index.vue'
-import Book from './components/Book/index.vue'
-import Article from './components/article/index.vue'
-import About from './components/about/index.vue'
-import Lab from './components/lab/index.vue'
+import Index from './pages/home/index.vue'
+import Camera from './pages/camera/index.vue'
+import Book from './pages/Book/index.vue'
+import Article from './pages/article/index.vue'
+import About from './pages/about/index.vue'
+import Lab from './pages/lab/index.vue'
 
 const router = new VueRouter({
   history: true,

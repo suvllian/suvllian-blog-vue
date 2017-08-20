@@ -3,20 +3,20 @@
 		<article class="article">
       <Head :article="article"></Head>
 			<div class="article-content" v-html="article.aContent"></div>
-      <Prenext :prev-article="prev" :next-article="next"></Prenext>
+      <PreNext :prev-article="prev" :next-article="next"></Prenext>
 		</article>
 	</div>
 </template>
 
 <script>
-import Prenext from './prenext.vue'
-import Head from './commonhead.vue'
+import PreNext from './prenext.vue'
+import ArticleHeader from './../components/article-header.vue'
 import { mapActions, mapState} from 'vuex'
 import { ARTICLE_CONTNET, GET_PRENEXT_LIST } from './../../vuex/type.js'
 import effect from './../../utils/effect.js'
 
 export default{
-	components: { Prenext, Head},
+	components: { PreNext, ArticleHeader},
 	computed: mapState({ 
 		article: store => store.articleContent.article,
 		id: store => store.articleContent.id,

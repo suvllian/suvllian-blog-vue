@@ -1,5 +1,5 @@
 {
-  "name": "vue-vote",
+  "name": "vue-blog",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "宋青松 <suvlliansong@163.com>",
@@ -9,6 +9,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "eslint": "^4.4.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "node-css": "^0.1.0",
     "sass-loader": "^4.1.1",
