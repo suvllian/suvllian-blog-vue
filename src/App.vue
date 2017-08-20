@@ -20,26 +20,17 @@ export default {
 </script>
 
 <style lang="scss">
-	*{
-		padding: 0;
-		margin: 0;
-		text-decoration: none;
-    box-sizing: border-box;
-	}	
-
-	a {
-		outline: none;
-	}
-	body{
-		background: #f9f9f9 none repeat scroll 0 0;
-		color: #89867e;
-		font-size: 16px;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,PingFang SC,Source Han Sans CN,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
-	}
-	li{
-		list-style: none;
-	}
-	footer {
-		clear: both;
-	}
+	@import "./assets/style/_mixins.scss";
+  @import "./assets/style/_common.scss";
+  @import "./assets/style/respond.scss";
+  @import "./assets/style/article.scss";
+  @import "./assets/style/totop.scss";
+  @import "./assets/style/slider.scss";
+  @import "./assets/style/book.scss";
+  @import "./assets/style/header.scss";
+  @import "./assets/style/camera.scss";
+  @import "./assets/style/prenext.scss";
+  @import "./assets/style/music.scss";
+  @import "./assets/style/lab.scss";
+  @import "./assets/style/reset.scss";
 </style>

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
 import articleList from './modules/article.list'
 import articleContent from './modules/article.content'
 import articlePreNext from './modules/article.prenext'

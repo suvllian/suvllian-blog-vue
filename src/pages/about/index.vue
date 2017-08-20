@@ -24,8 +24,10 @@ export default{
 	computed: mapState({ 
 		article: store => store.aboutInfo.article,
 	}),
-	methods:{ ...mapActions([GET_ABOUT_INFO]) },
-    created(){
+	methods: { 
+		...mapActions([GET_ABOUT_INFO]) 
+	},
+  created(){
 		this.GET_ABOUT_INFO();
   }
 }

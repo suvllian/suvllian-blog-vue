@@ -43,13 +43,11 @@ export default{
 			music:null
 		}
 	},
-
 	methods:{
 		
 	},
-
 	mounted(){
 		this.music = new Music();
-    }
+  }
 }
 </script>

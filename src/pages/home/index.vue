@@ -34,10 +34,10 @@ export default{
 		isMore: store => store.articleList.isMore,
 		loading: store => store.articleList.loading,
 	}),
-	methods:{
+	methods: {
 		...mapActions([ARTICLE_LIST, ADD_ARTICLE_LIST]),
 	},
-	created(){
+	created() {
 		this.ARTICLE_LIST();
   }
 }

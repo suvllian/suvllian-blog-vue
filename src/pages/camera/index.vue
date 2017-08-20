@@ -19,18 +19,18 @@ import { mapActions, mapState} from 'vuex'
 import { GET_IMAGE_LIST, ADD_IMAGE_LIST } from './../../vuex/type.js'
 
 export default{
-	components:{ Camera },
+	components: { Camera },
 	computed: mapState({ 
 		imageList: store => store.imageList.items,
 		page: store => store.imageList.page,
 		isMore: store => store.imageList.isMore, 
 		loading: store => store.bookList.loading,
 	}),
-	methods:{
+	methods: {
 		...mapActions([GET_IMAGE_LIST, ADD_IMAGE_LIST]),
 	},
-	created(){
+	created() {
 		this.GET_IMAGE_LIST();
-    }
+  }
 }
 </script>

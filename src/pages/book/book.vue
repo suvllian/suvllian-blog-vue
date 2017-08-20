@@ -41,10 +41,9 @@ import { mapActions} from 'vuex'
 
 export default {
 	props:["bookList"],
-
 	methods:{
 		...mapActions([VOTE_BOOK]),
-		dealVote:function(item){
+		dealVote: function(item) {
 			item.isVote = !item.isVote;
 			if(item.isVote){
 				item.iLike++;

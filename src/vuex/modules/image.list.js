@@ -35,21 +35,22 @@ export default {
 		[GET_IMAGE_LIST]({ commit }){
 			document.title = "图集";
 			api.getImageData(1).then(res => {
-		        var response  = res.data;
-		        var resLength = response.length;
-		        var isMore = true;
+        var response  = res.data,
+          resLength = response.length,
+          isMore = true;
 
-		        for(let i=0; i < resLength; i++){
-	        		response[i].isActive = false;
-	        		response[i].isVote = false;
-	        	}	
-			    if(resLength < 15){
-		        	isMore = false;
-		        }
-		        commit(GET_IMAGE_LIST,{
-		            imageList: response,
-		            isMore: isMore
-		        });
+        response.forEach(item => {
+        	item.isActive = false;
+      		item.isVote = false;
+        })
+
+	   	  if(resLength < 15){
+        	isMore = false;
+        }
+        commit(GET_IMAGE_LIST,{
+          imageList: response,
+          isMore
+        });
 			}).catch(err => {
 				commit(GET_IMAGE_LIST_FAILURE);
 			});
@@ -58,21 +59,23 @@ export default {
 		[ADD_IMAGE_LIST]({ commit }, page){
 			commit(LOADING_IMAGE);
 			api.getImageData(page).then(res => {
-        var response  = res.data;
-        var resLength = response.length;
-        var isMore = true;
+        let response  = res.data,
+          resLength = response.length,
+          isMore = true;
 
-        for(let i=0; i < resLength; i++){
-      		response[i].isActive = false;
-      		response[i].isVote = false;
-      	}	
+        response.forEach(item => {
+        	item.isActive = false;
+      		item.isVote = false;
+        })
+
 		    if(resLength < 15){
         	isMore = false;
         }
+
         commit(ADD_IMAGE_LIST,{
           imageList: response,
-          isMore: isMore,
-          page: page
+          isMore,
+          page
         });
 			}).catch(err => {
 				commit(GET_IMAGE_LIST_FAILURE);

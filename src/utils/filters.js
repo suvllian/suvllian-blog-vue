@@ -2,13 +2,13 @@
 export default
 {
 	// 格式化文章发布时间
-	formatTime: jsonData => {
+	formatTime: time => {
 		// 数据库中存储时删除了后面五位0
-		let tempDate = new Date(parseInt(jsonData.aDate) * 100000),
-		    year  = tempDate.getFullYear(),
-		    month = tempDate.getMonth() + 1,
-		    monthInChinese = "",
-		    day   = tempDate.getDate(); 
+		let tempDate = new Date(parseInt(time) * 100000),
+	    year = tempDate.getFullYear(),
+	    month = tempDate.getMonth() + 1,
+	    monthInChinese = "",
+	    day = tempDate.getDate(); 
 		
 		switch (month) {
 			case 1 :
@@ -60,13 +60,14 @@ export default
 				monthInChinese = "十二月";
 				break;
 		}
-
-		jsonData.year = year;
-		jsonData.month = monthInChinese;
-		jsonData.day = day;
-		jsonData.time = (year + "/" + month + "/" + day).trim();
 		
-		return jsonData;
+		return {
+      year,
+      month,
+      monthInChinese,
+      day,
+      time: `${year}/${month}/${day}`.trim() 
+		}
 	},
 
 	// 格式化书籍发布时间

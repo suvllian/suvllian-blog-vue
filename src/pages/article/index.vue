@@ -1,7 +1,7 @@
 <template>
 	<div class="article-list">
 		<article class="article">
-      <Head :article="article"></Head>
+      <ArticleHeader :article="article"></ArticleHeader>
 			<div class="article-content" v-html="article.aContent"></div>
       <PreNext :prev-article="prev" :next-article="next"></Prenext>
 		</article>
@@ -23,9 +23,9 @@ export default{
     prev: store => store.articlePreNext.prev,
     next: store => store.articlePreNext.next,
 	}),
-
-	methods:{ ...mapActions([ARTICLE_CONTNET, GET_PRENEXT_LIST]),
-    getData(){
+	methods:{ 
+    ...mapActions([ARTICLE_CONTNET, GET_PRENEXT_LIST]),
+    getData() {
       let id = this.$route.query.id;
       this.ARTICLE_CONTNET(id);
       this.GET_PRENEXT_LIST(id);
@@ -33,29 +33,11 @@ export default{
       this.$parent.$children[0].$refs.header.className = "nav-container";
     }
   },
-
   watch:{
     '$route':'getData'
   },
-
 	created(){
 		this.getData();
   }
 }
 </script>
-
-<style lang="scss">
-  @import "./../../assets/style/_mixins.scss";
-  @import "./../../assets/style/_common.scss";
-
-  @import "./../../assets/style/respond.scss";
-  @import "./../../assets/style/article.scss";
-  @import "./../../assets/style/totop.scss";
-  @import "./../../assets/style/slider.scss";
-  @import "./../../assets/style/book.scss";
-  @import "./../../assets/style/header.scss";
-  @import "./../../assets/style/camera.scss";
-  @import "./../../assets/style/prenext.scss";
-  @import "./../../assets/style/music.scss";
-  @import "./../../assets/style/lab.scss";
-</style>

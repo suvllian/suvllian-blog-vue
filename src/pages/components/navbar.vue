@@ -30,7 +30,6 @@ export default{
 			effect.toTop();
 		}
 	},
-
 	mounted(){
 		let header = this.$refs.header;
 

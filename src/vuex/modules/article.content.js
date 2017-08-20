@@ -21,10 +21,11 @@ export default {
 	actions: {
 		[ARTICLE_CONTNET]({ commit }, id){
 			api.getArticleContent(id).then(res => {
-        var response = filters.formatTime(res.data[0]);
-        document.title = response.aTopic;
+				let articleInfo = res.data[0]
+        let formatTime = filters.formatTime(articleInfo.aDate);
+        document.title = articleInfo.aTopic;
 		    commit(ARTICLE_CONTNET,{
-          article: response,
+          article: { ...articleInfo, ...formatTime},
           id: (id - 1)
         });
 			}).catch(err => {

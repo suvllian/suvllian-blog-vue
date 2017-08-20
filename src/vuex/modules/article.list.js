@@ -2,7 +2,6 @@ import api from '../../api';
 import filters from '../../utils/filters.js';
 import { ARTICLE_LIST, ADD_ARTICLE_LIST, GET_ARTICLE_LIST_FAILURE, LOADING_ARTICLE } from './../type';
 
-
 export default {
 	state: {
 		isMore: false,
@@ -10,7 +9,6 @@ export default {
 		items: [],
 		page: 1
 	},
-
 	mutations: {
 		[ARTICLE_LIST](state, action) {
 			state.isMore = action.isMore;
@@ -30,52 +28,52 @@ export default {
 			state.items  = [...state.items, ...action.articleList];
 		}
 	},
-
 	actions: {
 		[ARTICLE_LIST]({ commit }){
 			document.title = "瓦尔登湖畔一棵松";
 			api.getArticleList(1).then(res => {
-		        var response  = res.data,
-		            resLength = response.length,
-		            isMore = true;
+        let response  = res.data,
+            resLength = response.length,
+            isMore = true;
+        let articleList = response.map(item =>{
+        	let formatTime = filters.formatTime(item.aDate);
+		      item.aImageHome = true;	
+		      return {...item, ...formatTime} 
+        });	
 
-		        response.forEach((item, index) =>{
-		        	item = filters.formatTime(item);
-				    item.aImageHome = true;	
-		        });	
+	    	if(resLength < 5){
+        	isMore = false;
+        }
 
-			    if(resLength < 5){
-		        	isMore = false;
-		        }
-			    commit(ARTICLE_LIST,{
-		            articleList: response,
-		            isMore: isMore
-		        });
+		    commit(ARTICLE_LIST,{
+          articleList,
+          isMore
+        });
 			}).catch(err => {
 				commit(GET_ARTICLE_LIST_FAILURE);
 			});
 		},
 		[ADD_ARTICLE_LIST]({ commit }, page){
 			commit(LOADING_ARTICLE);
-
 			api.getArticleList(page).then(res => {
-		        var response  = res.data,
-		            resLength = response.length,
-		            isMore = true;
-		            
-			    response.forEach((item, index) =>{
-		        	item = filters.formatTime(item);
-				    item.aImageHome = true;	
-		        });	
+        let response  = res.data,
+          resLength = response.length,
+          isMore = true;
+        let articleList = response.map(item =>{
+        	let formatTime = filters.formatTime(item.aDate);
+		      item.aImageHome = true;	
+		      return {...item, ...formatTime} 
+        });	
+		         
+		    if(resLength < 5){
+        	isMore = false;
+        }
 
-			    if(resLength < 5){
-		        	isMore = false;
-		        }
-			    commit(ADD_ARTICLE_LIST,{
-		            articleList: response,
-		            isMore: isMore,
-		            page:page
-		        });
+		    commit(ADD_ARTICLE_LIST,{
+          articleList,
+          isMore,
+          page
+        });
 			}).catch(err => {
 				commit(GET_ARTICLE_LIST_FAILURE);
 			});

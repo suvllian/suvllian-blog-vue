@@ -25,13 +25,12 @@ import { mapActions} from 'vuex'
 
 export default {
 	props:["imageList"],
-
 	methods:{
 		...mapActions([VOTE_IMAGE]),
-		enlargeImage:function(item){
+		enlargeImage: function(item) {
 			item.isActive = !item.isActive;
 		},
-		dealVote:function(item){
+		dealVote: function(item) {
 			item.isVote = !item.isVote;
 			if(item.isVote){
 				item.iLike++;
@@ -41,6 +40,6 @@ export default {
 				this.VOTE_IMAGE({id:item.iId,way:"sub"});
 			}
 		}
-	},
+	}
 }
 </script>

@@ -31,28 +31,28 @@ export default {
 			state.loading = true;
 		}
 	},
-
 	actions: {
 		[GET_BOOK_LIST]({ commit }){
 			document.title = "读书";
 			api.getBookData(1).then(res => {
-		        var response  = res.data,
-		            resLength = response.length,
-	        	    isMore = true;
+        var response  = res.data,
+          resLength = response.length,
+    	    isMore = true;
 
-	        	response.forEach((item, index) => {
-	        		item.isActive = false;
-	        		item.isVote   = false;
-	        		item.time     = filters.bookTime(item.iDate);
-	        	});
+      	response.forEach((item, index) => {
+      		item.isActive = false;
+      		item.isVote   = false;
+      		item.time     = filters.bookTime(item.iDate);
+      	});
 	
-			    if(resLength < 10){
-		        	isMore = false;
-		        }
-		        commit(GET_BOOK_LIST,{
-		            bookList: response,
-		            isMore: isMore
-		        });
+		    if(resLength < 10){
+        	isMore = false;
+        }
+
+        commit(GET_BOOK_LIST,{
+          bookList: response,
+          isMore
+        });
 			}).catch(err => {
 				commit(GET_BOOK_LIST_FAILURE);
 			});
@@ -61,29 +61,28 @@ export default {
 		[ADD_BOOK_LIST]({ commit }, page){
 			commit(LOADING_BOOK);
 			api.getBookData(page).then(res => {
-		        var response  = res.data, 
-		            resLength = response.length,
-	        	    isMore = true;
+        var response  = res.data, 
+          resLength = response.length,
+    	    isMore = true;
 
-		        response.forEach((item, index) => {
-	        		item.isActive = false;
-	        		item.isVote   = false;
-	        		item.time     = filters.bookTime(item.iDate);
-	        	});
+        response.forEach((item, index) => {
+      		item.isActive = false;
+      		item.isVote   = false;
+      		item.time     = filters.bookTime(item.iDate);
+      	});
 
-			    if(resLength < 10){
-		        	isMore = false;
-		        }
-		        commit(ADD_BOOK_LIST,{
-		            bookList: response,
-		            isMore: isMore,
-		            page: page
-		        });
+		    if(resLength < 10){
+	      	isMore = false;
+	      }
+        commit(ADD_BOOK_LIST,{
+          bookList: response,
+          isMore,
+          page
+        });
 			}).catch(err => {
 				commit(GET_BOOK_LIST_FAILURE);
-			});;
+			})
 		},
-		
 		[VOTE_BOOK]({ commit }, action){
 			api.voteBook(action.id,action.way);
 		}

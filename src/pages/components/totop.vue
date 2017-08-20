@@ -9,8 +9,9 @@
 
 <script>
 import effect from './../../utils/effect.js'
+
 export default {
-	methods:{
+	methods: {
 		backToTop(){
 			effect.toTop();
 
