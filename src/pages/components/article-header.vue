@@ -8,7 +8,7 @@
 		</div>
   	<div class="artcile-head">
 			<h2 class="title text-center">
-				<router-link :to="{path:'article',query:{id:article.aId}}">{{article.aTopic}}</router-link>
+				<router-link :to="{path:'article', query:{id:article.aId}}">{{article.aTopic}}</router-link>
 			</h2>
 			<div>
 				<p class="article-meta text-center">

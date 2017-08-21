@@ -1,5 +1,47 @@
 $Color:#00adb5;
 
+.article-page {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  transition: 1s all ease;
+  .article-list {
+    flex: 1;
+    margin: 0 20px; }
+  .article-aside {
+    flex: 0 0 320px; }
+}
+
+.hot-article-list {
+  height: 270px;
+  width: 100%;
+  padding: 20px 0;
+  margin-bottom: 30px;
+  box-shadow: -2px 2px 2px #eee;
+  background-color: #fff;
+  border-radius: 5px;
+  .label {
+    position: relative;
+    left: -14px;
+    margin-bottom: 20px; }
+  .label-span {
+    padding: 6px 12px 6px 26px;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 1px 1px 5px #333;
+    background-color: $Color;
+    color: #fff;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0; 
+      top: 30px;
+      border-left: 14px solid transparent;
+      border-top: 14px solid #333; }
+  }
+  .hot-article {
+    padding: 6px 20px;}
+}
+
 .article{
   padding: 10px 30px;
   margin: 36px auto;
@@ -74,25 +116,19 @@ $Color:#00adb5;
 }
 
 // 文章内容
-.article-content{
+.article-content {
   clear: both;
-
   // 下划线
-  .line{
+  .line {
     margin: 5px 0;
-    border-top:1px dashed #bbb;
-  }
-
+    border-top:1px dashed #bbb; }
   // 文字样式
-  %p{
+  %p {
     line-height: 2;  
-    letter-spacing: 1px;
-  }
-
+    letter-spacing: 1px; }
   p{
     @extend %p;
-    margin:0 0 25px;
-  }
+    margin:0 0 25px; }
 
   $leftIndent:48px;
 
@@ -226,42 +262,27 @@ $Color:#00adb5;
   }
 }
 
-.article-list{
-    width: 70%;
-    margin: 0 auto;
-    font-family: PingFang TC,Avenir Next,Helvetica,Arial,Hiragino Sans GB,Microsoft YaHei,sans-serif;
-    clear: both;
-    transition: 1s all ease;
-}
-
-
-@include respond-to(medium){
-  .article-list{
+@include respond-to(medium) {
+  .article-page {
     width: 100%;
-
-    .roate-date{
-      display: none;
-    }
-
-      .article-content{
-        pre{
-          width: 100%;
-          left: 0;
-        }
-
-        $leftIndent:30px;
-        // 无序列表
-        ol,ul{
-          padding:6px 0px 6px $leftIndent;
-        }
-
-        // 左边框块
-        .border-left{
-          p{
-            padding-left:$leftIndent;
-          }
-        }
-
-      } 
+    flex-direction: column;
+    .article-aside {
+      margin: 0 20px; }
+    .roate-date {
+      display: none; }
+    .article-content{
+      pre {
+        width: 100%;
+        left: 0; }
+      $leftIndent:30px;
+      // 无序列表
+      ol,ul {
+        padding:6px 0px 6px $leftIndent; }
+      // 左边框块
+      .border-left{
+        p {
+          padding-left:$leftIndent; }
+      }
+    } 
   }
 }

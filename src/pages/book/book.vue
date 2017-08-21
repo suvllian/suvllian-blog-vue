@@ -1,19 +1,16 @@
 <template>
-	<article class="book">
-		<section v-for="item in bookList" class="section-book">
+	<article class="book-list">
+		<section v-for="item in bookList" class="book-section">
 			<a @click.prevent="" href="">
-				<div class="img-book-bg">
-					<img :src="item.iBgLink" :alt="item.iName">
+				<div class="book-bg">
+					<img :src="item.iBgLink" :alt="item.iName" class="book-bg-img">
 				</div>
-
-				<div class="content">
-					<div class="img-book">
-						<img :src="item.iImage" :alt="item.iName">
-					</div>
-					<span class="class-book">{{item.cClass}}</span>
-					<div class="intro-book">
+				<div class="book-section-content">
+					<img :src="item.iImage" :alt="item.iName" class="book-img">
+					<span class="book-class">{{item.cClass}}</span>
+					<div class="book-intro">
 						<h4 class="color-black">{{item.iName}}</h4>
-						<p class="p-book">{{item.iContent}}</p>	
+						<p class="book-word">{{item.iContent}}</p>	
 					</div>
 				</div>
 				<div class="book-bottom">
@@ -26,7 +23,7 @@
 							</span>	
 						</div>
 						<div class="col-md-6 text-right">
-							<span>{{ item.time }}</span>
+							<span>{{item.time}}</span>
 						</div>
 					</div>
 				</div>

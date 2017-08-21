@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<header></header>
 		<div class="camrea-container">
 			<Camera :image-list="imageList"></Camera>
 

@@ -1,165 +1,111 @@
-$widthMax:900px;
-$widthMedium:475px;
-$widthMin:100%;
+$widthMax: 900px;
+$widthMedium: 475px;
+$widthMin: 100%;
 
-.book-container{
-	background-color: #f7f1ed;
-}
-
-.book{
-	height: auto;
-	width: $widthMax;
-	margin:0em auto;
-	padding:1em 0;
+.book-container {
+	background-color: #f7f1ed; }
+.book-list {
 	position:relative;
+	width: $widthMax;
+	height: auto;
+	margin: 0em auto;
+	padding: 1em 0;	
 	clear: both;
-
-	span{
-		color:#aaa;
-	}
-
-	.section-book{
-		width: ($widthMax - 50px) / 2;
+	.book-section {
 		display: inline-block;
+		width: ($widthMax - 50px) / 2;		
 		margin: 16px 0;
-		box-shadow:5px 5px 5px 5px #eee;
-
-		.img-book-bg{
-			height: 200px;
+		box-shadow: 5px 5px 5px #eee;
+		.book-bg {
 			overflow: hidden;
-			box-shadow:1px 1px 5px #aaa;
-
-			img{
+			height: 200px;
+			box-shadow: 1px 1px 5px #aaa;
+			.book-bg-img {
 				width: 100%;
 				height: 100%;
-				transition: 1s all ease;
-			}
+				transition: 1s all ease; }
 		}
-
-		.content{
+		.book-section-content {
+			position: relative;
 			height: auto;
-			padding-bottom:1em;
+			padding-bottom: 1em;
 			background-color: #fff;
-			position:relative;
-
-			.img-book{
-				position:absolute;
-				bottom:36px;
-				left:25px;
-				height: 140px;
-
-				img{
-					max-height: 140px;
-					box-shadow:1px 5px 5px  #aaa;
-					transition: 1s all ease;
-				}
-			}
-
-			.class-book{
-				padding: 3px 12px 3px 8px;
+			.book-img {
 				position: absolute;
+				bottom: 36px;
+				left: 25px;
+				height: 140px;
+				max-height: 140px;
+				box-shadow:1px 5px 5px  #aaa;
+				transition: 1s all ease; }
+			.book-class {
+				position: absolute;
+				top: -13px;
 				right: -8px;
-			    top: -13px;
-			    line-height: 22px; 
-			    background-color: #e76648;
-			    color: #fff;
-				box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+				padding: 3px 12px 3px 8px;
 				border-radius:4px 0 0 4px;
-
-
+				box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+		    line-height: 22px; 
+		    background-color: #e76648;
+		    color: #fff;
 			    &:after {
 					content: "";
-					position:absolute;
-					top:28px;
+					position: absolute;
+					top: 28px;
 					right: 0;
-					border-left:0.5em solid #9B8651;
-					border-bottom:0.5em solid #f7f1ed;
-				}
+					border-left: 0.5em solid #9B8651;
+					border-bottom: 0.5em solid #f7f1ed; }
 			}
-
-			.intro-book{
-				height: 100px;
+			.book-intro {
 				overflow: hidden;
+				height: 100px;
+				padding-right: 10px;
 				margin-left: 151px;
-				padding-right:10px;
-
-				.p-book{
-				    color: #9b9b9b;
-				    display: -webkit-box;
-				    font-size: 15px;
-				    text-overflow: ellipsis;
-				    padding:1px;
-				 }
+				.book-word {
+			    color: #9b9b9b;
+			    font-size: 15px;
+			    text-overflow: ellipsis; }
 			}
 		}
-
-		&:nth-child(odd){
-			margin-right: 50px;
-		}
-
-		&:hover{
+		&:nth-child(odd) {
+			margin-right: 50px; }
+		&:hover {
 			opacity: 0.8;
-
-			.img-bg{
-				img{
-					transform: scale3d(1.2,1.2,1.2);
-				}
-			}
-
-			.img-book{
-				img{
-					transform: rotateY(360deg);
-				}
-			}
+			.book-bg-img {
+				transform: scale3d(1.2,1.2,1.2); }
+			.book-img {
+				transform: rotateY(360deg); }
 		}
 	}
-
 	.book-bottom{
-		clear: both;
-		padding: 8px;
-		background-color: #fff;
-		border-top:1px dotted #ddd;
 		position:relative;
-	}
-
+		border-top: 1px dotted #ddd;
+		padding: 8px;
+		color: #9b9b9b;
+		background-color: #fff;	}
 }
-
-@include respond-to(big){
-	.book{
-		width: 475px;
+@include respond-to(big) {
+	.book-list {
 		overflow: hidden;
-
-		.section-book{
+		width: 475px;
+		.book-section {
 			width: 475px;
-
-			&:nth-child(odd){
-				margin-right: 0px;
-			}
+			&:nth-child(odd) {
+				margin-right: 0px; }
 		}
 	}
 }
-
 @include respond-to(small){
-	.book{
+	.book-list {
 		width: 100%;
-
-		.section-book{
+		.book-section {
 			width: 100%;		
-
-			&:hover{
+			&:hover {
 				opacity: 1;
-
-				.img-bg{
-					img{
-						transform: scale3d(1,1,1);
-					}
-				}
-
-				.img-book{
-					img{
-						transform: rotate(0);
-					}
-				}
+				.book-bg-img {
+					transform: scale3d(1,1,1); }
+				.book-img {
+					transform: rotate(0);	}
 			}
 		}
 	}

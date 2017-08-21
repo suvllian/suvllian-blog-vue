@@ -1,11 +1,13 @@
 <template>
-	<div class="article-list">
-		<article class="article">
-      <ArticleHeader :article="article"></ArticleHeader>
-			<div class="article-content" v-html="article.aContent"></div>
-      <PreNext :prev-article="prev" :next-article="next"></Prenext>
-		</article>
-	</div>
+  <div class="article-page">
+  	<div class="article-list">
+  		<article class="article">
+        <ArticleHeader :article="article"></ArticleHeader>
+  			<div class="article-content" v-html="article.aContent"></div>
+        <PreNext :prev-article="prev" :next-article="next"></Prenext>
+  		</article>
+  	</div>
+  </div>
 </template>
 
 <script>

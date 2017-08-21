@@ -1,7 +1,6 @@
 <template>
-	<div>
-		<header></header>
-		<div class="article-list">
+	<div class="article-page">
+		<div class="article-list"> 
 			<section class="article" v-for="article in articleList">
 				<ArticleHeader :article="article" />
 				<div class="article-content">
@@ -18,16 +17,57 @@
 				<span v-if="isMore && loading">大力加载中...</span>
 			</h3>
 		</div>
+
+		<div class="article-aside">
+      <Music />
+
+      <div class="hot-article-list">
+        <div class="label">
+					<span class="label-span">热门文章</span>
+				</div>
+				<div class="hot-article" v-for="a in 5">
+          <p>
+          	<a href="" title="">{{a}}</a>
+          	<span>hot-article</span>
+          </p>
+				</div>
+      </div>
+
+      <div class="hot-article-list">
+        <div class="label">
+					<span class="label-span">分类</span>
+				</div>
+				<div class="hot-article" v-for="a in 5">
+          <p>
+          	<a href="" title="">{{a}}</a>
+          	<span>hot-article</span>
+          </p>
+				</div>
+      </div>
+
+      <div class="hot-article-list">
+        <div class="label">
+					<span class="label-span">归档</span>
+				</div>
+				<div class="hot-article" v-for="a in 5">
+          <p>
+          	<a href="" title="">{{a}}</a>
+          	<span>hot-article</span>
+          </p>
+				</div>
+      </div>
+		</div>
 	</div>
 </template>
 
 <script>
 import ArticleHeader from './../components/article-header.vue'
+import Music from './../components/music.vue'
 import { mapActions, mapState} from 'vuex'
 import { ARTICLE_LIST, ADD_ARTICLE_LIST } from './../../vuex/type.js'
 
 export default{
-	components: { ArticleHeader },
+	components: { ArticleHeader, Music },
 	computed: mapState({ 
 		articleList: store => store.articleList.items,
 		page: store => store.articleList.page,
