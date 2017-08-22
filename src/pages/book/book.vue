@@ -37,19 +37,19 @@ import { VOTE_BOOK } from './../../vuex/type.js'
 import { mapActions} from 'vuex'
 
 export default {
-	props:["bookList"],
-	methods:{
+	props: ["bookList"],
+	methods: {
 		...mapActions([VOTE_BOOK]),
 		dealVote: function(item) {
 			item.isVote = !item.isVote;
-			if(item.isVote){
+			if (item.isVote) {
 				item.iLike++;
 				this.VOTE_BOOK({id:item.iId,way:"add"});
-			}else{
+			} else {
 				item.iLike--;
 				this.VOTE_BOOK({id:item.iId,way:"sub"});
 			}
-		},
-	},
+		}
+	}
 }
 </script>

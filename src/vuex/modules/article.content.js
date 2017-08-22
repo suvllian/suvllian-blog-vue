@@ -1,5 +1,5 @@
 import api from '../../api';
-import filters from '../../utils/filters.js';
+import { formatTime } from '../../utils/format.js';
 import { ARTICLE_CONTNET, GET_ARTICLE_CONTENT_FAILURE } from './../type';
 
 export default {
@@ -22,10 +22,11 @@ export default {
 		[ARTICLE_CONTNET]({ commit }, id){
 			api.getArticleContent(id).then(res => {
 				let articleInfo = res.data[0]
-        let formatTime = filters.formatTime(articleInfo.aDate);
+        let formatDate = formatTime(articleInfo.aDate);
         document.title = articleInfo.aTopic;
+        
 		    commit(ARTICLE_CONTNET,{
-          article: { ...articleInfo, ...formatTime},
+          article: { ...articleInfo, ...formatDate},
           id: (id - 1)
         });
 			}).catch(err => {

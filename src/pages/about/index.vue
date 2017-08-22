@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="article-page">
 		<div class="article-list">
 			<article class="article">
 				<Header :article-head="article" />

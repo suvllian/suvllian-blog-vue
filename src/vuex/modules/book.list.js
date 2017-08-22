@@ -1,5 +1,5 @@
-import api from '../../api';
-import filters from '../../utils/filters.js';
+import api from './../../api';
+import { formatTime } from './../../utils/format.js';
 import { GET_BOOK_LIST, GET_BOOK_LIST_FAILURE, VOTE_BOOK, 
 			ADD_BOOK_LIST, LOADING_BOOK } from './../type';
 
@@ -41,8 +41,8 @@ export default {
 
       	response.forEach((item, index) => {
       		item.isActive = false;
-      		item.isVote   = false;
-      		item.time     = filters.bookTime(item.iDate);
+      		item.isVote = false;
+      		item.time = formatTime(item.iDate).time;
       	});
 	
 		    if(resLength < 10){

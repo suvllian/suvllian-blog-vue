@@ -1,5 +1,5 @@
-import api from '../../api';
-import filters from '../../utils/filters.js';
+import api from './../../api';
+import { formatTime } from './../../utils/format.js';
 import { ARTICLE_LIST, ADD_ARTICLE_LIST, GET_ARTICLE_LIST_FAILURE, LOADING_ARTICLE } from './../type';
 
 export default {
@@ -36,9 +36,10 @@ export default {
             resLength = response.length,
             isMore = true;
         let articleList = response.map(item =>{
-        	let formatTime = filters.formatTime(item.aDate);
+	      	let formatDate = formatTime(item.aDate);
 		      item.aImageHome = true;	
-		      return {...item, ...formatTime} 
+
+			    return {...item, ...formatDate} 
         });	
 
 	    	if(resLength < 5){
@@ -60,9 +61,10 @@ export default {
           resLength = response.length,
           isMore = true;
         let articleList = response.map(item =>{
-        	let formatTime = filters.formatTime(item.aDate);
+        	let formatDate = formatTime(item.aDate);
 		      item.aImageHome = true;	
-		      return {...item, ...formatTime} 
+
+		      return {...item, ...formatDate} 
         });	
 		         
 		    if(resLength < 5){
