@@ -41,6 +41,9 @@ $iconWidthMedium:32px;
 		color: #fff;
 	}
 }
+img {
+  display: block;
+}
 
 @include respond-to(medium){
 	.icon-link{

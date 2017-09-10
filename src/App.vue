@@ -2,24 +2,19 @@
   <div id="app">
     <Navbar />
     <header></header>
-    <div class="nav-main">
-
-    </div>
     <router-view></router-view>
-    <Footer />
     <toTop />
   </div>
 </template>
 
 <script>
 import Navbar from './pages/components/navbar.vue'
-import Footer from './pages/components/footer.vue'
 import toTop from './pages/components/totop.vue'
 import Music from './pages/components/music.vue'
 
 export default {
   name: 'app',
-  components: { Navbar, Footer, toTop, Music }
+  components: { Navbar, toTop, Music }
 }
 </script>
 
