@@ -2,7 +2,7 @@
 	<section>
 	  <div>
 			<span class="roate-date">
-				<span class="month text-center">{{ article.month }}</span>
+				<span class="month text-center">{{ article.monthInEnglish }}</span>
 				<span class="day text-center">{{ article.day }}</span>
 			</span>
 		</div>

@@ -2,6 +2,9 @@
   <div id="app">
     <Navbar />
     <header></header>
+    <div class="nav-main">
+
+    </div>
     <router-view></router-view>
     <Footer />
     <toTop />

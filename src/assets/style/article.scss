@@ -1,16 +1,65 @@
 $Color:#00adb5;
 
-.article-page {
-  display: flex;
-  width: 70%;
-  margin: 0 auto;
-  transition: 1s all ease;
-  .article-list {
-    flex: 1;
-    margin: 0 20px; }
-  .article-aside {
-    flex: 0 0 320px; }
+img {
+  display: block;
 }
+.nav-main {
+  height: 9.375rem;
+}
+
+.home {
+  background-image: url(https://adventure.com/wp-content/themes/adventure_2017/assets/img/img-footer-01@2x.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+
+.home-article-container {
+  display: flex;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding-bottom: 3.75rem;
+  transition: 1s all ease;
+  // 文章列表
+  .article-list {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    margin: 0 20px; }
+  // 文章section
+  .article-card {
+    flex: 0 0 50%;
+    padding: 0 .625rem;
+    cursor: pointer;
+    &-content {
+      box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.1);
+      transition: all 500ms ease-in-out;
+      background-color: #fff;
+      margin-bottom: 1.25rem;
+      &:hover {
+        .article-meta, .article-title { 
+          transform: scale3d(1, 1, 11); }
+        transform: scale3d(1.01, 1.01, 1.01);
+        box-shadow: 0 5px 20px 5px rgba(0, 0, 0, 0.1); }
+      .article-info {
+        padding: 0 1.25rem 1.25rem 1.25rem;
+        .article-meta {
+          padding: .625rem 0; }
+      }
+      .article-title {
+        padding: 0;
+        margin: 0 0 1.375rem;
+        font-size: 1.375rem;
+        line-height: 1.3;
+        a {
+          color: #0F0F0F; }
+      }
+    }
+  }
+}
+
+
+
 
 .hot-article-list {
   height: 270px;
