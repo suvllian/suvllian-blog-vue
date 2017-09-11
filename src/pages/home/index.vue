@@ -2,7 +2,7 @@
 	<div class="home">
 	  <HeadTitle title="最新文章" />
 		<Articles />
-		<header></header>
+		<section class="home-banner"></section>
 		<HeadTitle title="最热文章" />
 		<Articles />
 		<Footer />

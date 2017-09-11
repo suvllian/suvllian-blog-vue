@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Slider from './slider.vue'
-import Book from './book.vue'
+import Slider from './components/slider.vue'
+import Book from './components/book.vue'
 import { mapActions, mapState} from 'vuex'
 import { GET_BOOK_LIST, ADD_BOOK_LIST } from './../../vuex/type.js'
 

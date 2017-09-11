@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { VOTE_BOOK } from './../../vuex/type.js'
+import { VOTE_BOOK } from './../../../vuex/type.js'
 import { mapActions} from 'vuex'
 
 export default {

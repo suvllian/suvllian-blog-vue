@@ -2,8 +2,7 @@
 	@include widthHeightMaxWidth(100%,auto);
 	padding: 16px 0 0;
 	position: relative;
-	clear: both;
-}
+	clear: both; }
 
 .camera {
 	@include widthHeightMaxWidth(auto,auto,48em);
@@ -13,54 +12,40 @@
 	border: 1px solid #eee;
 	border-radius: 2px;
 	outline: none;
-
 	.img-camera {
 		@include widthHeightMaxWidth(auto,auto,40%); 
 		padding: 16px 16px 0 16px;
 		cursor: pointer;
-		outline: none;
-	}
-
+		outline: none; }
 	.camera-introduction {
 		max-width: 60%;
 		min-width: 60%;
 		padding: 6px 16px;
 		padding-bottom: 0;
 		float: left;
-		color: #333;
-	}
-
-	// 点击图片后的样式
+		color: #333; }
+	/* 点击图片后的样式 */
 	.imgClicked {
 		@include widthHeightMaxWidth(100%,auto,100%);
-		padding-bottom: 0;
-	}
-
+		padding-bottom: 0; }
 	.introClicked {
 		float: none;
-		max-width: 100%;
-	}
-
+		max-width: 100%; }
 	.borderClicked {
 		border-left: 2px solid #dfdfdf;
-		padding-left: 16px;
-	}
-
+		padding-left: 16px; }
 	.camera-bottom {
 		height: 24px;
-		margin-top: 8px;
 		width: 100%;
 		padding: 0 16px;
+		margin-top: 8px;
 		clear: left;
 		border-top: 1px dotted #ddd;
-
 		.span{
-			color: #aaa;
-			font-size: 14px;
 			line-height: 40px;
-		}
+			color: #aaa;
+			font-size: 14px; }
 	}
-	
 }
 
 @include respond-to(medium){
@@ -76,23 +61,18 @@
 		min-width: 300px;
 		margin: 16px 0;
 		border: 0px;
-
 		.img-camera {
 			@include widthHeightMaxWidth(100%,auto,100%);
 			padding:0;
 			margin: 0;
-			outline: none;
-		}
-
+			outline: none; }
 		.camera-introduction {
 			float: none;
 			max-width: 100%;
 			padding-top: 0;
-
 			.p-img{
 				border-left: 3px solid #dfdfdf;
-				padding-left: 16px;
-			}
+				padding-left: 16px; }
 		}
 	}
 }

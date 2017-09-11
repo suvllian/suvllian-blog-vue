@@ -6,63 +6,39 @@ header{
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  width: 100%;
-}
-
+  width: 100%; }
 /* 导航 Start */
 .nav-container {
-	width: 100%;
-	background: rgba(40, 42, 44, 0.6);
 	position: fixed;
   left: 0;
   top: 0;
   z-index: 3;
+	width: 100%;
+	background: rgba(40, 42, 44, 0.6);
   transition: all 0.5s ease;
-
 	.fa {
-		margin: 0 0.2em;
-	}
+		margin: 0 0.2em; }
 }
-
 .nav {
   position: relative;
 	height: $height;
 	padding: 0px 15px;
 	margin: 0 auto;
-	transition: 1s all ease;
-}	
-
+	transition: 1s all ease; }	
 .nav-ul {
   line-height: $height;
-
   li {
 		float: left;
 		cursor: pointer;
-
 		a {
-			line-height: $height;
 			display: block;
-			font-size: 15px;
-			color: #fff;
 			padding: 0 12px;
-		}
+			line-height: $height;
+			font-size: 15px;
+			color: #fff; }
 	}
 }
-
 /* 隐藏导航 */
 .hidden{
-	transform: translateY(-$height);
-}
-
+	transform: translateY(-$height); }
 /* 导航 End */
-
-
-/* 底部 Start */
-.footer{
-	padding: 0.6em 0;
-	text-align: right;
-	.footer-p{
-		color: #fff;
-		padding: 0.25rem 2rem; }
-}
-/* 底部 End */

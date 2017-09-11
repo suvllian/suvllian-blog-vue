@@ -35,7 +35,7 @@
 
 
 <script>
-import Music from './../../utils/music.js'
+import Music from './index.js'
 
 export default{
 	data(){
@@ -51,3 +51,7 @@ export default{
   }
 }
 </script>
+
+<style lang="scss">
+  @import './index.scss';
+</style>

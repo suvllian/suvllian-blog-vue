@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Header from './header.vue'	
+import Header from './components/header.vue'	
 import { mapActions, mapState} from 'vuex'
 import { GET_ABOUT_INFO, GET_ABOUT_INFO_FAILURE } from './../../vuex/type.js'
 export default{

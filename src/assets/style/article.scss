@@ -1,83 +1,5 @@
 $Color:#00adb5;
 
-.home {
-  background-image: url(https://adventure.com/wp-content/themes/adventure_2017/assets/img/img-footer-01@2x.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: bottom center;
-  /* 首页文章 */
-  .home-article-container {
-    display: flex;
-    max-width: 75rem;
-    margin: 0 auto;
-    padding-bottom: 3.75rem;
-    transition: 1s all ease;
-    /* 文章列表 */
-    .article-list {
-      display: flex;
-      flex: 1;
-      flex-wrap: wrap; }
-    /* 文章section */
-    .article-card {
-      flex: 0 0 50%;
-      padding: 0 .625rem;
-      cursor: pointer;
-      &-content {
-        box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.1);
-        transition: box-shadow 500ms ease-in-out;
-        background-color: #fff;
-        margin-bottom: 1.25rem;
-        &:hover {
-          box-shadow: 0 10px 20px 3px rgba(0,0,0,0.15); }
-        .article-info {
-          padding: 0 1.25rem 1.25rem 1.25rem;
-          .article-meta {
-            padding: .625rem 0; }
-        }
-        .article-title {
-          padding: 0;
-          margin: 0 0 1.375rem;
-          font-size: 1.375rem;
-          line-height: 1.3;
-          a {
-            color: #0F0F0F; }
-        }
-      }
-    }
-  }
-  /* 首页文章列表标题 */
-  .home-heading-h2 {
-    padding: 3.75rem 0; }
-  .home-heading-span {
-    position: relative;
-    padding: 0 3.125rem;
-    color: #0F0F0F;
-    font-family: "Playfair Display",serif;
-    &:before, &:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      height: 2px;
-      background-color: #0F0F0F; }
-    &:before {
-      left: -80%; }
-    &:after {
-      right: -80%; }
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .home {
-    background-size: 400%;
-    background-position-x: 70%;
-    .home-article-container {
-      .article-card {
-        flex: 0 0 100%; }
-    }
-  }
-}
-
 .hot-article-list {
   height: 270px;
   width: 100%;
@@ -112,9 +34,10 @@ $Color:#00adb5;
   padding: 10px 30px;
   margin: 36px auto;
   width: 100%;
-  background-color:#fff;
-  position:relative;
-  border-radius:5px;
+  max-width: 75rem;
+  background-color: #f0f0f0;
+  position: relative;
+  border-radius: 5px;
 }
 
 .fa{

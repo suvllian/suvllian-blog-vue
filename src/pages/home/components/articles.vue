@@ -2,19 +2,21 @@
 	<div class="home-article-container">
 		<div class="article-list"> 
 			<section class="article-card" v-for="article in articleList">
-				<div class="article-card-content">
-          <div class="img-center">
-						<img class="img-big" :src="article.aImage">
+				<router-link :to="{path:'article', query:{id:article.aId}}">
+					<div class="article-card-content">
+	          <div class="img-center">
+							<img class="img-big" :src="article.aImage">
+						</div>
+						<div class="article-info">
+	            <p class="article-meta">
+								<time class="p-small">{{ `${article.monthInEnglish} ${article.day},${article.year}` }}</time>
+							</p>
+							<h2 class="article-title">
+								<router-link :to="{path:'article', query:{id:article.aId}}">{{article.aTopic}}</router-link>
+							</h2>
+						</div>
 					</div>
-					<div class="article-info">
-            <p class="article-meta">
-							<time class="p-small">{{ `${article.monthInEnglish} ${article.day},${article.year}` }}</time>
-						</p>
-						<h2 class="article-title">
-							<router-link :to="{path:'article', query:{id:article.aId}}">{{article.aTopic}}</router-link>
-						</h2>
-					</div>
-				</div>
+				</router-link>
 			</section>
 		</div>
 	</div>
