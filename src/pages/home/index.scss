@@ -1,8 +1,4 @@
 .home {
-  background-image: url(https://adventure.com/wp-content/themes/adventure_2017/assets/img/img-footer-01@2x.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: bottom center;
   .home-banner {
     height: 43.75rem;
     background-image: url("https://img.alicdn.com/tps/TB15XU_LpXXXXbEXpXXXXXXXXXX-900-500.png");
@@ -84,8 +80,6 @@
 
 @media screen and (max-width: 650px) {
   .home {
-    background-size: 400%;
-    background-position-x: 70%;
     .home-article-container {
       .article-card {
         flex: 0 0 100%; }

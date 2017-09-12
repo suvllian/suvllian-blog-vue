@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="suvllian">
     <Navbar />
     <header></header>
     <router-view></router-view>
