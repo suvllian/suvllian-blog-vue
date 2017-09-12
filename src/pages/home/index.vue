@@ -3,7 +3,7 @@
 	  <HeadTitle title="最新文章" />
 		<Articles />
 		<section class="home-banner"></section>
-		<HeadTitle title="最热文章" />
+		<HeadTitle title="最热照片" />
 		<Articles />
 		<Footer />
 	</div>

@@ -12,7 +12,7 @@
 
 <script>
 import PreNext from './components/prenext.vue'
-import ArticleHeader from './../components/article-header.vue'
+import ArticleHeader from './components/article-header.vue'
 import { mapActions, mapState} from 'vuex'
 import { ARTICLE_CONTNET, GET_PRENEXT_LIST } from './../../vuex/type.js'
 import effect from './../../utils/effect.js'

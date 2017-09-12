@@ -2,6 +2,40 @@ $widthMax: 900px;
 $widthMedium: 475px;
 $widthMin: 100%;
 
+.book-banner {
+	position: relative;
+	overflow: hidden;
+	margin:0 auto;
+	transition: 1s all ease;
+	.img-bg-block {
+		position: relative;
+		height: 232px;
+		width: 100%;
+		.img-bg {
+			opacity: 0;
+			position:  absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			border-radius: 0;
+			transition: 1.6s all ease;
+			cursor: pointer; }
+		.show {
+			opacity: 1; }
+	}
+	.img-slide-block {
+		position: relative;
+		height: 70px;
+		.img-slide {
+			opacity: 1;
+			width: 20%;
+			transition: 0.2s all ease; }
+		.imgActive {
+			transform: translateY(-12px); }
+	}
+}
+
 .book-container {
 	background-color: #f7f1ed; }
 .book-list {
@@ -109,4 +143,11 @@ $widthMin: 100%;
 			}
 		}
 	}
+
+	.book-banner .img-bg-block {
+		height: 200px; }
+	.img-slide-block {
+		height: 36px; }
+	.imgActive {
+		transform: translateY(-6px); }
 }

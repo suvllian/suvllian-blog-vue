@@ -5,7 +5,6 @@ import Camera from './pages/camera/index.vue'
 import Book from './pages/Book/index.vue'
 import Article from './pages/article/index.vue'
 import About from './pages/about/index.vue'
-import Lab from './pages/lab/index.vue'
 
 const router = new VueRouter({
   history: true,
@@ -15,7 +14,6 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: Index },
     { path: '/article', component: Article},
-    { path: '/lab', component: Lab},
     { path: '/camera', component: Camera },
     { path: '/book', component: Book },
     { path: '/about', component: About },

@@ -14,7 +14,6 @@ export default {
 	methods: {
 		backToTop(){
 			effect.toTop();
-
 			// 显示导航栏
 			this.$parent.$children[0].$refs.header.className = "nav-container";
 		}

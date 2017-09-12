@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Navbar from './pages/components/navbar.vue'
-import toTop from './pages/components/totop.vue'
+import Navbar from './pages/common/navbar.vue'
+import toTop from './pages/common/totop.vue'
 
 export default {
   name: 'app',
