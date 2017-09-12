@@ -1,4 +1,82 @@
-@import "./mixins/_triangle.scss";
-@import "./mixins/_respond.scss";
-@import "./mixins/_image.scss";
-@import "./mixins/_heightweight.scss";
+/* 响应式布局 */
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (max-width: 800px) {
+      @content;
+    }
+  }
+  @else if $breakpoint == "medium" {
+    @media (max-width: 1170px) {
+      @content;
+    }
+  }
+  @else if $breakpoint == "big" {
+    @media (max-width: 1400px) {
+      @content;
+    }
+  } 
+  @else if $breakpoint == "large" {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+// 某个元素的响应式样式
+@mixin respond-element($element, $style, $styleMax, $styleMedium, $styleMin) {
+  #{$element} {
+    #{$style}: $styleMax;
+  }
+  
+  @include respond-to(medium) {
+    #{$element}{
+      #{$style}: $styleMedium;
+    }
+  }
+
+  @include respond-to(small) {
+    #{$element} {
+      #{$style}: $styleMin;
+    }
+  }
+}
+
+@mixin respond-big-element($element, $style, $styleMax, $styleMedium, $styleMin) {
+  #{$element} {
+    #{$style}: $styleMax;
+  }
+
+  @include respond-to(big) {
+    #{$element}{
+      #{$style}: $styleMedium;
+    }
+  }
+
+  @include respond-to(small) {
+    #{$element}{
+      #{$style}: $styleMin;
+    }
+  }
+}
+
+/* 设置宽高及最大宽高 */
+@mixin widthHeightMaxWidth ($width:auto, $height:auto, $maxWidth:100%, $maxHeight:100%) {
+	width: $width;
+	height: $height;
+	max-width: $maxWidth;
+	max-height: $maxHeight;
+}
+
+/* 设置图片最大宽高 */
+@mixin img-max-size ($max-height, $border-radius, $max-width: 100%) {
+  border-radius: $border-radius;
+  max-width: $max-width;  
+  max-height: $max-height; 
+}
+
+/* CSS实现三角形效果 */
+@mixin complete-triangle ($width, $color, $direc1, $direc2) {
+	#{$direc1}: $width solid transparent;
+    #{$direc2}: $width solid transparent;
+    border-bottom: $width solid $color;
+}

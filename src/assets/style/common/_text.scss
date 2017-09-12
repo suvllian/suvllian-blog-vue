@@ -1,5 +1,5 @@
 .title a, a.title{
-    color: #555;
+	color: #555;
 }
 
 article p a{
@@ -12,11 +12,11 @@ article p a{
 }
 
 li, span, p{
-	font-size:16px;
+	font-size: 16px;
 	color: #555;
-	text-overflow:ellipsis;
-    word-break: break-all;
-    font-family: consolas,Menlo,"PingFang SC","Microsoft YaHei",monospace;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	font-family: consolas,Menlo,"PingFang SC","Microsoft YaHei",monospace;
 }
 
 h1, h1>span, .h1 { font-size: 36px; }

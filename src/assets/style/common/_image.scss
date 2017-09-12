@@ -36,18 +36,17 @@ $iconWidthMedium:32px;
   width: $iconWidthMax;
 	margin:0 0.1em;
 
-    &:hover{
+  &:hover{
 		background-color:#b3d9d9;
 		color: #fff;
 	}
 }
 
-
 @include respond-to(medium){
 	.icon-link{
-	    height: $iconWidthMedium;
-	    line-height: $iconWidthMedium;
-	    border-radius: $iconWidthMedium;
-	    width: $iconWidthMedium;
+    height: $iconWidthMedium;
+    line-height: $iconWidthMedium;
+    border-radius: $iconWidthMedium;
+    width: $iconWidthMedium;
 	}
 }	
