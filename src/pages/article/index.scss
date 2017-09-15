@@ -1,24 +1,23 @@
 .prenext{
 	width: 100%;
-	padding:18px 0 0;
+	padding: 18px 0 0;
 	a{
 		color: #444;
-		.pre-btn, .next-btn{ 
-			display: inline-block;
-			border-bottom:1px solid #ccc;
-			&:hover{
+		.pre-btn, .next-btn {
+			border-bottom: 1px solid #ccc;
+			&:hove r{
         border-bottom-color: #000;
-        &{
+        & {
           color: #000; }
       }
 		}
 	}
-	.prev, .next{
+	.prev, .next {
 		width: 48%;
 		padding: 0 8px;
-		box-sizing: border-box;
 		display: inline-block;
-		overflow: hidden;
+    overflow: hidden;
+    text-overflow: ellipsis;
 		white-space: nowrap; }
 }
 

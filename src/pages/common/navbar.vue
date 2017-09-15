@@ -14,9 +14,9 @@
 import effect from './../../utils/effect.js'
 
 export default{
-	data(){
-		return{
-			liItems:[
+	data() {
+		return {
+			liItems: [
 				{title:"首页",src:'/', class:"fa fa-home", isActive: true},
 				{title:"图集",src:'/camera', class:"fa fa-image",isActive: false},
 				{title:"读书",src:'/book', class:"fa fa-book",isActive: false},
@@ -24,12 +24,12 @@ export default{
 			]
 		}
 	},
-	methods:{
-		toTop(){
+	methods: {
+		toTop() {
 			effect.toTop();
 		}
 	},
-	mounted(){
+	mounted() {
 		let header = this.$refs.header;
 
     // 根据相应的操作改变class

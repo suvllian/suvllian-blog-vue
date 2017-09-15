@@ -6,7 +6,7 @@ import { GET_BOOK_LIST, GET_BOOK_LIST_FAILURE, VOTE_BOOK,
 export default {
 	state: {
 		page: 1,
-		items: [],
+		bookList: [],
 		isMore:false,
 		loading: false
 	},
@@ -16,7 +16,7 @@ export default {
 			state.isMore  = action.isMore;
 			state.page    = 1; 
 			state.loading = false;
-			state.items   = action.bookList; 
+			state.bookList   = action.bookList; 
 		},
 		[GET_BOOK_LIST_FAILURE](state){
 
@@ -25,7 +25,7 @@ export default {
 			state.isMore  = action.isMore;
 			state.page    = action.page; 
 			state.loading = false;
-			state.items   = [...state.items, ...action.bookList]; 
+			state.bookList = [...state.bookList, ...action.bookList]; 
 		},
 		[LOADING_BOOK](state){
 			state.loading = true;
@@ -35,19 +35,14 @@ export default {
 		[GET_BOOK_LIST]({ commit }){
 			document.title = "读书";
 			api.getBookData(1).then(res => {
-        var response  = res.data,
-          resLength = response.length,
-    	    isMore = true;
+				let response  = res.data;
+				let isMore = response.length < 10 ? false : true;
 
       	response.forEach((item, index) => {
       		item.isActive = false;
       		item.isVote = false;
       		item.time = formatTime(item.iDate).time;
       	});
-	
-		    if(resLength < 10){
-        	isMore = false;
-        }
 
         commit(GET_BOOK_LIST,{
           bookList: response,
@@ -61,25 +56,24 @@ export default {
 		[ADD_BOOK_LIST]({ commit }, page){
 			commit(LOADING_BOOK);
 			api.getBookData(page).then(res => {
-        var response  = res.data, 
-          resLength = response.length,
-    	    isMore = true;
+        let response  = res.data;
+    	  let isMore = response.length < 10 ? false : true;
 
         response.forEach((item, index) => {
       		item.isActive = false;
-      		item.isVote   = false;
-      		item.time     = filters.bookTime(item.iDate);
-      	});
+      		item.isVote = false;
+      		item.time = formatTime(item.iDate).time;
+				});
+				
+				console.log(response)
 
-		    if(resLength < 10){
-	      	isMore = false;
-	      }
         commit(ADD_BOOK_LIST,{
           bookList: response,
           isMore,
           page
         });
 			}).catch(err => {
+				console.log(err)
 				commit(GET_BOOK_LIST_FAILURE);
 			})
 		},

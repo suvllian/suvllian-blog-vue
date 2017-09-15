@@ -2,8 +2,12 @@
 	<div class="home">
 	  <HeadTitle title="最新文章" />
 		<Articles />
-		<section class="home-banner"></section>
-		<HeadTitle title="最热照片" />
+		<header class="home-banner">
+			<div class="banner" ref="banner">
+				<img src="/static/images/4.jpg" />
+			</div>
+		</header>
+		<HeadTitle title="最新照片" />
 		<Articles />
 		<Footer />
 	</div>

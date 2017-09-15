@@ -2,8 +2,12 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 
 // API路径
-// const API_ROOT = "http://api.suvllian.com";
-const API_ROOT = "http://127.0.0.1/api/index.php";
+const API_ROOT = getApiRoot()
+
+function getApiRoot() {
+  return location.href.includes('localhost') ? 'http://127.0.0.1/api/index.php' : 
+    'http://api.suvllian.com'
+}
 
 Vue.use(VueResource);
 Vue.http.options.emulateJSON = true;

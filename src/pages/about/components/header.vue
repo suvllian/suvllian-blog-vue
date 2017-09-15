@@ -13,9 +13,6 @@
 					<i class="fa fa-comments"></i>
 					<span class="p-small">0条评论</span>
 				</p>
-				<div class="label">
-					<a href="" :title="articleHead.aClassName">{{articleHead.aClassName}}</a>
-				</div>
 			</div>
 		</div>
 	</section>

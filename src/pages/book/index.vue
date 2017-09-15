@@ -1,11 +1,9 @@
 <template>
 	<div class="book-container">
-		<slider></slider>
 		<Book :book-list="bookList"></Book>		
 		<h3 class="text-center">
-			<span class="pointer" @click="ADD_BOOK_LIST(++page)" v-if="isMore && !loading">查看更多</span>
-			<span v-if="!isMore">-- THE END --</span>
-		<span v-if="isMore && loading">大力加载中...</span>
+			<span class="color-white" v-if="!isMore">-- THE END --</span>
+		  <span class="color-white" v-if="isMore && loading">大力加载中...</span>
 		</h3>
 	</div>
 </template>
@@ -19,16 +17,38 @@ import { GET_BOOK_LIST, ADD_BOOK_LIST } from './../../vuex/type.js'
 export default {
 	components: { Slider, Book },
 	computed: mapState({ 
-		bookList: store => store.bookList.items,
-		page: store => store.bookList.page,
-		isMore: store => store.bookList.isMore,
-		loading: store => store.bookList.loading,
+		bookList: store => store.books.bookList,
+		page: store => store.books.page,
+		isMore: store => store.books.isMore,
+		loading: store => store.books.loading,
 	}),
-	methods:{
+	methods: {
 		...mapActions([GET_BOOK_LIST, ADD_BOOK_LIST]),
 	},
-	created(){
+	created() {
 		this.GET_BOOK_LIST();
+	},
+	mounted() {
+    let slideNav = (event) => {
+			let scrollTop = document.body.scrollTop || window.scroolY || document.documentElement.scrollTop;
+			let direction = event.wheelDelta || -event.detail;
+			let screenHeight = document.documentElement.clientHeight
+			let totalHeight = document.body.clientHeight
+
+			if (scrollTop + screenHeight >= totalHeight - 100) {
+        // 向下滑
+				if (direction < 0 && this.isMore && !this.loading){
+					this.ADD_BOOK_LIST(++this.page)
+				} else if (!this.isMore) {
+					window.removeEventListener("mousewheel", slideNav);
+					window.removeEventListener("DOMMouseScroll", slideNav);	
+				}
+			}
+		}
+		// 谷歌、欧朋
+		window.addEventListener("mousewheel", slideNav);
+		// 火狐
+		window.addEventListener("DOMMouseScroll", slideNav);	
 	}
 }
 </script>

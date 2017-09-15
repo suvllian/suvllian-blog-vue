@@ -5,7 +5,7 @@ import { GET_IMAGE_LIST, GET_IMAGE_LIST_FAILURE, VOTE_IMAGE,
 export default {
 	state: {
 		page: 1,
-		items: [],
+		imageList: [],
 		isMore: false,
 		loading: false
 	},
@@ -15,7 +15,7 @@ export default {
 			state.isMore  = action.isMore;
 			state.loading = false;
 			state.page    = 1; 
-			state.items   = action.imageList; 
+			state.imageList   = action.imageList; 
 		},
 		[GET_IMAGE_LIST_FAILURE](state){
 
@@ -23,8 +23,8 @@ export default {
 		[ADD_IMAGE_LIST](state, action){
 			state.isMore  = action.isMore;
 			state.loading = false;
-			state.page    = action.page; 
-			state.items   = [...state.items, ...action.imageList]; 
+			state.page = action.page; 
+			state.imageList = [...state.imageList, ...action.imageList]; 
 		},
 		[LOADING_IMAGE](state){
 			state.loading = true;
@@ -35,18 +35,14 @@ export default {
 		[GET_IMAGE_LIST]({ commit }){
 			document.title = "图集";
 			api.getImageData(1).then(res => {
-        var response  = res.data,
-          resLength = response.length,
-          isMore = true;
+        let response  = res.data;
+        let isMore = response.length < 15 ? false : true;
 
         response.forEach(item => {
         	item.isActive = false;
       		item.isVote = false;
-        })
-
-	   	  if(resLength < 15){
-        	isMore = false;
-        }
+				})
+				
         commit(GET_IMAGE_LIST,{
           imageList: response,
           isMore
@@ -59,18 +55,13 @@ export default {
 		[ADD_IMAGE_LIST]({ commit }, page){
 			commit(LOADING_IMAGE);
 			api.getImageData(page).then(res => {
-        let response  = res.data,
-          resLength = response.length,
-          isMore = true;
+        let response  = res.data;
+        let isMore = response.length < 15 ? false : true;
 
         response.forEach(item => {
         	item.isActive = false;
       		item.isVote = false;
         })
-
-		    if(resLength < 15){
-        	isMore = false;
-        }
 
         commit(ADD_IMAGE_LIST,{
           imageList: response,
