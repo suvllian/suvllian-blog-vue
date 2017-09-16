@@ -7,7 +7,6 @@
 				</div>
 				<div class="book-section-content">
 					<img :src="item.iImage" :alt="item.iName" class="book-img">
-					<span class="book-class">{{item.cClass}}</span>
 					<div class="book-intro">
 						<h4 class="color-black">{{item.iName}}</h4>
 						<p class="book-word">{{item.iContent}}</p>	

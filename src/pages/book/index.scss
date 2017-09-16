@@ -47,7 +47,9 @@ $widthMin: 100%;
 		display: inline-block;
 		width: ($widthMax - 50px) / 2;		
 		margin: 16px 0;
-		box-shadow: 5px 5px 5px #eee;
+		border-width: 0 1px 1px;
+    border-style: solid;
+    border-color: #e8e8e8;
 		transition: .5s opacity ease-in-out;
 		.book-bg {
 			overflow: hidden;
@@ -105,7 +107,7 @@ $widthMin: 100%;
 		&:hover {
 			opacity: 0.9;
 			.book-bg-img {
-				transform: scale3d(1.2,1.2,1.2); }
+				transform: scale3d(1.1, 1.1, 1.1); }
 		}
 	}
 	.book-bottom{

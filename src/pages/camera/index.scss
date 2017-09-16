@@ -2,7 +2,69 @@
 	@include widthHeightMaxWidth(100%,auto);
 	padding: 16px 0 0;
 	position: relative;
-	clear: both; }
+	clear: both; 
+	.camera-category-list {
+		overflow: hidden;
+		@include widthHeightMaxWidth(66rem, auto);
+		margin: 2rem auto 0;
+		padding: 1rem 1rem 3rem;
+		.col-md-6 {
+			padding: 0.75rem;
+		}
+		.camera-category {
+			padding: 1rem;
+			border: 1px solid #eee;
+		}
+		.camera-category-text {
+			margin-bottom: 1rem;
+			a {
+				display: block;
+				padding: 0 0 8px;
+				font: bold 16px/1.8 Microsoft Yahei;
+				color: #000;
+			}
+			span {
+				width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				font-weight: normal;
+				font-size: 12px;
+			}
+		}
+		.camera-category-images {
+			overflow: hidden;
+			.camera-category-image {
+				position: relative;
+				z-index: 2;
+				width: 9.3rem;
+				height: 9.3rem;
+				padding: 0;
+				margin: 0 1px 1px 0;
+				&:hover {
+					span {
+						opacity: .4;
+					}
+				}
+				img {
+					height: 100%;
+					width: 100%;
+					object-fit: cover;
+				}
+				span {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: #5A8DCD;
+					opacity: 0;
+					transition: .3s all ease;
+				}
+			}
+		}
+	}
+}
 
 .camera {
 	@include widthHeightMaxWidth(auto,auto,48em);

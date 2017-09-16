@@ -1,32 +1,41 @@
 <template>
 	<div class="camrea-container">
-		<Camera :image-list="imageList"></Camera>
-		<h3 class="text-center">
-			<span class="pointer" @click="ADD_IMAGE_LIST(++page)" v-if="isMore && !loading">查看更多</span>
-			<span class="color-white" v-if="!isMore">-- THE END --</span>
-		  <span class="color-white" v-if="isMore && loading">大力加载中...</span>
-		</h3>
+		<div class="camera-category-list">
+      <div class="col-md-6" v-for="city in imagesListByCity"> 
+				<div class="camera-category ">
+					<div class="camera-category-text">
+						<a href="#">{{city.title}}</a>
+						<span>{{city.count}} Pictures</span>
+					</div>
+					<div class="camera-category-images">
+						<a href="#" v-for="image in city.images">
+							<span class="camera-category-image col-md-4">
+								<img :src="`http://suvllian.com/static/images/travel/${image.iImage}.jpg`" />  
+								<span class="ihover"></span>          
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
 <script>
 import Camera from './components/camera.vue'
 import { mapActions, mapState} from 'vuex'
-import { GET_IMAGE_LIST, ADD_IMAGE_LIST } from './../../vuex/type.js'
+import { GET_IMAGES_LIST_BY_CITY } from './../../vuex/type.js'
 
 export default{
 	components: { Camera },
 	computed: mapState({ 
-		imageList: store => store.camera.imageList,
-		page: store => store.camera.page,
-		isMore: store => store.camera.isMore, 
-		loading: store => store.camera.loading,
+		imagesListByCity: store => store.camera.imagesListByCity
 	}),
 	methods: {
-		...mapActions([GET_IMAGE_LIST, ADD_IMAGE_LIST]),
+		...mapActions([GET_IMAGES_LIST_BY_CITY]),
 	},
 	created() {
-		this.GET_IMAGE_LIST();
-  }
+		this.GET_IMAGES_LIST_BY_CITY();
+	}
 }
 </script>

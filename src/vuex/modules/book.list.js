@@ -64,8 +64,6 @@ export default {
       		item.isVote = false;
       		item.time = formatTime(item.iDate).time;
 				});
-				
-				console.log(response)
 
         commit(ADD_BOOK_LIST,{
           bookList: response,

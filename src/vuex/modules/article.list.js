@@ -32,19 +32,15 @@ export default {
 		[ARTICLE_LIST]({ commit }){
 			document.title = "瓦尔登湖畔一棵松";
 			api.getArticleList(1).then(res => {
-        let response  = res.data,
-            resLength = response.length,
-            isMore = true;
+        let response  = res.data;
+				let isMore = response.length < 5 ? false : true;
+				
         let articleList = response.map(item =>{
 	      	let formatDate = formatTime(item.aDate);
 		      item.aImageHome = true;	
 
 			    return {...item, ...formatDate} 
         });	
-
-	    	if(resLength < 5){
-        	isMore = false;
-        }
 
 		    commit(ARTICLE_LIST,{
           articleList,
@@ -57,19 +53,15 @@ export default {
 		[ADD_ARTICLE_LIST]({ commit }, page){
 			commit(LOADING_ARTICLE);
 			api.getArticleList(page).then(res => {
-        let response  = res.data,
-          resLength = response.length,
-          isMore = true;
+        let response  = res.data;
+				let isMore = response.length < 5 ? false : true;
+				
         let articleList = response.map(item =>{
         	let formatDate = formatTime(item.aDate);
 		      item.aImageHome = true;	
 
 		      return {...item, ...formatDate} 
         });	
-		         
-		    if(resLength < 5){
-        	isMore = false;
-        }
 
 		    commit(ADD_ARTICLE_LIST,{
           articleList,
