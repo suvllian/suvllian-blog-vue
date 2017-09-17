@@ -7,8 +7,11 @@ export default{
 
 	voteBook:(id,way) => { return postResource.save({do:"book",concrete:"voteBook",way:way,id:id}) },
 
-	// 照片
-	getImageListByCity: (page) => { return getResource.get({ do: "image", concrete: "getImageListByCity" }) },
+	/* 按城市分类的照片 */
+	getImageListByCity: () => { return getResource.get({ do: "image", concrete: "getImageListByCity" }) },
+
+  /* 获取某个城市的照片 */
+	getCityImages: (cityId) => { return getResource.get({ do: "image", concrete: "getCityImages", cityId }) },
 
 	voteImage:(id,way) => { return postResource.save({do:"image",concrete:"voteImage",way:way,id:id}) },
 

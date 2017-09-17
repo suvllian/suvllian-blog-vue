@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<section class="camera" v-for="(single,key) in imageList">
+	<div class="camera-category-list">
+		<section class="camera" v-for="(single,key) in cityImageList">
 			<div class="camera-content">
 				<img :class="{imgClicked:single.isActive}" class="img-camera" :src="'http://suvllian.com/static/images/travel/' + single.iImage + '.jpg'" :alt="single.iTopic" @click="enlargeImage(single)">
 				<div class="camera-introduction" :class="{introClicked: single.isActive}">
@@ -24,7 +24,7 @@ import { VOTE_IMAGE } from './../../../vuex/type.js'
 import { mapActions} from 'vuex'
 
 export default {
-	props:["imageList"],
+	props:["cityImageList"],
 	methods:{
 		...mapActions([VOTE_IMAGE]),
 		enlargeImage: function(item) {

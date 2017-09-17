@@ -1,41 +1,43 @@
 <template>
 	<div class="camrea-container">
-		<div class="camera-category-list">
-      <div class="col-md-6" v-for="city in imagesListByCity"> 
-				<div class="camera-category ">
-					<div class="camera-category-text">
-						<a href="#">{{city.title}}</a>
-						<span>{{city.count}} Pictures</span>
-					</div>
-					<div class="camera-category-images">
-						<a href="#" v-for="image in city.images">
-							<span class="camera-category-image col-md-4">
-								<img :src="`http://suvllian.com/static/images/travel/${image.iImage}.jpg`" />  
-								<span class="ihover"></span>          
-							</span>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		<CityCamera :cityImageList="cityImageList" v-if="cityId" />
+		<CategoryCamera :imagesListByCity="imagesListByCity" v-else />
 	</div>
 </template>
 
 <script>
-import Camera from './components/camera.vue'
+import CityCamera from './components/city-camera.vue'
+import CategoryCamera from './components/category-camera.vue'
 import { mapActions, mapState} from 'vuex'
-import { GET_IMAGES_LIST_BY_CITY } from './../../vuex/type.js'
+import { GET_IMAGES_LIST_BY_CITY, GET_IMAGES_BY_CITYID } from './../../vuex/type.js'
 
 export default{
-	components: { Camera },
+	components: { CityCamera, CategoryCamera },
 	computed: mapState({ 
-		imagesListByCity: store => store.camera.imagesListByCity
+		imagesListByCity: store => store.camera.imagesListByCity,
+		cityImageList: store => store.camera.cityImageList,
 	}),
-	methods: {
-		...mapActions([GET_IMAGES_LIST_BY_CITY]),
+	data() {
+    return {
+			cityId: 0
+		}
 	},
+	methods: {
+		...mapActions([GET_IMAGES_LIST_BY_CITY, GET_IMAGES_BY_CITYID]),
+		getPictures() {
+      this.cityId = this.$route.params.cityId;
+			if (this.cityId) {
+				this.GET_IMAGES_BY_CITYID(this.cityId);
+			} else {
+				this.GET_IMAGES_LIST_BY_CITY();
+			}
+		}
+	},
+	watch:{
+    '$route':'getPictures'
+  },
 	created() {
-		this.GET_IMAGES_LIST_BY_CITY();
+		this.getPictures()	
 	}
 }
 </script>
