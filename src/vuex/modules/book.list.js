@@ -15,7 +15,7 @@ export default {
 			state.isMore = action.isMore;
 			state.page = action.page; 
 			state.loading = false;
-			state.bookList = [...state.bookList, ...action.bookList]; 
+			state.bookList = action.page === 1 ? action.bookList : [...state.bookList, ...action.bookList]; 
 		},
 		[GET_BOOK_LIST_FAILURE](state){
 

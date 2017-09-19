@@ -111,6 +111,9 @@
 }
 
 @include respond-to(medium){
+	.camrea-container .camera-category-list {
+    padding: 0;
+	}
 	.camera{
 		max-width: 96%;
 		margin: 16px 2%;

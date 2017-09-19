@@ -7,7 +7,7 @@
 						<span>{{city.count}} Pictures</span>
 					</div>
 					<div class="camera-category-images">
-						<router-link :to="`camera/${city.id}`"  v-for="image in city.images">
+						<router-link :to="`travel/${city.id}`"  v-for="image in city.images">
 							<span class="camera-category-image col-md-4">
 								<img :src="`http://suvllian.com/static/images/travel/${image.iImage}.jpg`" />  
 								<span class="ihover"></span>          
@@ -20,7 +20,18 @@
 </template>
 
 <script>
+import { mapActions, mapState} from 'vuex'
+import { GET_IMAGES_LIST_BY_CITY } from './../../../vuex/type.js'
+
 export default {
-	props:["imagesListByCity"]
+	computed: mapState({ 
+		imagesListByCity: store => store.camera.imagesListByCity
+	}),
+	methods: {
+		...mapActions([GET_IMAGES_LIST_BY_CITY])
+	},
+	created() {
+		this.GET_IMAGES_LIST_BY_CITY()
+	}
 }
 </script>
