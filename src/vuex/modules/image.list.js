@@ -1,11 +1,15 @@
 import api from '../../api';
-import { GET_IMAGES_LIST_BY_CITY, GET_IMAGES_BY_CITYID, GET_IMAGE_LIST, GET_IMAGE_LIST_FAILURE, VOTE_IMAGE, 
+import { GET_IMAGES_LIST_BY_CITY, GET_IMAGES_BY_CITYID, GET_IMAGE_LIST_BY_TIME, GET_IMAGE_LIST_FAILURE, VOTE_IMAGE, 
 		ADD_IMAGE_LIST, LOADING_IMAGE } from './../type';
 
 export default {
 	state: {
 		imagesListByCity: [],
-		cityImageList: []
+		cityImageList: [],
+		imageListByTime: [],
+		page: 1,
+		loading: false,
+		isMore: true
 	},
 
 	mutations: {
@@ -15,20 +19,14 @@ export default {
 		[GET_IMAGES_BY_CITYID](state, action) {
 			state.cityImageList   = action.cityImageList; 
 		},
-		[GET_IMAGE_LIST](state, action) {
-			state.isMore  = action.isMore;
+		[GET_IMAGE_LIST_BY_TIME](state, action){
+			state.isMore = action.isMore;
 			state.loading = false;
-			state.page    = 1; 
-			state.imageList   = action.imageList; 
+			state.page = action.page; 
+			state.imageListByTime = [...state.imageListByTime, ...action.imageListByTime]; 
 		},
 		[GET_IMAGE_LIST_FAILURE](state){
 
-		},
-		[ADD_IMAGE_LIST](state, action){
-			state.isMore  = action.isMore;
-			state.loading = false;
-			state.page = action.page; 
-			state.imageList = [...state.imageList, ...action.imageList]; 
 		},
 		[LOADING_IMAGE](state){
 			state.loading = true;
@@ -61,19 +59,19 @@ export default {
 				commit(GET_IMAGE_LIST_FAILURE);
 			});
 		},
-		[ADD_IMAGE_LIST]({ commit }, page){
+		[GET_IMAGE_LIST_BY_TIME]({ commit }, page){
 			commit(LOADING_IMAGE);
-			api.getImageData(page).then(res => {
-        let response  = res.data;
-        let isMore = response.length < 15 ? false : true;
+			api.getImageListByTime(page).then(res => {
+        let response = res.data;
+        let isMore = response.length < 10 ? false : true;
 
         response.forEach(item => {
         	item.isActive = false;
       		item.isVote = false;
         })
 
-        commit(ADD_IMAGE_LIST,{
-          imageList: response,
+        commit(GET_IMAGE_LIST_BY_TIME,{
+          imageListByTime: response,
           isMore,
           page
         });

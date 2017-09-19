@@ -4,17 +4,3 @@
 @import "./pages/camera/index.scss";
 @import "./pages/book/index.scss";
 @import "./pages/common/index.scss";
-
-.suvllian {
-  background-image: url(https://adventure.com/wp-content/themes/adventure_2017/assets/img/img-footer-01@2x.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: bottom center;
-}
-
-@media screen and (max-width: 650px) {
-  .suvllian {
-    background-size: 400%;
-    background-position-x: 70%;
-  }
-}

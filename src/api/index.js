@@ -7,6 +7,9 @@ export default{
 
 	voteBook:(id,way) => { return postResource.save({do:"book",concrete:"voteBook",way:way,id:id}) },
 
+	/* 按时间顺序获取所有照片 */
+	getImageListByTime: (page) => { return getResource.get({ do: "image", concrete: "getImageListByTime", page }) },
+
 	/* 按城市分类的照片 */
 	getImageListByCity: () => { return getResource.get({ do: "image", concrete: "getImageListByCity" }) },
 

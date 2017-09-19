@@ -12,7 +12,7 @@
 import Slider from './components/slider.vue'
 import Book from './components/book.vue'
 import { mapActions, mapState} from 'vuex'
-import { GET_BOOK_LIST, ADD_BOOK_LIST } from './../../vuex/type.js'
+import { GET_BOOK_LIST } from './../../vuex/type.js'
 
 export default {
 	components: { Slider, Book },
@@ -23,10 +23,10 @@ export default {
 		loading: store => store.books.loading,
 	}),
 	methods: {
-		...mapActions([GET_BOOK_LIST, ADD_BOOK_LIST]),
+		...mapActions([GET_BOOK_LIST]),
 	},
 	created() {
-		this.GET_BOOK_LIST();
+		this.GET_BOOK_LIST(1);
 	},
 	mounted() {
     let slideNav = (event) => {
@@ -38,7 +38,7 @@ export default {
 			if (scrollTop + screenHeight >= totalHeight - 100) {
         // 向下滑
 				if (direction < 0 && this.isMore && !this.loading){
-					this.ADD_BOOK_LIST(++this.page)
+					this.GET_BOOK_LIST(++this.page)
 				} else if (!this.isMore) {
 					window.removeEventListener("mousewheel", slideNav);
 					window.removeEventListener("DOMMouseScroll", slideNav);	
