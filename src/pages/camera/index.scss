@@ -3,29 +3,43 @@
 	padding: 16px 0 0;
 	position: relative;
 	clear: both; 
+	.camera-nav-item {
+		display: inline-block;
+		border-bottom: 1px solid #aaa;
+		transition: transform 1s ease;
+		&:hover {
+			transform: translateY(-4px);
+		}
+		a {
+			display: block;
+			padding: 12px 28px;
+			color: #000;
+		}
+		.camera-nav-album {
+			color: #5C5C5C;
+		}
+		.camera-nav-travel {
+			color: #C15F3D;
+		}
+		.camera-nav-category {
+			color: #155E39;
+		}
+	}
 	.camera-category-list {
 		overflow: hidden;
-		@include widthHeightMaxWidth(66rem, auto);
-		margin: 2rem auto 0;
+		margin: 0 auto;
 		padding: 1rem 1rem 3rem;
-		.col-md-6 {
-			padding: 0.75rem;
-		}
-		.camera-category {
-			padding: 1rem;
-			border: 1px solid #eee;
-		}
 		.camera-category-text {
+			padding: 1rem 1rem 0;
 			margin-bottom: 1rem;
 			a {
-				display: block;
 				padding: 0 0 8px;
-				font: bold 16px/1.8 Microsoft Yahei;
+				font-weight: bold;
 				color: #000;
 			}
 			span {
-				width: 100%;
 				overflow: hidden;
+				padding-left: 12px;
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				font-weight: normal;
@@ -33,8 +47,9 @@
 			}
 		}
 		.camera-category-images {
-			overflow: hidden;
+			padding: 0 1rem 1rem;
 			.camera-category-image {
+				display: inline-block;
 				position: relative;
 				z-index: 2;
 				width: 9.3rem;
@@ -47,6 +62,7 @@
 					}
 				}
 				img {
+					display: block;
 					height: 100%;
 					width: 100%;
 					object-fit: cover;
@@ -65,7 +81,6 @@
 		}
 	}
 }
-
 .camera {
 	@include widthHeightMaxWidth(auto,auto,48em);
 	background-color: #fff;	
@@ -112,7 +127,10 @@
 
 @include respond-to(medium){
 	.camrea-container .camera-category-list {
-    padding: 0;
+		padding: 0;
+		.camera-category {
+			border: none;
+		}	
 	}
 	.camera{
 		max-width: 96%;
@@ -135,9 +153,19 @@
 			float: none;
 			max-width: 100%;
 			padding-top: 0;
-			.p-img{
+			.p-img {
 				border-left: 3px solid #dfdfdf;
 				padding-left: 16px; }
+		}
+	}
+}
+
+@media (max-width: 548px) {
+	.camrea-container .camera-category-list .camera-category-images {
+		padding: 0;
+		.camera-category-image {
+			width: 33%;
+			height: 33vw;
 		}
 	}
 }

@@ -23,7 +23,7 @@ export default {
 			state.isMore = action.isMore;
 			state.loading = false;
 			state.page = action.page; 
-			state.imageListByTime = action.page === 1 ? action.imageListByTime : 
+			state.imageListByTime = action.page == 1 ? action.imageListByTime : 
 			  [...state.imageListByTime, ...action.imageListByTime]; 
 		},
 		[GET_IMAGE_LIST_FAILURE](state){

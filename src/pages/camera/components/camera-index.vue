@@ -28,6 +28,7 @@ export default{
 		this.GET_IMAGE_LIST_BY_TIME(1)
 	},
 	mounted() {
+		console.log("mounted")
     let slideNav = (event) => {
 			let scrollTop = document.body.scrollTop || window.scroolY || document.documentElement.scrollTop;
 			let direction = event.wheelDelta || -event.detail;
@@ -48,6 +49,9 @@ export default{
 		window.addEventListener("mousewheel", slideNav);
 		// 火狐
 		window.addEventListener("DOMMouseScroll", slideNav);	
+	},
+	beforeDestroy() {
+		console.log("beforeDestroy")
 	}
 }
 </script>
