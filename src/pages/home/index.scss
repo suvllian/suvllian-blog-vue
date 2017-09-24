@@ -1,115 +1,60 @@
 .home {
-  background-image: url(https://adventure.com/wp-content/themes/adventure_2017/assets/img/img-footer-01@2x.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: bottom center;
-  .home-banner {
-    position: relative;
-    overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0) linear-gradient(to right, #003973 0%, #e5e5be 100%) repeat scroll 0 0;  
+}
+.home-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: rgba(97, 97, 97, 0.3);
+  a {
+    color: #eee;
+    font-family: Georgia,serif;
+  }
+}
+.home-line {
+  padding: 10px;
+  margin-bottom: 20px;
+  line-height: 24px;
+  color: #eee;
+  font-family: Georgia,serif;
+  background: rgba(154, 154, 154, 0.5) none repeat scroll 0 0;
+  border-radius: 8px;
+  font-size: 18px;
+  .fa {
+    font-size: 20px;
+  }
+}
+.home-h2, .home-h3 {
+  padding: 0;
+  color: #eee;
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 36px;
+  text-align: center;
+}
+.home-h3 {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 550px) {
+  .home-container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .home-container {
     width: 100%;
-    height: 43.75rem;
-    .banner {
-			position: relative;
-			height: 100%;
-			min-height: 37.5rem;
-			&:before {
-				position: absolute;
-				z-index: 2;
-				content: '';
-				display: block;
-				width: 100%;
-				height: 100%;
-				background-color: rgba(0,0,0,0.4);
-			}
-			img {
-				height: 100%;
-				width: 100%;
-				object-fit: cover;
-			}
-		}
-  }
-  /* 首页文章 */
-  .home-article-container {
-    display: flex;
-    max-width: 75rem;
-    margin: 0 auto;
-    padding: 3.75rem 0;
-    transition: 1s all ease;
-    /* 文章列表 */
-    .article-list {
-      display: flex;
-      flex: 1;
-      flex-wrap: wrap; }
-    /* 文章section */
-    .article-card {
-      flex: 0 0 50%;
-      padding: 0 .625rem;
-      cursor: pointer;
-      &-content {
-        box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.1);
-        transition: box-shadow 500ms ease-in-out;
-        background-color: #fff;
-        margin-bottom: 1.25rem;
-        &:hover {
-          box-shadow: 0 10px 20px 3px rgba(0,0,0,0.15); }
-        .article-info {
-          padding: 0 1.25rem 1.25rem 1.25rem;
-          .article-meta {
-            padding: .625rem 0; }
-        }
-        .article-title {
-          padding: 0;
-          margin: 0 0 1.375rem;
-          font-size: 1.375rem;
-          line-height: 1.3;
-          a {
-            color: #0F0F0F; }
-        }
-      }
-    }
-  }
-  /* 首页文章列表标题 */
-  .home-heading-h2 {
-    padding: 2rem 0; }
-  .home-heading-span {
-    position: relative;
-    padding: 0 3.125rem;
-    color: #0F0F0F;
-    font-family: "Playfair Display",serif;
-    &:before, &:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      height: 2px;
-      background-color: #0F0F0F; }
-    &:before {
-      left: -80%; }
-    &:after {
-      right: -80%; }
   }
 }
 
-/* 底部 Start */
-.footer{
-  padding: 0.6em 0;
-  text-align: right;
-  .footer-p{
-    color: #fff;
-    padding: 0.25rem 2rem; }
-}
-/* 底部 End */
-
-@media screen and (max-width: 650px) {
-  .home {
-    background-size: 400%;
-    background-position-x: 70%;
-    .home-article-container {
-      .article-card {
-        flex: 0 0 100%; }
-    }
-    .home-banner {
-      height: 20rem;
-    }
-  }
-}
