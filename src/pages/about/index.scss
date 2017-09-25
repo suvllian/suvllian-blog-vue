@@ -1,0 +1,33 @@
+.about {
+  p {
+    line-height: 28px;
+    margin-bottom: 16px;
+  }
+  ul {
+    margin: 25px 0 25px 35px;
+  }
+  li {
+    margin-bottom: 5px;
+    list-style-type: square;
+    line-height: 28px;
+    font-size: 16px;
+  }
+  a {
+    color: #4a75b5;
+    &:hover {
+      color: #e58c7c;
+    }
+  }
+}
+.about-title {
+  padding-bottom: 8px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  border-bottom: 1px dashed #ccc;
+  line-height: 30px;
+  span {
+    font-size: 18px;
+    color: #b6b6b6;
+  }
+}

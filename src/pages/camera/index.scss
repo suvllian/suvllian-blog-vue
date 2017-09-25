@@ -92,6 +92,7 @@
 	.img-camera {
 		@include widthHeightMaxWidth(auto,auto,40%); 
 		padding: 16px 16px 0 16px;
+		object-fit: cover;
 		cursor: pointer;
 		outline: none; }
 	.camera-introduction {
@@ -141,7 +142,6 @@
 @include respond-to(small){
 	.camera {
 		max-width: 100%;
-		min-width: 300px;
 		margin: 16px 0;
 		border: 0px;
 		.img-camera {

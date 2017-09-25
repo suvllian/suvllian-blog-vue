@@ -5,12 +5,18 @@
   box-sizing: border-box; }	
 body {
 	background: #fff none repeat scroll 0 0;
-	color: #89867e;
+	color: #2f2f2f;
 	font-size: 16px;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,PingFang SC,Source Han Sans CN,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif; }
+  font-family: Georgia,serif; }
 li {
 	list-style: none; }
 footer {
 	clear: both; }
 a {
-	outline: none; }
+	word-break: break-all;
+	outline: none;
+	color: #2f2f2f;
+  &:hover {
+		text-decoration: underline;
+	} 
+}

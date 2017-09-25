@@ -15,10 +15,7 @@
   padding: 15px;
   border-radius: 15px;
   background-color: rgba(97, 97, 97, 0.3);
-  a {
-    color: #eee;
-    font-family: Georgia,serif;
-  }
+  
 }
 .home-line {
   padding: 10px;
@@ -29,6 +26,18 @@
   background: rgba(154, 154, 154, 0.5) none repeat scroll 0 0;
   border-radius: 8px;
   font-size: 18px;
+  transition: .3s all ease;
+  a {
+    color: #eee;
+    font-family: Georgia,serif;
+  }
+  &:hover {
+    color: #000;
+    background-color: #eee;
+    a {
+      color: #000;
+    }
+  }
   .fa {
     font-size: 20px;
   }
