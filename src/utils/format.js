@@ -2,8 +2,8 @@
 export const formatTime = time => {
 	const tempDate = new Date(parseInt(time)),
     year = tempDate.getFullYear(),
-    month = tempDate.getMonth() + 1,
-    day = tempDate.getDate(); 
+    month = `${tempDate.getMonth()+1}`.padStart(2, '0'),
+    day = `${tempDate.getDate()}`.padStart(2, '0'); 
 	let monthInChinese = "",
 	  monthInEnglish = "";
 
@@ -64,6 +64,6 @@ export const formatTime = time => {
     monthInEnglish,
     monthInChinese,
     day,
-    time: `${year}/${month}/${day}`.trim() 
+    time: `${year}-${month}-${day}`.trim() 
 	}
 }

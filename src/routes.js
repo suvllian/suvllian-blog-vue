@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router'
 
-import Index from './pages/home/index.vue'
+import Index from './pages/index/index.vue'
+import Blog from './pages/blog/index.vue'
 import Camera from './pages/camera/index.vue'
 import CameraIndex from './pages/camera/components/camera-index.vue'
 import CameraImageList from './pages/camera/components/image-list.vue'
@@ -17,6 +18,7 @@ const router = new VueRouter({
   base: __dirname,
   routes: [
     { path: '/', component: Index },
+    { path: '/blog', component: Blog},
     { path: '/article', component: Article},
     { 
       path: '/camera', 

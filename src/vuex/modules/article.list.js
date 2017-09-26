@@ -1,74 +1,47 @@
 import api from './../../api';
 import { formatTime } from './../../utils/format.js';
-import { ARTICLE_LIST, ADD_ARTICLE_LIST, GET_ARTICLE_LIST_FAILURE, LOADING_ARTICLE } from './../type';
+import { GET_ARTICLE_LIST, GET_ARTICLE_LIST_FAILURE, GET_ARTICLE_CLASS } from './../type';
 
 export default {
 	state: {
-		isMore: false,
-		loading: false,
-		items: [],
-		page: 1
+		articleList: [{}],
+		classList: []
 	},
 	mutations: {
-		[ARTICLE_LIST](state, action) {
-			state.isMore = action.isMore;
-			state.items  = action.articleList;
-			state.page   = 1;
+		[GET_ARTICLE_LIST](state, action) {
+			state.articleList = action.articleList;
 		},
-		[GET_ARTICLE_LIST_FAILURE](state){
+		[GET_ARTICLE_LIST_FAILURE](state) {
 			
 		},
-		[LOADING_ARTICLE](state){
-			state.loading = true;
-		},
-		[ADD_ARTICLE_LIST](state, action) {
-			state.page   = action.page;
-			state.isMore = action.isMore;
-			state.loading = false;
-			state.items  = [...state.items, ...action.articleList];
+		[GET_ARTICLE_CLASS](state, action) {
+      state.classList = action.classList;
 		}
 	},
 	actions: {
-		[ARTICLE_LIST]({ commit }){
-			document.title = "瓦尔登湖畔一棵松";
-			api.getArticleList(1).then(res => {
-        let response  = res.data;
-				let isMore = response.length < 5 ? false : true;
-				
-        let articleList = response.map(item =>{
+		[GET_ARTICLE_LIST]({ commit }){
+			api.getArticleListByTime().then(res => {
+        let articleList = res.data.map(item =>{
 	      	let formatDate = formatTime(item.aDate);
 		      item.aImageHome = true;	
 
 			    return {...item, ...formatDate} 
-        });	
+				});	
 
-		    commit(ARTICLE_LIST,{
-          articleList,
-          isMore
+		    commit(GET_ARTICLE_LIST,{
+          articleList
         });
 			}).catch(err => {
 				commit(GET_ARTICLE_LIST_FAILURE);
 			});
-		},
-		[ADD_ARTICLE_LIST]({ commit }, page){
-			commit(LOADING_ARTICLE);
-			api.getArticleList(page).then(res => {
-        let response  = res.data;
-				let isMore = response.length < 5 ? false : true;
-				
-        let articleList = response.map(item =>{
-        	let formatDate = formatTime(item.aDate);
-		      item.aImageHome = true;	
-
-		      return {...item, ...formatDate} 
-        });	
-
-		    commit(ADD_ARTICLE_LIST,{
-          articleList,
-          isMore,
-          page
+		}, 
+		[GET_ARTICLE_CLASS]({ commit }){
+      api.getArticleClass().then(res => {
+        commit(GET_ARTICLE_CLASS, {
+          classList: res.data
         });
 			}).catch(err => {
+				console.log(err)
 				commit(GET_ARTICLE_LIST_FAILURE);
 			});
 		}

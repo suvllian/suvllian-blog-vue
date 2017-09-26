@@ -5,7 +5,7 @@
 			<h3 class="home-h3" title="从一个自己到下一个自己">Suvllian's personal website</h3>
 			<p class="home-line">
 				<font>»</font>
-				<router-link to="/article">博客</router-link>	
+				<router-link to="/blog">博客</router-link>	
 				<font>/</font>
 				<router-link to="/camera">相册</router-link>	
 				<font>/</font>
