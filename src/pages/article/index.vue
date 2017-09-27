@@ -1,22 +1,30 @@
 <template>
-  <div class="article-page">
-    <article class="article">
-      <ArticleHeader :article="article"></ArticleHeader>
-      <div class="article-content" v-html="article.aContent"></div>
-      <PreNext :prev-article="prev" :next-article="next"></Prenext>
-    </article>
-  </div>
+  <article class="article-contianer">
+    <section class="article-head">
+      <h1 class="article-title">{{article.aTopic}}</h1>
+      <p class="article-info">
+        <span>作者：<router-link to="/about">Suvllian</router-link></span>
+        <span>发表于{{article.time }}</span>
+        <span>围观：{{article.aVisit}}次</span>
+        <span>评论数：0条</span>
+      </p>
+      <div class="article-image">
+        <img :src="article.aImage">
+      </div>
+    </section>	
+    <div class="article-content" v-html="article.aContent"></div>
+    <PreNext :prev-article="prev" :next-article="next"></Prenext>
+  </article>
 </template>
 
 <script>
 import PreNext from './components/prenext.vue'
-import ArticleHeader from './components/article-header.vue'
 import { mapActions, mapState} from 'vuex'
 import { ARTICLE_CONTNET, GET_PRENEXT_LIST } from './../../vuex/type.js'
 import effect from './../../utils/effect.js'
 
 export default{
-	components: { PreNext, ArticleHeader},
+	components: { PreNext},
 	computed: mapState({ 
 		article: store => store.articleContent.article,
 		id: store => store.articleContent.id,
@@ -26,11 +34,9 @@ export default{
 	methods:{ 
     ...mapActions([ARTICLE_CONTNET, GET_PRENEXT_LIST]),
     getData() {
-      let id = this.$route.query.id;
+      let id = this.$route.params.id;
       this.ARTICLE_CONTNET(id);
       this.GET_PRENEXT_LIST(id);
-      effect.toTop();
-      this.$parent.$children[0].$refs.header.className = "nav-container";
     }
   },
   watch:{

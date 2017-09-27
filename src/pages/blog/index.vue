@@ -15,11 +15,11 @@
     </div>
     <div class="last-article">
       <h3>
-        <router-link to="/about">{{articleList[0].aTopic}}</router-link>
+        <router-link :to="`article/${articleList[0].aId}`">{{articleList[0].aTopic}}</router-link>
       </h3>
       <p>
         {{articleList[0].aIntro}}
-        <a href="">阅读全文<font>»</font></a>
+        <router-link :to="`article/${articleList[0].aId}`">阅读全文<font>»</font></router-link>
       </p>
       <span>
         Posted by <router-link to="/about">Suvllian</router-link> at 
@@ -31,7 +31,7 @@
       <ul>
         <li v-for="article in articleList">
           <span>{{article.time}} »</span>
-          <router-link to="/about">{{article.aTopic}}</router-link>
+          <router-link :to="`article/${article.aId}`">{{article.aTopic}}</router-link>
         </li>
         <li>
           <router-link to="/about">更多文章...</router-link>

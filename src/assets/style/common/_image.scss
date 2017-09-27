@@ -1,7 +1,4 @@
 // 图片的大小样式
-.img-big{
-  @include img-max-size(500px, 0px, 100%);
-}
 
 .img-medium{
   @include img-max-size(400px, 5px, 100%);

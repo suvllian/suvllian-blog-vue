@@ -15,9 +15,8 @@
 }
 
 .last-article {
-  overflow: hidden;
   float: left;
-  width: 590px;
+  width: 630px;
   padding: 20px;
   background: #f3f3f3;
   border-radius: 2px;
@@ -42,6 +41,7 @@
 .recent-article {
   float: left;
   width: 590px;
+  margin-bottom: 20px;
   ul {
     padding-left: 27px;
   }
@@ -58,7 +58,7 @@
 .blog-right {
   float: right;
   .article-category {
-    width: 300px;
+    width: 330px;
     border: 1px solid #ccc;
     padding: 15px;
     margin-bottom: 30px;
@@ -73,6 +73,59 @@
       margin-bottom: 5px;
       line-height: 28px;
       font-size: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .blog {
+    max-width: 600px;
+  }
+  .last-article {
+    max-width: 600px;
+  }
+  .blog-right {
+    float: none;
+    .article-category {
+      width: 600px;
+      ul {
+        padding: 0;
+      }
+      li {
+        display: inline-block;
+        margin: 0 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .blog {
+    max-width: 460px;
+  }
+  .last-article {
+    max-width: 460px;
+  }
+  .blog-right {
+    .article-category {
+      width: 460px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .blog {
+    max-width: 300px;
+  }
+  .last-article {
+    max-width: 300px;
+    span {
+      float: none;
+    }
+  }
+  .blog-right {
+    .article-category {
+      max-width: 300px;
     }
   }
 }
