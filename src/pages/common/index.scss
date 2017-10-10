@@ -40,3 +40,55 @@ $height: 38px;
 	}
 }
 /* 返回顶部 End */
+
+/* 面包屑导航 */
+.crumb-nav {
+	margin-bottom: 20px;
+	font-size: 28px;
+}
+.crumb-nav-items {
+	position: relative;
+	display: inline-block;
+	ul {
+		position: absolute;
+		overflow: hidden;
+		height: 0;
+		z-index: 100;
+		width: 120px;
+		top: 35px;
+		transition: height .5s ease, padding .5s ease; 
+		background: #fff;
+		font-weight: normal;
+    text-align: center;
+		li {
+			line-height: 40px;
+			cursor: pointer;
+			&:hover {
+				background: #eee;
+			}
+			a {
+				display: block;
+				font-size: 20px;
+				color: #4a75b5;
+			}
+		}
+	}
+	&:hover {
+		ul {
+			display: block;
+			height: 140px;
+			padding: 10px 0;
+			border: 1px solid #ccc;
+		}
+	}
+}
+
+
+h1, h2, h3, h4 {
+	a {
+		text-decoration: none;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}

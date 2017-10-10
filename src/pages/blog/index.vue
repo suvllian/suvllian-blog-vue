@@ -1,5 +1,14 @@
 <template>
   <div class="blog">
+    <h1 class="crumb-nav">
+      <div class="crumb-nav-items">
+        <router-link to="/">一颗松</router-link>
+        <ul>
+          <li><router-link to="/about">关于</router-link></li>
+        </ul>
+      </div>
+      <font>» 博客</font>
+    </h1>
     <div class="blog-right">
       <div class="article-category">
         <h2>文章分类</h2>

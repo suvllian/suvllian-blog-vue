@@ -8,8 +8,8 @@
 				<router-link to="/blog">博客</router-link>	
 				<font>/</font>
 				<router-link to="/camera">相册</router-link>	
-				<font>/</font>
-				<router-link to="/book">读书</router-link>	
+				<!-- <font>/</font>
+				<router-link to="/book">读书</router-link>	 -->
 				<font>/</font>
 				<router-link to="/about">关于</router-link>	
 			</p>

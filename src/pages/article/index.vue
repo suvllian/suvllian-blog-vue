@@ -13,18 +13,27 @@
       </div>
     </section>	
     <div class="article-content" v-html="article.aContent"></div>
-    <PreNext :prev-article="prev" :next-article="next"></Prenext>
+    <div class="prenext">
+    <div class="prev">
+    	<router-link v-if="prev.aId" :to="`/article/${prev.aId}`">
+        <span class="pre-btn">上一篇: {{prev.aTopic}} </span>
+      </router-link>
+    </div>
+    <div class="next text-right">
+    	<router-link v-if="next.aId" :to="`/article/${next.aId}`">
+        <span class="next-btn">下一篇: {{next.aTopic}}</span>
+      </router-link>
+    </div>
+  </div>
   </article>
 </template>
 
 <script>
-import PreNext from './components/prenext.vue'
 import { mapActions, mapState} from 'vuex'
 import { ARTICLE_CONTNET, GET_PRENEXT_LIST } from './../../vuex/type.js'
 import effect from './../../utils/effect.js'
 
 export default{
-	components: { PreNext},
 	computed: mapState({ 
 		article: store => store.articleContent.article,
 		id: store => store.articleContent.id,
