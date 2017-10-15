@@ -18,7 +18,7 @@
 				<a href="https://github.com/suvllian" title="Github" target="_blank">
 					<i class="fa fa-github" />
 				</a>
-				<a href="http://weibo.com/5377632866" title="微博：瓦尔登湖啊盘一棵松" target="_blank">
+				<a href="http://weibo.com/5377632866" title="微博：瓦尔登湖一棵松" target="_blank">
 					<i class="fa fa-weibo" />
 				</a>
 			</p>

@@ -115,17 +115,17 @@
 
 @media screen and (max-width: 480px) {
   .blog {
-    max-width: 300px;
+    max-width: 96%;
   }
   .last-article {
-    max-width: 300px;
+    max-width: 96%;
     span {
       float: none;
     }
   }
   .blog-right {
     .article-category {
-      max-width: 300px;
+      max-width: 96%;
     }
   }
 }

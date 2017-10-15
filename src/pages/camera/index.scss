@@ -1,7 +1,8 @@
 .camrea-container {
-	@include widthHeightMaxWidth(100%,auto);
-	padding: 16px 0 0;
 	position: relative;
+	max-width: 660px;
+	padding: 16px 0 0;
+	margin: 0 auto;
 	clear: both; 
 	.camera-nav-item {
 		display: inline-block;
@@ -96,9 +97,12 @@
 		cursor: pointer;
 		outline: none; }
 	.camera-introduction {
+		h4 {
+			padding-bottom: 12px;
+		}
 		max-width: 60%;
 		min-width: 60%;
-		padding: 6px 16px;
+		padding: 16px 16px;
 		padding-bottom: 0;
 		float: left;
 		color: #333; }
@@ -113,14 +117,14 @@
 		border-left: 2px solid #dfdfdf;
 		padding-left: 16px; }
 	.camera-bottom {
-		height: 24px;
+		height: 20px;
 		width: 100%;
 		padding: 0 16px;
 		margin-top: 8px;
 		clear: left;
 		border-top: 1px dotted #ddd;
 		.span{
-			line-height: 40px;
+			line-height: 32px;
 			color: #aaa;
 			font-size: 14px; }
 	}

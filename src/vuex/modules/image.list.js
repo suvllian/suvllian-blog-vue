@@ -36,7 +36,6 @@ export default {
 
 	actions: {
 		[GET_IMAGES_LIST_BY_CITY]({ commit }){
-			document.title = "图集";
 			api.getImageListByCity().then(res => {				
         commit(GET_IMAGES_LIST_BY_CITY, {
           imagesListByCity: res.data

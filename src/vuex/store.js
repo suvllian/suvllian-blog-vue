@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import articleList from './modules/article.list'
 import articleContent from './modules/article.content'
 import articlePreNext from './modules/article.prenext'
-import aboutInfo from './modules/about.info'
 import camera from './modules/image.list'
 import books from './modules/book.list'
 
@@ -15,7 +14,6 @@ export default new Vuex.Store({
 		articleContent,
 		camera,
 		books,
-		articlePreNext,
-		aboutInfo
+		articlePreNext
 	}
 })

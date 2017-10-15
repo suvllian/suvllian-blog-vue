@@ -4,7 +4,7 @@
 			<div class="camera-content">
 				<img :class="{imgClicked:single.isActive}" class="img-camera" :src="'http://suvllian.com/static/images/travel/' + single.iImage + '.jpg'" :alt="single.iTopic" @click="enlargeImage(single)">
 				<div class="camera-introduction" :class="{introClicked: single.isActive}">
-					<h4 class="text-underline">{{single.iTopic}}:</h4>
+					<h4>{{single.iTopic}}:</h4>
 					<p class="p-img" :class="{borderClicked:single.isActive}">{{single.iContent}}</p>
 				</div>
 			</div>

@@ -5,6 +5,7 @@
         <router-link to="/">一颗松</router-link>
         <ul>
           <li><router-link to="/blog">博客</router-link></li>
+          <li><router-link to="/camera">相册</router-link></li>
         </ul>
       </div>
       <font>» 关于</font>
