@@ -13,7 +13,10 @@
     <div class="blog-right">
       <div class="article-category">
         <h2>文章分类</h2>
-        <ul>
+        <ul v-if="isFetchingClassList">
+          <li>大力加载中...</li>
+        </ul>
+        <ul v-else>
           <li v-for="classObj in classList">
             <router-link to="/about">{{classObj.aClassName}}</router-link>
           </li>
@@ -23,7 +26,7 @@
         </ul>
       </div>
     </div>
-    <div class="last-article">
+    <div class="last-article" v-if="articleList[0].aId">
       <h3>
         <router-link :to="`article/${articleList[0].aId}`">{{articleList[0].aTopic}}</router-link>
       </h3>
@@ -36,17 +39,23 @@
         <a href="#">{{articleList[0].aClassName}}</a> on <time>{{articleList[0].time}}</time>
       </span>
     </div>
-    <div class="recent-article">
+    <div class="article-list">
       <h2>近期文章</h2>
-      <ul>
+      <ul v-if="isFetchingArticleList">
+          <li>大力加载中...</li>
+        </ul>
+      <ul v-else>
         <li v-for="article in articleList">
           <span>{{article.time}} »</span>
           <router-link :to="`article/${article.aId}`">{{article.aTopic}}</router-link>
         </li>
         <li>
-          <router-link to="/about">更多文章...</router-link>
+          <router-link to="/article-list">更多文章...</router-link>
         </li>
       </ul>
+    </div>
+    <div class="copyright">
+      <p>©2016-2017 陕IPC备16014072-1号 </p>
     </div>
   </div>
 </template>
@@ -58,7 +67,9 @@ import { GET_ARTICLE_LIST, GET_ARTICLE_CLASS } from './../../vuex/type.js'
 export default {
 	computed: mapState({ 
 		articleList: store => store.articleList.articleList,
-		classList: store => store.articleList.classList
+		isFetchingArticleList: store => store.articleList.isFetchingArticleList,
+		classList: store => store.articleList.classList,
+		isFetchingClassList: store => store.articleList.isFetchingClassList
 	}),
 	methods: {
 		...mapActions([GET_ARTICLE_LIST, GET_ARTICLE_CLASS]),

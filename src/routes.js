@@ -9,6 +9,7 @@ import TravelCamera from './pages/camera/components/travel-camera.vue'
 import CityCamera from './pages/camera/components/city-camera.vue'
 import Book from './pages/Book/index.vue'
 import Article from './pages/article/index.vue'
+import ArticleList from './pages/article-list/index.vue'
 import About from './pages/about/index.vue'
 
 const router = new VueRouter({
@@ -19,6 +20,7 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: Index },
     { path: '/blog', component: Blog},
+    { path: '/article-list', component: ArticleList},
     { path: '/article/:id', component: Article},
     { 
       path: '/camera', 

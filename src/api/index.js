@@ -19,7 +19,7 @@ export default{
 	voteImage:(id,way) => { return postResource.save({do:"image",concrete:"voteImage",way:way,id:id}) },
 
 	/* 时间排序文章列表 */
-	getArticleListByTime: () => { return getResource.get({do:"article", concrete:"getArticleListByTime"}) },
+	getArticleListByTime: (count) => { return getResource.get({do:"article", concrete:"getArticleListByTime", count}) },
 
 	/* 文章分类 */
 	getArticleClass: () => { return getResource.get({do: "article", concrete: "getArticleClasses"}) },
